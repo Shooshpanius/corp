@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014150232) do
+ActiveRecord::Schema.define(version: 20141014154606) do
 
   create_table "domains", force: true do |t|
     t.string   "host"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 20141014150232) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "login"
+    t.string   "f_name"
+    t.string   "i_name"
+    t.string   "o_name"
+    t.string   "fio"
+    t.string   "email"
+    t.string   "department"
+    t.string   "position"
+    t.boolean  "use_password"
+    t.string   "password"
+    t.boolean  "active"
+    t.boolean  "admin"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end
