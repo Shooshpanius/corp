@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
+
+
+  resources :login, :path => 'login/(:action)(.:format)'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
