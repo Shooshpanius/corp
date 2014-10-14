@@ -4,7 +4,6 @@ class LoginController < ApplicationController
 
   def srv_check_login
 
-
     domain = Domain.first
 
     require 'net/ldap'
