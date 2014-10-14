@@ -52,3 +52,6 @@ gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15'
 gem 'rvm-capistrano'
 gem 'jquery-validation-rails'
+gem 'net-ldap'
+#gem 'ruby-net-ldap'
+
