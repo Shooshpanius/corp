@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
 
-  before_filter :is_login
+  # before_filter :is_login
 
 
 
@@ -12,12 +12,12 @@ class MainController < ApplicationController
 
 
 
-  private
-  def is_login
-    if !session[:is_login]
-      redirect_to "/login"
-    end
-  end
+  # private
+  # def is_login
+  #   if !session[:is_login]
+  #     redirect_to "/login"
+  #   end
+  # end
 
 
 end
