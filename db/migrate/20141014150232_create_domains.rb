@@ -5,6 +5,8 @@ class CreateDomains < ActiveRecord::Migration
       t.string :host
       t.integer :port
       t.string :name
+      t.string :parser_user
+      t.string :parser_password
 
       t.timestamps null: false
     end

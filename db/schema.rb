@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20141015061237) do
     t.string   "host"
     t.integer  "port"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "parser_user"
+    t.string   "parser_password"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: true do |t|
