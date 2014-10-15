@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ($) ->
-  $("#login_form").validate
+  $('#login_form').validate
     rules:
       login:
         required: true
@@ -13,20 +13,20 @@ $(document).ready ($) ->
         required: true
 
 
-    errorClass: "input_error"
-    errorElement: "em"
+    errorClass: 'input_error'
+    errorElement: 'em'
     messages:
       login: ""
       password: ""
 
     submitHandler: (form) ->
-      queryString = $("#login_form").serialize()
+      queryString = $('#login_form').serialize()
       $.ajax
-        url: "/login/srv_check_login"
-        type: "POST"
+        url: '/login/srv_check_login'
+        type: 'POST'
         async: false
         data: queryString
         success: (msg) ->
-          location.reload()
+          location.replace '/'
 
       false
