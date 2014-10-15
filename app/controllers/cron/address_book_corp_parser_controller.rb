@@ -31,16 +31,20 @@ class Cron::AddressBookCorpParserController < ApplicationController
       title = entry.try(:title).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       department = entry.try(:department).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       displayname = entry.try(:displayname).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
-      #
+      company = entry.try(:company).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      l = entry.try(:l).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+
 
       if sAMAccountName != ""
-        new_user = User.find_or_initialize_by(login: sAMAccountName)
-        new_user.f_name = sn
-        new_user.i_name = givenName
+        new_user = AddressBookCorp.find_or_initialize_by(login: sAMAccountName)
+        # new_user.f_name = sn
+        # new_user.i_name = givenName
         new_user.email = email
         new_user.fio = displayname
         new_user.position = title
         new_user.department = department
+        new_user.organisation = company
+        new_user.address = l
         new_user.save
         @a = entry
       end

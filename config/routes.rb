@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
 
   resources :login, :path => 'login/(:action)(.:format)'
-  resources :fonts, :path => 'assets/(:action)(.:format)'
+  resources :address_book, :path => 'address_book/(:action)(.:format)'
+
 
   namespace :cron do
     resources :address_book_corp_parser, path: 'address_book_corp_parser/(:action)(:id)(.:format)'

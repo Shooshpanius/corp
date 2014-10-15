@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20141015061237) do
 
   create_table "address_book_corps", force: true do |t|
+    t.string   "login"
     t.string   "fio"
     t.string   "email"
     t.string   "position"
