@@ -1,0 +1,2 @@
+module Cron::AddressBookCorpParserHelper
+end
