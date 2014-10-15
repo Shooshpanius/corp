@@ -1,7 +1,20 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'bootstrap';
+
+
+//// control the screen sizes
+//$screen-xs-min: 300px;
+//$screen-sm-min: 400px;
+//$screen-md-min: 800px;
+//$screen-lg-min: 1200px;
+//
+//// this tells which screen size to use to start breaking on
+//// will tell navbar when to collapse
+//$grid-float-breakpoint: 2200px;
+
+// then import your bootstrap
+@import "bootstrap";
 
 
 @font-face {
@@ -10,19 +23,19 @@
   src: url('/assets/bootstrap/glyphicons-halflings-regular.eot?#iefix') format("embedded-opentype"), url('/assets/bootstrap/glyphicons-halflings-regular.woff') format("woff"), url('/assets/bootstrap/glyphicons-halflings-regular.ttf') format("truetype"), url('/assets/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format("svg");
 }
 
-.icon-my {
-
-  padding-bottom: 25px !important;
-}
-
-.glyphicon-my {
-  position: relative;
-  top: 1px;
-  display: inline-block;
-  font-family: 'Glyphicons Halflings';
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1;
-  font-size: 1.5em;
-
-}
+//.icon-my {
+//
+//  padding-bottom: 25px !important;
+//}
+//
+//.glyphicon-my {
+//  position: relative;
+//  top: 1px;
+//  display: inline-block;
+//  font-family: 'Glyphicons Halflings';
+//  font-style: normal;
+//  font-weight: 400;
+//  line-height: 1;
+//  font-size: 1.5em;
+//
+//}
