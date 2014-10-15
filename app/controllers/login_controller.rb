@@ -31,13 +31,12 @@ class LoginController < ApplicationController
 
         user = User.find_by_login(params[:login])
         if user
-          @a = '---1bbbbbbb'
+
         else
           user = User.new(
               login: params[:login]
           )
           user.save
-          @a = user
 
         end
 
@@ -50,7 +49,7 @@ class LoginController < ApplicationController
       end
 
     else
-      @a = '---0aaaaaaa'
+
     end
 
   end
