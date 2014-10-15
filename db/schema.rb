@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141014154606) do
+ActiveRecord::Schema.define(version: 20141015061237) do
+
+  create_table "address_book_corps", force: true do |t|
+    t.string   "fio"
+    t.string   "email"
+    t.string   "position"
+    t.string   "department"
+    t.string   "organisation"
+    t.string   "address"
+    t.boolean  "active"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "corp_numbers", force: true do |t|
+    t.integer  "address_book_corp_id"
+    t.string   "type"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "domains", force: true do |t|
     t.string   "host"
