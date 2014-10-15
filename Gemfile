@@ -48,10 +48,13 @@ end
 
 
 gem 'bootstrap-sass'
+#gem 'bootstrap-sass-official'
 gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15'
 gem 'rvm-capistrano'
 gem 'jquery-validation-rails'
 gem 'net-ldap-1'
+gem 'jquery-ui-rails'
+gem 'jquery-tablesorter'
 #gem 'ruby-net-ldap'
 
