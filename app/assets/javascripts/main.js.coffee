@@ -2,9 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$(document).ready ($) ->
-  #net = new ActiveXObject("wscript.network")
-  #os = require("os")
-#  objShell = glob("WScript.Shell")
-#  alert objShell.Environment("SYSTEM")
-  #alert net.UserName
+@logout = ->
+  $.ajax
+    url: "/login/srv_logout"
+    type: "POST"
+    async: false
+    success: () ->
+      location.replace "/"
