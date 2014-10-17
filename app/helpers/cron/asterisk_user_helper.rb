@@ -1,0 +1,2 @@
+module Cron::AsteriskUserHelper
+end
