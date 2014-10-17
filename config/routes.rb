@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
 
 
+  namespace :cron do
+  get 'asterisk_user/index'
+  end
+
   get 'address_book/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
