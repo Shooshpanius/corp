@@ -3,7 +3,8 @@ class CreateCorpNumbers < ActiveRecord::Migration
     create_table :corp_numbers do |t|
 
       t.belongs_to :address_book_corp
-      t.string   'type'
+      t.integer    :number
+      t.string     :type_n
 
       t.timestamps null: false
     end

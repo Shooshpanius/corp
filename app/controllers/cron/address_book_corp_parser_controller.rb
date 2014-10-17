@@ -33,7 +33,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
       displayname = entry.try(:displayname).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       company = entry.try(:company).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       l = entry.try(:l).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
-
+      telephonenumber = entry.try(:telephonenumber).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
 
       if sAMAccountName != ""
         new_user = AddressBookCorp.find_or_initialize_by(login: sAMAccountName)
@@ -46,7 +46,38 @@ class Cron::AddressBookCorpParserController < ApplicationController
         new_user.organisation = company
         new_user.address = l
         new_user.save
-        @a = entry
+
+
+        if telephonenumber != ""
+          telephonenumber.split('|').each do |number|
+            number.gsub!(/[^0-9]/, '')
+
+            if number.length == 4
+
+              corp_n = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c')
+
+              if corp_n.length != 0
+                CorpNumber.update(
+                    corp_n,
+                    number: number,
+                )
+              else
+                CorpNumber.create(
+                    address_book_corp_id: new_user.id,
+                    number: number,
+                    type_n: "c"
+                )
+              end
+
+            end
+
+          end
+
+
+
+        end
+
+        # @a = entry
       end
 
     end
