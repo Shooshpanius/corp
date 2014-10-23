@@ -2,12 +2,6 @@ class Cron::AsteriskUserController < ApplicationController
 
   respond_to :text
 
-  def index
-
-
-
-  end
-
   def users
 
     @form_data = {
