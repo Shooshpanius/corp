@@ -56,5 +56,6 @@ gem 'jquery-validation-rails'
 gem 'net-ldap-1'
 gem 'jquery-ui-rails'
 gem 'jquery-tablesorter'
+gem 'responders'
 #gem 'ruby-net-ldap'
 
