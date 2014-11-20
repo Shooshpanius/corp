@@ -17,15 +17,15 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
 
     # filter = Net::LDAP::Filter.eq("mail", @e_from)
-    # attrs = ["givenName", "sn", "physicalDeliveryOfficeName", "sAMAccountName", "mail", "title", "department"]
+    # attrs = ["givenName", "sn", "physicalDeliveryOfficeName", "sam_account_name", "mail", "title", "department"]
     i = 0
-    ldap.search(:base => "OU=WUsers,DC=wood,DC=local",  :return_result => true) do |entry|
+    ldap.search(:base => 'OU=WUsers,DC=wood,DC=local',  :return_result => true) do |entry|
 
       i += i
-      givenName = entry.try(:givenName).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
-      sn = entry.try(:sn).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      # givenName = entry.try(:givenName).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      # sn = entry.try(:sn).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       #username = entry.try(:username).to_s.strip
-      sAMAccountName = entry.try(:sAMAccountName).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      sam_account_name = entry.try(:sAMAccountName).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       #office = entry.try(:office).to_s.strip
       email = entry.try(:mail).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       title = entry.try(:title).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
@@ -37,8 +37,8 @@ class Cron::AddressBookCorpParserController < ApplicationController
       ipphone_str = entry.try(:ipphone).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       mobile_str = entry.try(:mobile).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
 
-      if sAMAccountName != ""
-        new_user = AddressBookCorp.find_or_initialize_by(login: sAMAccountName)
+      if sam_account_name != ""
+        new_user = AddressBookCorp.find_or_initialize_by(login: sam_account_name)
         # new_user.f_name = sn
         # new_user.i_name = givenName
         new_user.email = email
