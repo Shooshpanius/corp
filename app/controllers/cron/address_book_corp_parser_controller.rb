@@ -33,7 +33,9 @@ class Cron::AddressBookCorpParserController < ApplicationController
       displayname = entry.try(:displayname).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       company = entry.try(:company).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       l = entry.try(:l).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
-      telephonenumber = entry.try(:telephonenumber).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      telephonenumber_str = entry.try(:telephonenumber).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      ipphone_str = entry.try(:ipphone).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      mobile_str = entry.try(:mobile).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
 
       if sAMAccountName != ""
         new_user = AddressBookCorp.find_or_initialize_by(login: sAMAccountName)
@@ -48,36 +50,72 @@ class Cron::AddressBookCorpParserController < ApplicationController
         new_user.save
 
 
-        if telephonenumber != ""
-          telephonenumber.split('|').each do |number|
-            number.gsub!(/[^0-9]/, '')
+        # :homephone=>["111"],
+        # :mobile=>["333"],
+        # :pager=>["222"]}>
+        # :facsimiletelephonenumber=>["444"]
+        # :telephonenumber=>["1002 | +7 (921) 601-23-71"],
+        # :ipphone=>["1002"]
 
-            if number.length == 4
 
-              corp_n = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c')
-
-              if corp_n.length != 0
-                CorpNumber.update(
-                    corp_n,
-                    number: number,
-                )
-              else
-                CorpNumber.create(
-                    address_book_corp_id: new_user.id,
-                    number: number,
-                    type_n: "c"
-                )
-              end
-
-            end
-
+        # Корпоративный мобильный
+        telephonenumber = telephonenumber_str.gsub(/[^0-9]/, '').to_s
+        telephonenumber = telephonenumber[1..telephonenumber_str.length].to_s
+        if telephonenumber.length == 10
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c')
+          if num.length != 0
+            CorpNumber.update(
+                num,
+                number: telephonenumber,
+            )
+          else
+            CorpNumber.create(
+                address_book_corp_id: new_user.id,
+                number: telephonenumber,
+                type_n: "c"
+            )
           end
-
-
-
         end
 
-        # @a = entry
+
+        # Внутренний
+        ipphone = ipphone_str.gsub(/[^0-9]/, '').to_s
+        if ipphone.length == 4
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'i')
+          if num.length != 0
+            CorpNumber.update(
+                num,
+                number: ipphone,
+            )
+          else
+            CorpNumber.create(
+                address_book_corp_id: new_user.id,
+                number: ipphone,
+                type_n: "i"
+            )
+          end
+        end
+
+        # Личный мобильный
+        mobile = mobile_str.gsub(/[^0-9]/, '').to_s
+        mobile = mobile[1..mobile.length].to_s
+        if mobile.length == 10
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'm')
+          if num.length != 0
+            CorpNumber.update(
+                num,
+                number: mobile,
+            )
+          else
+            CorpNumber.create(
+                address_book_corp_id: new_user.id,
+                number: mobile,
+                type_n: "m"
+            )
+          end
+        end
+
+
       end
 
     end
