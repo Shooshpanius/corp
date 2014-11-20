@@ -65,18 +65,24 @@
       <tbody>
           <% @form_data[:address_book].each.with_index do |address, index| %>
               <%
-                phone_c = ''
-                phone_m = ''
-                phone_i = ''
-                phone_main = ''
+                 phone_c = ''
+                 phone_m = ''
+                 phone_i = ''
+                 phone_main = ''
+
+                 phone_c_str = ''
+                 phone_m_str = ''
+                 phone_main_str = ''
 
                 phones = CorpNumber.where('address_book_corp_id = ?', address.id)
                 phones.each do |phone|
                     case phone.type_n
                         when 'c'
-                          phone_c = phone.number
+                          phone_c = '8'+phone.number
+                          phone_c_str = phone.number
                         when 'm'
-                          phone_m = phone.number
+                          phone_m = '8'+phone.number
+                          phone_m_str = phone.number
                         when 'i'
                           phone_i = phone.number
                       else
@@ -86,8 +92,10 @@
                       phone_main = phone_i
                     elsif phone_c != ''
                       phone_main = phone_c
+                      phone_main_str = phone_c_str
                     elsif phone_m != ''
                       phone_main = phone_m
+                      phone_main_str = phone_m_str
                     end
 
                 end
@@ -116,10 +124,10 @@
                               <li><a href="#" onclick="call(<%=phone_i%>)"><%= phone_i %></a></li>
                           <% end %>
                           <% if phone_c != ''%>
-                              <li><a href="#" onclick="call(<%=phone_c%>)"><%= phone_c %></a></li>
+                              <li><a href="#" onclick="call(<%=phone_c%>)"><%= phone_c_str %></a></li>
                           <% end %>
                           <% if phone_m != ''%>
-                              <li><a href="#" onclick="call(<%=phone_m%>)"><%= phone_m %></a></li>
+                              <li><a href="#" onclick="call(<%=phone_m%>)"><%= phone_m_str %></a></li>
                           <% end %>
                         </ul>
 

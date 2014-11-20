@@ -29,23 +29,23 @@ class AddressBookController < ApplicationController
     s = TCPSocket.open(hostname, port)
 
     s.puts ("Action: login\r\n")
-    s.puts ("Username: mngr\r\n")
+    s.puts ("Username: webr\r\n")
     s.puts ("Secret:123qwe\r\n")
-    s.puts ("Events: off\r\n\r\n")
+    s.puts ("Events: on\r\n\r\n")
 
     s.puts ("Action: Originate\r\n")
     s.puts ("Channel: SIP/1001\r\n")
     s.puts ("Callerid: 1001\r\n")
-    # s.puts ("Timeout: 10000\r\n")
-    s.puts ("WaitTime: 5\r\n")
-    s.puts ("Context: from-internal\r\n")
-    s.puts ("Exten:1038\r\n")
-    s.puts ("Priority: 1\r\n")
-    s.puts ("Exten:1003\r\n")
+    s.puts ("Timeout: 10000\r\n")
+    s.puts ("WaitTime: 50\r\n")
+
+    s.puts ("Context: internal\r\n")
+    s.puts ("Exten: #{params[:number]}\r\n")
     s.puts ("Priority: 1\r\n\r\n")
 
 
     # s.puts ("Async: yes\r\n\r\n" )
+    # s.puts ("Exten:#{params[:number]}\r\n")
     s.puts ("Action: Logoff\r\n\r\n")
     # sleep 1.5
 
