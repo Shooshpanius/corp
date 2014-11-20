@@ -2,11 +2,19 @@ class AddressBookController < ApplicationController
 
   require 'socket'      # Sockets are in standard library
 
-  def index
+  def list
 
-    @form_data = {
-        address_book: AddressBookCorp.all.order('fio ASC'),
-    }
+    if params[:id].to_s.length == 1
+      @form_data = {
+          address_book: AddressBookCorp.where('fio like ?', params[:id].to_s+'%').order('fio ASC'),
+      }
+    else
+      @form_data = {
+          address_book: AddressBookCorp.all.order('fio ASC'),
+      }
+    end
+
+
 
   end
 
