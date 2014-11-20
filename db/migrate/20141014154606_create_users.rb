@@ -13,7 +13,8 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean   "use_password"
       t.string   "password"
       t.boolean  "active"
-      t.boolean  "admin"
+      t.boolean  "site_admin"
+      t.boolean  "domain_admin"
 
       t.timestamps null: false
     end
