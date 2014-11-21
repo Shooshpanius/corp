@@ -1,12 +1,18 @@
 class LoginController < ApplicationController
+
   def index
   end
 
   def srv_check_login
 
     domain = Domain.first
+    if domain.nil?
+      render text: 'Empty domain settings'
+      return
+    end
 
     require 'net/ldap'
+
     ldap = Net::LDAP.new :host => domain.host,
                          :port => domain.port,
                          :auth => {
@@ -14,6 +20,7 @@ class LoginController < ApplicationController
                              :username => params[:login].to_s+'@'+domain.name.to_s,
                              :password => params[:password]
                          }
+
 
     if ldap.bind
 
