@@ -54,7 +54,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
         # :mobile=>["333"],
         # :pager=>["222"]}>
         # :facsimiletelephonenumber=>["444"]
-        # :telephonenumber=>["1002 | +7 (921) 601-23-71"],
+        # :telephonenumber=>["1002"],
         # :ipphone=>["1002"]
 
 
