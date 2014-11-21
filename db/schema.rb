@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20141015061237) do
     t.boolean  "active"
     t.boolean  "site_admin"
     t.boolean  "domain_admin"
+    t.string   "auth_hash"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

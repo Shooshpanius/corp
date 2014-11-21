@@ -1,7 +1,30 @@
 class LoginController < ApplicationController
 
+  require 'digest/md5'
+
+
   def index
+
+
+    user = User.where("auth_hash = ?", cookies[:hash]).take(1)
+    if user.size == 1
+      session[:is_login] = true
+      session[:user_id] = user[0].id
+      session[:user_login] = user[0].login
+      session[:is_admin] = true if user[0].site_admin
+    end
+
+    if session[:is_login]
+      redirect_to '/'
+    end
+
+
+
   end
+
+
+
+
 
   def srv_check_login
 
@@ -10,6 +33,7 @@ class LoginController < ApplicationController
       render text: 'Empty domain settings'
       return
     end
+
 
     require 'net/ldap'
 
@@ -50,8 +74,13 @@ class LoginController < ApplicationController
         session[:is_login] = true
         session[:user_id] = user.id
         session[:user_login] = params[:login]
-        session[:is_admin] = true if user.admin
+        session[:is_admin] = true if user.site_admin
 
+        hash = Digest::MD5.hexdigest(Time.now.to_s)
+        cookies[:hash] = { value: hash, expires: 100000.hour.from_now }
+
+        user.auth_hash = hash
+        user.save
 
       end
 
