@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141015061237) do
     t.string   "department"
     t.string   "organisation"
     t.string   "address"
+    t.boolean  "have_phones"
     t.boolean  "active"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

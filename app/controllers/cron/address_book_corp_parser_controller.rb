@@ -116,6 +116,16 @@ class Cron::AddressBookCorpParserController < ApplicationController
         end
 
 
+        if mobile.length == 10 || telephonenumber.length == 10 || ipphone.length == 4
+          new_user.have_phones = true
+          new_user.save
+        else
+          new_user.have_phones = false
+          new_user.save
+        end
+
+
+
       end
 
     end
