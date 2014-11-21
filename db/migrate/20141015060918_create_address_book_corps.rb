@@ -10,6 +10,7 @@ class CreateAddressBookCorps < ActiveRecord::Migration
       t.string   "organisation"
       t.string   "address"
       t.boolean  "have_phones"
+      t.boolean  "have_email"
       t.boolean  "active"
 
       t.timestamps null: false

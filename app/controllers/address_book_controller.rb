@@ -6,11 +6,11 @@ class AddressBookController < ApplicationController
 
     if params[:id].to_s.length == 1
       @form_data = {
-          address_book: AddressBookCorp.where('fio like ?', params[:id].to_s+'%').order('fio ASC'),
+          address_book: AddressBookCorp.where('fio like ? and (have_phones = ? or have_email = ?)', params[:id].to_s+'%', 1, 1).order('fio ASC'),
       }
     else
       @form_data = {
-          address_book: AddressBookCorp.all.order('fio ASC'),
+          address_book: AddressBookCorp.where('have_phones = ? or have_email = ?', 1, 1).order('fio ASC'),
       }
     end
 

@@ -42,6 +42,11 @@ class Cron::AddressBookCorpParserController < ApplicationController
         # new_user.f_name = sn
         # new_user.i_name = givenName
         new_user.email = email
+        if email != ''
+          new_user.have_email = true
+        else
+          new_user.have_email = false
+        end
         new_user.fio = displayname
         new_user.position = title
         new_user.department = department
