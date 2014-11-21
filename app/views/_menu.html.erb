@@ -13,10 +13,10 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-    <% if session[:is_login] %>
+  <% if session[:is_login] %>
 
 
-      <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="icon dropdown-toggle " data-toggle="dropdown"><span class="glyphicon glyphicon-phone-alt"></span> Адресная книга <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -24,12 +24,24 @@
             <li><a href="/room">Контрагенты</a></li>
           </ul>
         </li>
-      </ul>
+    </ul>
 
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"  onclick='logout()'><span class="glyphicon glyphicon-off"></span> Выход </a></li>
+    </ul>
+
+    <% if session[:is_login] %>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"  onclick='logout()'><span class="glyphicon glyphicon-off"></span> Выход </a></li>
+          <li class="dropdown">
+            <a href="#" class="icon dropdown-toggle " data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Admin <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/cron/address_book_corp_parser">Парсер адресной книги (сотрудники)</a></li>
+            </ul>
+          </li>
         </ul>
-
+    <% end %>
 
   <% else %>
 
