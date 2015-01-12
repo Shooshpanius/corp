@@ -5,7 +5,7 @@ class Cron::AsteriskUserController < ApplicationController
   def users
 
     @form_data = {
-        address_book: AddressBookCorp.joins(:corp_numbers).where("type_n = ?", 'c')
+        address_book: AddressBookCorp.joins(:corp_numbers).where("type_n = ?", 'i')
     }
 
     respond_to do |format|

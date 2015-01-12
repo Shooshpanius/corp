@@ -4,6 +4,8 @@
    address_book = @form_data[:address_book]
    address_book.each do |destination|
      destination.corp_numbers.each do |number|
+        if number.number.to_s.length == 4
+
 %>
 [<%= number.number %>]  ;<%= destination.fio %>
 type=friend
@@ -14,6 +16,8 @@ transport=udp
 disallow=all
 allow=alaw
 
-<%   end
+<%
+   end
+   end
    end
 %>
