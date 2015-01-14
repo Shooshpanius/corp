@@ -36,6 +36,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
       telephonenumber_str = entry.try(:telephonenumber).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       ipphone_str = entry.try(:ipphone).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       mobile_str = entry.try(:mobile).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      homephone_str = entry.try(:homephone).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
 
       if sam_account_name != ""
         new_user = AddressBookCorp.find_or_initialize_by(login: sam_account_name)
@@ -80,6 +81,8 @@ class Cron::AddressBookCorpParserController < ApplicationController
                 type_n: "c"
             )
           end
+        else
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c').destroy_all
         end
 
 
@@ -99,6 +102,8 @@ class Cron::AddressBookCorpParserController < ApplicationController
                 type_n: "i"
             )
           end
+        else
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'i').destroy_all
         end
 
         # Личный мобильный
@@ -118,10 +123,32 @@ class Cron::AddressBookCorpParserController < ApplicationController
                 type_n: "m"
             )
           end
+        else
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'm').destroy_all
         end
 
+        # Личный мобильный
+        homephone = homephone_str.gsub(/[^0-9]/, '').to_s
+        homephone = homephone[1..homephone.length].to_s
+        if homephone.length == 10
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'h')
+          if num.length != 0
+            CorpNumber.update(
+                num,
+                number: homephone,
+            )
+          else
+            CorpNumber.create(
+                address_book_corp_id: new_user.id,
+                number: homephone,
+                type_n: "h"
+            )
+          end
+        else
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'h').destroy_all
+        end
 
-        if mobile.length == 10 || telephonenumber.length == 10 || ipphone.length == 4
+        if mobile.length == 10 || telephonenumber.length == 10 || homephone.length == 10 || ipphone.length == 4
           new_user.have_phones = true
           new_user.save
         else

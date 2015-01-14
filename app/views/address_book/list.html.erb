@@ -68,10 +68,12 @@
                  phone_c = ''
                  phone_m = ''
                  phone_i = ''
+                 phone_h = ''
                  phone_main = ''
 
                  phone_c_str = ''
                  phone_m_str = ''
+                 phone_h_str = ''
                  phone_main_str = ''
 
                 phones = CorpNumber.where('address_book_corp_id = ?', address.id)
@@ -83,6 +85,9 @@
                         when 'm'
                           phone_m = '8'+phone.number
                           phone_m_str = phone.number
+                        when 'h'
+                          phone_h = '8'+phone.number
+                          phone_h_str = phone.number
                         when 'i'
                           phone_i = phone.number
                       else
@@ -96,6 +101,9 @@
                     elsif phone_m != ''
                       phone_main = phone_m
                       phone_main_str = phone_m_str
+                    elsif phone_h != ''
+                      phone_main = phone_h
+                      phone_main_str = phone_h_str
                     end
 
                 end
@@ -128,6 +136,9 @@
                           <% end %>
                           <% if phone_m != ''%>
                               <li><a href="#" onclick="call(<%=phone_m%>)"><%= phone_m_str %></a></li>
+                          <% end %>
+                          <% if phone_h != ''%>
+                              <li><a href="#" onclick="call(<%=phone_h%>)"><%= phone_h_str %></a></li>
                           <% end %>
                         </ul>
 
