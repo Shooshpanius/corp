@@ -6,7 +6,7 @@ gem 'rails', '4.2.0.beta1'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0.0.beta1'
+# gem 'sass-rails', '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -47,7 +47,12 @@ group :development, :test do
 end
 
 
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'sass-rails', '>= 3.2'
+gem 'autoprefixer-rails'
+
+
 #gem 'bootstrap-sass-official'
 gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15'

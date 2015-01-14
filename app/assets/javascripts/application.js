@@ -15,5 +15,5 @@
 //= require turbolinks
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require_self
