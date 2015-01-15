@@ -3,6 +3,11 @@
 <%= javascript_include_tag "address_book" %>
 
 
+<% if !session[:is_login] %>
+    <div class="alert alert-danger" role="alert">
+      <a href="/login" class="alert-link">Для вызова адресатов из адресной книги, введите логин и пароль</a>
+    </div>
+<%  end %>
 
 <div class="panel panel-info">
 

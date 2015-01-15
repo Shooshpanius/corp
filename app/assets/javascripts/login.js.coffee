@@ -27,6 +27,6 @@ $(document).ready ($) ->
         async: false
         data: queryString
         success: (msg) ->
-          location.replace '/'
+          location.replace "/address_book/list/all"
 
       false
