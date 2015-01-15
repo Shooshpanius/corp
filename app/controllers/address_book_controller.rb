@@ -21,7 +21,13 @@ class AddressBookController < ApplicationController
 
   def srv_call
 
+    address_book_corp_id = AddressBookCorp.where('login = ?', session[:user_login])[0]
+    num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
+    if num.length != 0
 
+    else
+
+    end
 
     hostname = '192.168.2.40'
     port = 5038
@@ -34,8 +40,8 @@ class AddressBookController < ApplicationController
     s.puts ("Events: on\r\n\r\n")
 
     s.puts ("Action: Originate\r\n")
-    s.puts ("Channel: SIP/1001\r\n")
-    s.puts ("Callerid: 1001\r\n")
+    s.puts ("Channel: SIP/#{num}\r\n")
+    s.puts ("Callerid: #{num}\r\n")
     s.puts ("Timeout: 10000\r\n")
     s.puts ("WaitTime: 50\r\n")
 
