@@ -23,48 +23,50 @@ class AddressBookController < ApplicationController
 
     address_book_corp_id = AddressBookCorp.where('login = ?', session[:user_login])[0]
     num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
-    if num.length != 0
+    if num.length == 4
+      hostname = '192.168.2.40'
+      port = 5038
+
+      s = TCPSocket.open(hostname, port)
+
+      s.puts ("Action: login\r\n")
+      s.puts ("Username: webr\r\n")
+      s.puts ("Secret:123qwe\r\n")
+      s.puts ("Events: on\r\n\r\n")
+
+      s.puts ("Action: Originate\r\n")
+      s.puts ("Channel: SIP/#{num}\r\n")
+      s.puts ("Callerid: #{num}\r\n")
+      s.puts ("Timeout: 10000\r\n")
+      s.puts ("WaitTime: 50\r\n")
+
+      s.puts ("Context: internal\r\n")
+      s.puts ("Exten: #{params[:number]}\r\n")
+      s.puts ("Priority: 1\r\n\r\n")
+
+
+      # s.puts ("Async: yes\r\n\r\n" )
+      # s.puts ("Exten:#{params[:number]}\r\n")
+      s.puts ("Action: Logoff\r\n\r\n")
+      # sleep 1.5
+
+      while line = s.gets   # Read lines from the socket
+        a = a.to_s + line.chop.to_s      # And print with platform line terminator
+      end
+
+
+
+
+      s.close               # Close the socket when done
+
+      render text: ' - ' + a.to_s
 
     else
+      render nothing: true
 
     end
 
-    hostname = '192.168.2.40'
-    port = 5038
 
-    s = TCPSocket.open(hostname, port)
-
-    s.puts ("Action: login\r\n")
-    s.puts ("Username: webr\r\n")
-    s.puts ("Secret:123qwe\r\n")
-    s.puts ("Events: on\r\n\r\n")
-
-    s.puts ("Action: Originate\r\n")
-    s.puts ("Channel: SIP/#{num}\r\n")
-    s.puts ("Callerid: #{num}\r\n")
-    s.puts ("Timeout: 10000\r\n")
-    s.puts ("WaitTime: 50\r\n")
-
-    s.puts ("Context: internal\r\n")
-    s.puts ("Exten: #{params[:number]}\r\n")
-    s.puts ("Priority: 1\r\n\r\n")
-
-
-    # s.puts ("Async: yes\r\n\r\n" )
-    # s.puts ("Exten:#{params[:number]}\r\n")
-    s.puts ("Action: Logoff\r\n\r\n")
-    # sleep 1.5
-
-    while line = s.gets   # Read lines from the socket
-      a = a.to_s + line.chop.to_s      # And print with platform line terminator
-    end
-
-
-
-
-    s.close               # Close the socket when done
-
-    render text: ' - ' + a.to_s
     # render nothing: true
 
   end
