@@ -32,7 +32,7 @@
       <li><a href="#"  onclick='logout()'><span class="glyphicon glyphicon-off"></span> Выход </a></li>
     </ul>
 
-    <% if session[:is_login] %>
+    <% if session[:is_admin] %>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="icon dropdown-toggle " data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Admin <span class="caret"></span></a>
