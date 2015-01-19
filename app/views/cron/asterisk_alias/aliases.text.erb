@@ -1,0 +1,19 @@
+; Алиасы внутренних номеров
+
+<%
+   address_book = @form_data[:aliases]
+   address_book.each do |destination|
+     destination.corp_numbers.each do |number|
+
+       num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', number.address_book_corp_id, 'a')[0]
+        if (number.number.to_s != num.number.to_s) and (number.number.to_s.length == 4)
+
+
+
+%>
+exten => <%= number.number %>,1,Dial(SIP/<%= num.number %>)
+<%
+           end
+           end
+           end
+        %>

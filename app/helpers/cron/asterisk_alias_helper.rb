@@ -1,0 +1,2 @@
+module Cron::AsteriskAliasHelper
+end
