@@ -122,7 +122,14 @@
                 <td><%= address.organisation%> (<%= address.address%>)</td>
 
                 <td>
-                  <button type="button" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-envelope"></i></button>
+
+                  <% if address.email != ''%>
+                    <a type="button" class="btn btn-info btn-sm" href="mailto:<%=address.email%>"><i class="glyphicon glyphicon-envelope"></i></a>
+                  <% else %>
+                    <a type="button" class="btn btn-info btn-sm disabled"><i class="glyphicon glyphicon-envelope"></i></a>
+                  <% end %>
+
+
                   <div class="btn-group ">
 
                     <% if phone_main != ''%>
