@@ -87,24 +87,48 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
 
         # Внутренний
-        ipphone = ipphone_str.gsub(/[^0-9]/, '').to_s
-        if ipphone.length == 4
+        ipphone = ipphone_str.gsub(/[^0-9A-Z]/, '').to_s
+        if ipphone.length == 4 or ipphone.length == 9
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'i')
           if num.length != 0
             CorpNumber.update(
                 num,
-                number: ipphone,
+                number: ipphone[0..3],
             )
           else
             CorpNumber.create(
                 address_book_corp_id: new_user.id,
-                number: ipphone,
+                number: ipphone[0..3],
                 type_n: "i"
             )
           end
         else
           CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'i').destroy_all
         end
+
+        if ipphone.length == 9
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'a')
+          if num.length != 0
+            CorpNumber.update(
+                num,
+                number: ipphone[5..8],
+            )
+          else
+            CorpNumber.create(
+                address_book_corp_id: new_user.id,
+                number: ipphone[5..8],
+                type_n: "a"
+            )
+          end
+        else
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'a').destroy_all
+        end
+
+
+
+
+
+
 
         # Личный мобильный
         mobile = mobile_str.gsub(/[^0-9]/, '').to_s
