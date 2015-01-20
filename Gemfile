@@ -46,11 +46,12 @@ group :development, :test do
   gem 'spring'
 
 
-  gem 'unicorn_service', :require => false
+  # gem 'unicorn_service', :require => false
 
 
 end
 
+gem 'unicorn_service'
 
 # gem 'bootstrap-sass'
 gem 'bootstrap-sass', '~> 3.3.1'
