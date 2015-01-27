@@ -4,7 +4,7 @@
    address_book = @form_data[:address_book]
    address_book.each do |destination|
      destination.corp_numbers.each do |number|
-        if number.number.to_s.length == 4
+        if number.number.to_s.length == 4 && number.type_n == 'i'
 
 %>
 [<%= number.number %>]  ;<%= destination.fio %>
