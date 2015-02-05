@@ -16,6 +16,8 @@ class Cron::AddressBookCorpParserController < ApplicationController
                          }
 
 
+    AddressBookCorp.update_all("active = false")
+
     # filter = Net::LDAP::Filter.eq("mail", @e_from)
     # attrs = ["givenName", "sn", "physicalDeliveryOfficeName", "sam_account_name", "mail", "title", "department"]
     i = 0
@@ -53,6 +55,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
         new_user.department = department
         new_user.organisation = company
         new_user.address = l
+        new_user.active = true
         new_user.save
 
 
@@ -186,7 +189,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
     end
 
-
+    AddressBookCorp.destroy_all("active = false")
 
 
 
