@@ -26,15 +26,15 @@ class AddressBookController < ApplicationController
     address_book_corp_id = AddressBookCorp.where('login = ?', session[:user_login])[0]
     num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
 
-    if num.number[0] == '1'
+    if num[0] == '1'
       cont = 'internal-vlk'
     end
 
-    if num.number[0] == '2'
+    if num[0] == '2'
       cont = 'internal-ts'
     end
 
-    if num.number[0] == '3'
+    if num[0] == '3'
       cont = 'internal-vlk'
     end
 
