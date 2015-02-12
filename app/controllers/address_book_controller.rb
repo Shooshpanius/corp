@@ -41,13 +41,19 @@ class AddressBookController < ApplicationController
       s.puts ("Callerid: #{num}\r\n")
       s.puts ("Timeout: 10000\r\n")
       s.puts ("WaitTime: 50\r\n")
+
       if num.number[0] == '1'
         s.puts ("Context: internal-vlk\r\n")
-      elsif num.number[0] == '3'
-        s.puts ("Context: internal-vlk\r\n")
-      else
+      end
+
+      if num.number[0] == '2'
         s.puts ("Context: internal-ts\r\n")
       end
+
+      if num.number[0] == '3'
+        s.puts ("Context: internal-vlk\r\n")
+      end
+
 
       # s.puts ("Context: internal-vlk\r\n")
 
