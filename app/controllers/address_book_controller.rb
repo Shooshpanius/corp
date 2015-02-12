@@ -23,6 +23,19 @@ class AddressBookController < ApplicationController
 
   def srv_call
 
+    if num.number[0] == '1'
+      cont = 'internal-vlk'
+    end
+
+    if num.number[0] == '2'
+      cont = 'internal-ts'
+    end
+
+    if num.number[0] == '3'
+      cont = 'internal-vlk'
+    end
+
+
     address_book_corp_id = AddressBookCorp.where('login = ?', session[:user_login])[0]
     num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
     if num.length == 4
@@ -55,7 +68,7 @@ class AddressBookController < ApplicationController
       # end
 
 
-      s.puts ("Context: internal-vlk\r\n")
+      s.puts ("Context: #{cont}\r\n")
 
       s.puts ("Exten: #{params[:number]}\r\n")
       s.puts ("Priority: 1\r\n\r\n")
