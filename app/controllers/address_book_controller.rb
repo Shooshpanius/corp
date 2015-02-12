@@ -42,20 +42,20 @@ class AddressBookController < ApplicationController
       s.puts ("Timeout: 10000\r\n")
       s.puts ("WaitTime: 50\r\n")
 
-      if num.number[0] == '1'
-        s.puts ("Context: internal-vlk\r\n")
-      end
+      # if num.number[0] == '1'
+      #   s.puts ("Context: internal-vlk\r\n")
+      # end
+      #
+      # if num.number[0] == '2'
+      #   s.puts ("Context: internal-ts\r\n")
+      # end
+      #
+      # if num.number[0] == '3'
+      #   s.puts ("Context: internal-vlk\r\n")
+      # end
 
-      if num.number[0] == '2'
-        s.puts ("Context: internal-ts\r\n")
-      end
 
-      if num.number[0] == '3'
-        s.puts ("Context: internal-vlk\r\n")
-      end
-
-
-      # s.puts ("Context: internal-vlk\r\n")
+      s.puts ("Context: internal-vlk\r\n")
 
       s.puts ("Exten: #{params[:number]}\r\n")
       s.puts ("Priority: 1\r\n\r\n")
