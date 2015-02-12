@@ -9,7 +9,11 @@
 %>
 [<%= number.number %>]  ;<%= destination.fio %>
 type=friend
-context=internal
+<% if number.number[0] == '1'%>
+context=internal-vlk
+<% else %>
+context=internal-ts
+<% end %>
 host=dynamic
 secret=1000
 transport=udp
