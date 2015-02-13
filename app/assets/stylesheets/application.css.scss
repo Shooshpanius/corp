@@ -14,5 +14,12 @@
  *= require_tree .
  */
 
+/*
+ *= require mediaelement_rails
+ * and optionally:
+ *= require mediaelement_rails/mejs-skins
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+

@@ -86,6 +86,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.1)
       mime-types (>= 1.16, < 3)
+    mediaelement_rails (0.8.0)
+      jquery-rails (>= 1.0)
+      railties (>= 3.1)
     mime-types (2.3)
     mini_portile (0.6.0)
     minitest (5.4.2)
@@ -191,6 +194,7 @@ DEPENDENCIES
   jquery-tablesorter
   jquery-ui-rails
   jquery-validation-rails
+  mediaelement_rails
   mysql2
   net-ldap-1
   net-ssh (~> 2.7.0)

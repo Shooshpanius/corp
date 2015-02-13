@@ -68,5 +68,6 @@ gem 'net-ldap-1'
 gem 'jquery-ui-rails'
 gem 'jquery-tablesorter'
 gem 'responders'
+gem "mediaelement_rails"
 #gem 'ruby-net-ldap'
 
