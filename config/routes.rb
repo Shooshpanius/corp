@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
 
 
-
-
   namespace :cron do
   get 'asterisk_alias/aliases'
   end
@@ -37,6 +35,9 @@ Rails.application.routes.draw do
     resources :asterisk_parser, :path => 'asterisk_parser/(:action)(.:format)'
   end
 
+  namespace :admin do
+    resources :call_stat, path: 'call_stat/(:action)(:id)(.:format)'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
