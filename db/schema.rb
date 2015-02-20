@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119124831) do
+ActiveRecord::Schema.define(version: 20150213145010) do
 
   create_table "address_book_corps", force: true do |t|
     t.string   "login"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 20150119124831) do
     t.string   "accountcode", limit: 20
     t.string   "uniqueid",    limit: 32
     t.string   "userfield"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "calls", force: true do |t|
+    t.datetime "calldate"
+    t.string   "src",         limit: 80
+    t.string   "dst",         limit: 80
+    t.integer  "duration"
+    t.integer  "billsec"
+    t.string   "disposition", limit: 45
+    t.string   "uniqueid",    limit: 32
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

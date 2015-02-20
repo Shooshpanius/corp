@@ -1,0 +1,2 @@
+module Cron::AsteriskParserHelper
+end
