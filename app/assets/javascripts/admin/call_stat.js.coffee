@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+
+  alert('123')
+
   $("#tbl_callstat").tablesorter(
     headers:
       0:
