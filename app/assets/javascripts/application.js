@@ -16,7 +16,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require bootstrap-sprockets
-//= require mediaelement_rails
+//= require mediaelement_rails/rails
 //= require jquery-tablesorter/jquery.metadata
 //= require jquery-tablesorter/jquery.tablesorter
 //= require jquery-tablesorter/jquery.tablesorter.widgets
