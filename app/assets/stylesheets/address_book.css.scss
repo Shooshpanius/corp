@@ -9,6 +9,15 @@
   padding-left: 0;
 }
 
+.tablesorter .tablesorter-filter-row td:nth-child(1) .tablesorter-filter {
+  width: 290px;
+}
+
+.tablesorter .tablesorter-filter-row td:nth-child(2) .tablesorter-filter {
+  width: 290px;
+}
+
+
 .tablesorter .tablesorter-filter-row td:nth-child(5) .tablesorter-filter {
   width: 100px;
   visibility: hidden;
