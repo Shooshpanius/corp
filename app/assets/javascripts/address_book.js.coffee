@@ -12,3 +12,21 @@
 #      location.replace '/distribution_file'
 
   false
+
+$(document).ready ->
+
+  $("#tbl_adresses").tablesorter(
+    headers:
+      4:
+        filter: false
+    widthFixed : true
+    widgets: [
+      "zebra"
+      "filter"
+    ]
+    widgetOptions :
+      filter_hideFilters: true
+      filter_childRows: false
+      filter_startsWith: false
+
+  ).tablesorterPager container: $("#pager"), size: 20

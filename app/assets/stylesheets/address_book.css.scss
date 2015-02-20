@@ -8,3 +8,8 @@
   margin: 0px 0  !important;
   padding-left: 0;
 }
+
+.tablesorter .tablesorter-filter-row td:nth-child(5) .tablesorter-filter {
+  width: 100px;
+  visibility: hidden;
+}
