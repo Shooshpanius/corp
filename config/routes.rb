@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   namespace :cron do
     resources :address_book_corp_parser, path: 'address_book_corp_parser/(:action)(:id)(.:format)'
     resources :asterisk_user, :path => 'asterisk_user/(:action)(.:format)'
+    resources :asterisk_parser, :path => 'asterisk_parser/(:action)(.:format)'
   end
 
 
