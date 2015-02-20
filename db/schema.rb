@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150213145010) do
     t.string   "accountcode", limit: 20
     t.string   "uniqueid",    limit: 32
     t.string   "userfield"
+    t.boolean  "parsed"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

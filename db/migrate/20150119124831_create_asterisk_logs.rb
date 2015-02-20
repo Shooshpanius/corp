@@ -18,6 +18,7 @@ class CreateAsteriskLogs < ActiveRecord::Migration
       t.string :accountcode, :limit => 20
       t.string :uniqueid, :limit => 32
       t.string :userfield, :limit => 255
+      t.boolean :parsed
 
       t.timestamps null: false
     end
