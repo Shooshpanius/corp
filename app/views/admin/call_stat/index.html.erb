@@ -1,2 +1,54 @@
-<h1>Admin::CallStat#index</h1>
-<p>Find me in app/views/admin/call_stat/index.html.erb</p>
+
+
+<div class="panel panel-info">
+
+  <div class="panel-heading">
+    <div class="panel-title">
+      Статистика вызовов
+
+      <div id="pager" class="pager  pull-right" style="margin:0px; border:0px; padding:0px; width:700px;">
+        <form>
+          <%= image_tag "first.png", :class => "first" %>
+          <%= image_tag "prev.png", :class => "prev" %>
+          <input type="text" class="pagedisplay"/>
+          <%= image_tag "next.png", :class => "next" %>
+          <%= image_tag "last.png", :class => "last" %>
+          <select class="pagesize">
+            <option selected="selected"  value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+          </select> Rows
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="panel-body">
+
+    <table class="table table-bordered table-condensed tablesorter" id="tbl_callstat" name="tbl_callstat">
+      <thead>
+
+      <tr>
+        <th data-placeholder="" class="filter-match col-md-2">Дата/время</th>
+        <th data-placeholder="" class="filter-match col-md-2">От</th>
+        <th data-placeholder="" class="filter-match col-md-2">К</th>
+        <th data-placeholder="" class="filter-match col-md-1">T общ.</th>
+        <th data-placeholder="" class="filter-match col-md-1">T разг.</th>
+        <th data-placeholder="" class="filter-match col-md-1">Результат</th>
+        <th data-placeholder="" class="filter-match col-md-1">ID</th>
+      </tr>
+
+      </thead>
+
+      <tbody>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
