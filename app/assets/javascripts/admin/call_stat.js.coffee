@@ -4,8 +4,6 @@
 
 $(document).ready ->
 
-  alert('123')
-
   $("#tbl_callstat").tablesorter(
     headers:
       0:
@@ -13,7 +11,6 @@ $(document).ready ->
     widthFixed : true
     widgets: [
       "zebra"
-      "filter"
     ]
     widgetOptions :
       filter_hideFilters: true
