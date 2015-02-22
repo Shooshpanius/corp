@@ -29,7 +29,7 @@
 
     <% if !session[:is_login] %>
 
-        <form class="navbar-form navbar-right" id="login_form" name="login_form" >
+        <form class="navbar-form navbar-right" style="padding-right: 20px" id="login_form" name="login_form" >
 
           <div class="form-group">
             <input type="text" class="form-control" id="login" name="login" placeholder="login">
@@ -42,7 +42,7 @@
           </div>
         </form>
     <% else %>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
           <li><a href="#"  onclick='logout()'><span class="fa fa-power-off"></span> Выход </a></li>
         </ul>
     <% end %>
