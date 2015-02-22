@@ -9,12 +9,10 @@
     </div>
 <%  end %>
 
-<div class="panel panel-info">
+<div class="box">
 
-  <div class="panel-heading">
-    <div class="panel-title">
-      Адресная книга корпоративная
-    </div>
+  <div class="box-header">
+    <h3 class="box-title">Адресная книга корпоративная</h3>
   </div>
 
   <ul class="pagination pagination-my">
@@ -52,9 +50,9 @@
     <li <%= @form_data[:id]=='Я' ? 'class=active' :'' %> ><a href='/address_book/list/Я'>Я</a></li>
   </ul>
 
-  <div class="panel-body">
+  <div class="box-body">
 
-    <table class="table table-bordered table-condensed tablesorter" id="tbl_adresses" name="tbl_adresses">
+    <table class="table table-bordered table-condensed tablesorter" id="tbl_adresses">
       <thead>
 
           <tr>
@@ -124,16 +122,16 @@
                 <td>
 
                   <% if address.email != ''%>
-                    <a type="button" class="btn btn-info btn-sm" href="mailto:<%=address.email%>"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <a type="button" class="btn btn-info btn-sm" href="mailto:<%=address.email%>"><i class="fa fa-envelope"></i></a>
                   <% else %>
-                    <a type="button" class="btn btn-info btn-sm disabled"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <a type="button" class="btn btn-info btn-sm disabled"><i class="fa fa-envelope"></i></a>
                   <% end %>
 
 
                   <div class="btn-group ">
 
                     <% if phone_main != ''%>
-                        <button type="button" class="btn btn-success btn-sm" onclick="call(<%=phone_main%>)"><i class="glyphicon glyphicon-phone-alt"></i></button>
+                        <button type="button" class="btn btn-success btn-sm" onclick="call(<%=phone_main%>)"><i class="fa fa-phone"></i></button>
 
                         <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" >
                           <span class="caret"></span>
@@ -155,7 +153,7 @@
                         </ul>
 
                     <% else %>
-                        <button type="button" class="btn btn-success btn-sm disabled" ><i class="glyphicon glyphicon-phone-alt"></i></button>
+                        <button type="button" class="btn btn-success btn-sm disabled" ><i class="fa fa-phone"></i></button>
                         <button type="button" class="btn btn-success btn-sm dropdown-toggle disabled" data-toggle="dropdown" >
                           <span class="caret"></span>
                           <span class="sr-only">Toggle Dropdown</span>

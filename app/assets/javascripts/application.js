@@ -15,8 +15,6 @@
 //= require turbolinks
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require bootstrap-sprockets
-//= require mediaelement_rails/rails
 //= require jquery-tablesorter/jquery.metadata
 //= require jquery-tablesorter/jquery.tablesorter
 //= require jquery-tablesorter/jquery.tablesorter.widgets
@@ -24,4 +22,7 @@
 //= require jquery-tablesorter/widgets/widget-repeatheaders
 //= require jquery-tablesorter/parsers/parser-metric
 //= require jquery-tablesorter/extras/jquery.quicksearch
+//= require AdminLTE/bootstrap
+//= require AdminLTE/app
 //= require_self
+

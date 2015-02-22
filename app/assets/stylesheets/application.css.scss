@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require AdminLTE
  *= require jquery-tablesorter/theme.bootstrap
  *= require jquery-tablesorter/addons/pager/jquery.tablesorter.pager
  *= require_self
@@ -17,11 +18,61 @@
  */
 
 /*
- *= require mediaelement_rails
- * and optionally:
- *= require mediaelement_rails/mejs-skins
+ * Off Canvas
+ * --------------------------------------------------
+ *  Gives us the push menu effect
  */
+@media screen and (max-width: 1280px) {
+  .relative {
+    position: relative;
+  }
+  .row-offcanvas-right .sidebar-offcanvas {
+    right: -220px;
+  }
+  .row-offcanvas-left .sidebar-offcanvas {
+    left: -220px;
+  }
+  .row-offcanvas-right.active {
+    right: 220px;
+  }
+  .row-offcanvas-left.active {
+    left: 220px;
+  }
+  .sidebar-offcanvas {
+    left: 0;
+  }
+  body.fixed .sidebar-offcanvas {
+    margin-top: 50px;
+    left: -220px;
+  }
+  body.fixed .row-offcanvas-left.active .navbar {
+    left: 220px !important;
+    right: 0;
+  }
+  body.fixed .row-offcanvas-left.active .sidebar-offcanvas {
+    left: 0px;
+  }
+}
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
+@media screen and (min-width: 1281px) {
+  .left-side {
+    top: 50px;
+  }
+  /*Right side strech mode*/
+  .right-side.strech {
+    margin-left: 0;
+  }
+  .right-side.strech > .content-header {
+    margin-top: 0px;
+  }
+  /* Left side collapse */
+  .left-side.collapse-left {
+    left: -220px;
+  }
+}
+/*Give content full width on xs screens*/
+@media screen and (max-width: 1281px) {
+  .right-side {
+    margin-left: 0;
+  }
+}

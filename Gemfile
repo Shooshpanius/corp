@@ -52,14 +52,13 @@ group :development, :test do
 end
 
 gem 'unicorn_service'
-
+# gem 'sprockets'
 # gem 'bootstrap-sass'
-gem 'bootstrap-sass', '~> 3.3.1'
+#gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '>= 3.2'
 # gem 'autoprefixer-rails' '~> 4.0'
 
 
-#gem 'bootstrap-sass-official'
 gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15'
 gem 'rvm-capistrano'
@@ -68,7 +67,9 @@ gem 'net-ldap-1'
 gem 'jquery-ui-rails'
 gem 'jquery-tablesorter'
 gem 'responders'
-gem "mediaelement_rails"
+#gem "mediaelement_rails"
+
+gem 'adminlte'
 
 #gem 'ruby-net-ldap'
 

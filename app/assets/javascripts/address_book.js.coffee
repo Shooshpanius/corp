@@ -29,4 +29,4 @@ $(document).ready ->
       filter_childRows: false
       filter_startsWith: false
 
-  ).tablesorterPager container: $("#pager"), size: 20
+  )

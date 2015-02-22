@@ -4,17 +4,119 @@
   <title>Corp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<div class="container">
-  <div class="row">
-    <%= render "/menu" %>
-    <%= yield %>
-  </div>
-</div>
+
+<body class="skin-blue">
+
+
+<header class="header">
+  <a href="/address_book/list/all" class="logo">
+    <!-- Add the class icon to your logo image or logo icon to add the margining -->
+    Вельский лес
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+
+    <% if !session[:is_login] %>
+
+        <form class="navbar-form navbar-right" id="login_form" name="login_form" >
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="login" name="login" placeholder="login">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" name="password" placeholder="password">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default">Вход</button>
+          </div>
+        </form>
+
+    <% end %>
+
+  </nav>
+</header>
+
+
+
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="left-side sidebar-offcanvas">
+
+    <section class="sidebar">
+
+      <!-- Sidebar user panel
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Hello, Jane</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>-->
+
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-phone"></i>
+            <span>Адресная книга</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/address_book/list/all" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Сотрудники</a></li>
+            <li><a href="/room" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Контрагенты</a></li>
+          </ul>
+        </li>
+
+        <% if session[:is_admin] %>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-wrench"></i>
+            <span>Admin</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/cron/address_book_corp_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер адресной книги (сотрудники)</a></li>
+            <li><a href="/cron/asterisk_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер лога астериск</a></li>
+            <li><a href="/cron/asterisk_user/users.text" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Конфиг users.cfg</a></li>
+            <li><a href="/admin/call_stat/" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Статистика вызовов</a></li>
+          </ul>
+        </li>
+
+        <% end %>
+
+      </ul>
+    </section>
+
+
+  </aside>
+
+  <!-- Right side column. Contains the navbar and content of the page -->
+  <aside class="right-side">
+
+    <!-- Main content -->
+    <section class="content">
+      <%= yield %>
+    </section><!-- /.content -->
+  </aside><!-- /.right-side -->
+
+
+</div><!-- ./wrapper -->
+
 
 </body>
 </html>
