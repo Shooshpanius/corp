@@ -70,6 +70,7 @@ gem 'responders'
 #gem "mediaelement_rails"
 
 gem 'adminlte'
+gem 'font-awesome-sass', '~> 4.3.0'
 
 #gem 'ruby-net-ldap'
 
