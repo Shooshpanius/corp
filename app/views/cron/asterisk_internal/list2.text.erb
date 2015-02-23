@@ -19,12 +19,15 @@ exten => <%= int_num.number %>,2,Dial(SIP/<%= n_alias[0].number %>,20)
 exten => <%= int_num.number %>,2,Dial(SIP/<%= int_num.number %>,20)
 <% end %>
 <% if n_corp.size == 1     %>
+exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
 exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_corp[0].number %>,20,L(1800000))
 <% end %>
 <% if n_mobile.size == 1 %>
+exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
 exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_mobile[0].number %>,20,L(1800000))
 <% end %>
 <% if n_home.size == 1     %>
+exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
 exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_home[0].number %>,20,L(1800000))
 <% end %>
 exten => <%= int_num.number %>,n,Hangup()
