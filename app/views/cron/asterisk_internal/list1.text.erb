@@ -1,4 +1,3 @@
-; Внутренние номера
 
 <%
     int_numbers = @form_data[:int_numbers]
@@ -8,9 +7,7 @@
     n_corp = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'c')
     n_mobile = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'm')
     n_home = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'h')
-
 %>
-
 exten => <%= int_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.scripts/rec.sh ${UNIQUEID})
 <%
     if n_alias.size == 1

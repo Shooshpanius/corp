@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
 
   namespace :cron do
-  get 'asterisk_internal/list'
-  end
-
-  namespace :cron do
   get 'asterisk_alias/aliases'
   end
 
@@ -37,6 +33,7 @@ Rails.application.routes.draw do
     resources :address_book_corp_parser, path: 'address_book_corp_parser/(:action)(:id)(.:format)'
     resources :asterisk_user, :path => 'asterisk_user/(:action)(.:format)'
     resources :asterisk_parser, :path => 'asterisk_parser/(:action)(.:format)'
+    resources :asterisk_internal, :path => 'asterisk_internal/(:action)(.:format)'
   end
 
   namespace :admin do

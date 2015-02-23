@@ -2,20 +2,22 @@ class Cron::AsteriskInternalController < ApplicationController
 
   respond_to :text
 
-  def list
-
+  def list1
     @form_data = {
-        aaa: '111',
         int_numbers: CorpNumber.where("type_n = ?", 'i')
     }
-
-    @form_data1 = 'qwe'
-
     respond_to do |format|
       format.text
     end
-
   end
 
+  def list2
+    @form_data = {
+        int_numbers: CorpNumber.where("type_n = ?", 'i')
+    }
+    respond_to do |format|
+      format.text
+    end
+  end
 
 end
