@@ -4,7 +4,6 @@ class Cron::AsteriskParserController < ApplicationController
 
     logs = AsteriskLog.where('parsed  IS NULL')
 
-    @a = ''
     logs.each do |log_str|
 
       if log_str.src.to_s.length == 4 &&
@@ -32,38 +31,25 @@ class Cron::AsteriskParserController < ApplicationController
           log_str.dst.to_s.length ==4 &&
           log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s.length == 11
 
-      Call.create(
-          calldate: log_str.calldate,
-          src: log_str.src,
-          dst: log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s,
-          duration: log_str.duration,
-          billsec: log_str.billsec,
-          disposition: log_str.disposition,
-          uniqueid: log_str.uniqueid
-      )
+        Call.create(
+            calldate: log_str.calldate,
+            src: log_str.src,
+            dst: log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s,
+            duration: log_str.duration,
+            billsec: log_str.billsec,
+            disposition: log_str.disposition,
+            uniqueid: log_str.uniqueid
+        )
 
-      AsteriskLog.update(
-          log_str.id,
-          parsed: true,
-      )
-
+        AsteriskLog.update(
+            log_str.id,
+            parsed: true,
+        )
       end
-
-      # num_to = log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s
-      #
-      # if num_to.length == 11
-      #   @a = @a + log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s + ' | '
-      # end
-
-      # @a = @a + log_str.lastdata.to_s.scan(/SIP\/\d{4}/)[0].to_s + ' | '
-
-    # end  SIP/1169
 
 
 
     end
-
-    
 
   end
 
