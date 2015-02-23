@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.beta1'
+gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
@@ -61,7 +61,7 @@ gem 'sass-rails', '>= 3.2'
 
 gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15'
-gem 'rvm-capistrano'
+# gem 'rvm-capistrano'
 gem 'jquery-validation-rails'
 gem 'net-ldap-1'
 gem 'jquery-ui-rails'
