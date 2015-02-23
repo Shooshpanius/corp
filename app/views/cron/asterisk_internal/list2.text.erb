@@ -12,11 +12,11 @@ exten => <%= int_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.s
 <%
     if n_alias.size == 1
 %>
-exten => <%= int_num.number %>,2,Dial(<%= n_alias[0].number %>,15)
+exten => <%= int_num.number %>,2,Dial(SIP/<%= n_alias[0].number %>,15)
 <%
     else
 %>
-exten => <%= int_num.number %>,2,Dial(<%= int_num.number %>,15)
+exten => <%= int_num.number %>,2,Dial(SIP/<%= int_num.number %>,15)
 <% end %>
 <% if n_corp.size == 1     %>
 exten => <%= int_num.number %>,3,Dial(${ZEBRA_TS}/02#8<%= n_corp[0].number %>,15,L(1800000))
