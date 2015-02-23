@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
 
   namespace :cron do
+  get 'asterisk_internal/list'
+  end
+
+  namespace :cron do
   get 'asterisk_alias/aliases'
   end
 
