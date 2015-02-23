@@ -12,20 +12,20 @@ exten => <%= int_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.s
 <%
     if n_alias.size == 1
 %>
-exten => <%= int_num.number %>,2,Dial(SIP/<%= n_alias[0].number %>,15)
+exten => <%= int_num.number %>,2,Dial(SIP/<%= n_alias[0].number %>,20)
 <%
     else
 %>
-exten => <%= int_num.number %>,2,Dial(SIP/<%= int_num.number %>,15)
+exten => <%= int_num.number %>,2,Dial(SIP/<%= int_num.number %>,20)
 <% end %>
 <% if n_corp.size == 1     %>
-exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_corp[0].number %>,15,L(1800000))
+exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_corp[0].number %>,20,L(1800000))
 <% end %>
 <% if n_mobile.size == 1 %>
-exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_mobile[0].number %>,15,L(1800000))
+exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_mobile[0].number %>,20,L(1800000))
 <% end %>
 <% if n_home.size == 1     %>
-exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_home[0].number %>,15,L(1800000))
+exten => <%= int_num.number %>,n,Dial(${ZEBRA_TS}/02#8<%= n_home[0].number %>,20,L(1800000))
 <% end %>
 exten => <%= int_num.number %>,n,Hangup()
 
