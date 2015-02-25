@@ -50,7 +50,7 @@ class Cron::AsteriskParserController < ApplicationController
             disposition: log_str.disposition,
             uniqueid: log_str.uniqueid,
             direction: 'o',
-            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_]+\//)[0].to_s[4..-2],
+            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
             descr: descr
         )
 
@@ -78,7 +78,7 @@ class Cron::AsteriskParserController < ApplicationController
             disposition: log_str.disposition,
             uniqueid: log_str.uniqueid,
             direction: 'o',
-            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_]+\//)[0].to_s[4..-2],
+            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
             descr: descr
         )
 
@@ -106,7 +106,7 @@ class Cron::AsteriskParserController < ApplicationController
             disposition: log_str.disposition,
             uniqueid: log_str.uniqueid,
             direction: 'o',
-            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_]+\//)[0].to_s[4..-2],
+            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
             descr: descr
         )
 
