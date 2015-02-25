@@ -1,0 +1,2 @@
+module Stat::NumberHelper
+end

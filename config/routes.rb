@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-
   namespace :cron do
   get 'asterisk_alias/aliases'
   end
@@ -38,6 +37,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :call_stat, path: 'call_stat/(:action)(:id)(.:format)'
+  end
+
+  namespace :stat do
+    resources :number, path: 'number/(:action)(:id)(.:format)'
   end
 
   # Example of regular route:

@@ -84,19 +84,35 @@
           </ul>
         </li>
 
+
+        <% if session[:is_admin] or session[:user_login] == 'e.chernykh' %>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-info"></i>
+                <span>Statistic</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/admin/call_stat/" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Статистика вызовов</a></li>
+                <li><a href="/stat/number/corp/" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Корпоративные номера</a></li>
+              </ul>
+            </li>
+
+        <% end %>
+
         <% if session[:is_admin] %>
 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-wrench"></i>
-            <span>Admin</span>
+            <span>Service</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
             <li><a href="/cron/address_book_corp_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер адресной книги (сотрудники)</a></li>
             <li><a href="/cron/asterisk_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер лога астериск</a></li>
             <li><a href="/cron/asterisk_user/users.text" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Конфиг users.cfg</a></li>
-            <li><a href="/admin/call_stat/" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Статистика вызовов</a></li>
           </ul>
         </li>
 
