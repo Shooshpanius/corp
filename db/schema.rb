@@ -13,22 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20150213145010) do
 
-  create_table "address_book_corps", force: true do |t|
-    t.string   "login"
-    t.string   "fio"
-    t.string   "email"
-    t.string   "position"
-    t.string   "department"
-    t.string   "organisation"
-    t.string   "address"
-    t.boolean  "have_phones"
-    t.boolean  "have_email"
-    t.boolean  "active"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "address_book_corps", force: :cascade do |t|
+    t.string   "login",        limit: 255
+    t.string   "fio",          limit: 255
+    t.string   "email",        limit: 255
+    t.string   "position",     limit: 255
+    t.string   "department",   limit: 255
+    t.string   "organisation", limit: 255
+    t.string   "address",      limit: 255
+    t.boolean  "have_phones",  limit: 1
+    t.boolean  "have_email",   limit: 1
+    t.boolean  "active",       limit: 1
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  create_table "asterisk_logs", force: true do |t|
+  create_table "asterisk_logs", force: :cascade do |t|
     t.datetime "calldate"
     t.string   "clid",        limit: 80
     t.string   "src",         limit: 80
@@ -38,65 +38,68 @@ ActiveRecord::Schema.define(version: 20150213145010) do
     t.string   "dstchannel",  limit: 80
     t.string   "lastapp",     limit: 80
     t.string   "lastdata",    limit: 80
-    t.integer  "duration"
-    t.integer  "billsec"
+    t.integer  "duration",    limit: 4
+    t.integer  "billsec",     limit: 4
     t.string   "disposition", limit: 45
-    t.integer  "amaflags"
+    t.integer  "amaflags",    limit: 4
     t.string   "accountcode", limit: 20
     t.string   "uniqueid",    limit: 32
-    t.string   "userfield"
-    t.boolean  "parsed"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "userfield",   limit: 255
+    t.boolean  "parsed",      limit: 1
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  create_table "calls", force: true do |t|
+  create_table "calls", force: :cascade do |t|
     t.datetime "calldate"
     t.string   "src",         limit: 80
     t.string   "dst",         limit: 80
-    t.integer  "duration"
-    t.integer  "billsec"
+    t.integer  "duration",    limit: 4
+    t.integer  "billsec",     limit: 4
     t.string   "disposition", limit: 45
     t.string   "uniqueid",    limit: 32
+    t.string   "direction",   limit: 1
+    t.string   "context",     limit: 32
+    t.string   "descr",       limit: 32
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  create_table "corp_numbers", force: true do |t|
-    t.integer  "address_book_corp_id"
-    t.string   "number"
-    t.string   "type_n"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+  create_table "corp_numbers", force: :cascade do |t|
+    t.integer  "address_book_corp_id", limit: 4
+    t.string   "number",               limit: 255
+    t.string   "type_n",               limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
-  create_table "domains", force: true do |t|
-    t.string   "host"
-    t.integer  "port"
-    t.string   "name"
-    t.string   "parser_user"
-    t.string   "parser_password"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "domains", force: :cascade do |t|
+    t.string   "host",            limit: 255
+    t.integer  "port",            limit: 4
+    t.string   "name",            limit: 255
+    t.string   "parser_user",     limit: 255
+    t.string   "parser_password", limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  create_table "users", force: true do |t|
-    t.string   "login"
-    t.string   "f_name"
-    t.string   "i_name"
-    t.string   "o_name"
-    t.string   "fio"
-    t.string   "email"
-    t.string   "department"
-    t.string   "position"
-    t.boolean  "use_password"
-    t.string   "password"
-    t.boolean  "active"
-    t.boolean  "site_admin"
-    t.boolean  "domain_admin"
-    t.string   "auth_hash"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "login",        limit: 255
+    t.string   "f_name",       limit: 255
+    t.string   "i_name",       limit: 255
+    t.string   "o_name",       limit: 255
+    t.string   "fio",          limit: 255
+    t.string   "email",        limit: 255
+    t.string   "department",   limit: 255
+    t.string   "position",     limit: 255
+    t.boolean  "use_password", limit: 1
+    t.string   "password",     limit: 255
+    t.boolean  "active",       limit: 1
+    t.boolean  "site_admin",   limit: 1
+    t.boolean  "domain_admin", limit: 1
+    t.string   "auth_hash",    limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end

@@ -9,7 +9,9 @@ class CreateCalls < ActiveRecord::Migration
       t.integer :billsec
       t.string :disposition, :limit => 45
       t.string :uniqueid, :limit => 32
-
+      t.string :direction, :limit => 1
+      t.string :context, :limit => 32
+      t.string :descr, :limit => 32
 
       t.timestamps null: false
     end
