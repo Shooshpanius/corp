@@ -1,0 +1,10 @@
+
+<%
+    int_numbers = @form_data[:int_numbers]
+    int_numbers.each do |corp_num|
+%>
+exten => <%= corp_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.scripts/rec.sh ${UNIQUEID})
+exten => <%= corp_num.number %>,n,Dial(SIP/gsm-vlk-corp/<%= corp_num.number %>,20,L(1800000))
+exten => <%= corp_num.number %>,n,Hangup()
+
+<% end %>
