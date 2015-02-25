@@ -4,7 +4,7 @@ class Cron::AsteriskInternalController < ApplicationController
 
   def list1
     @form_data = {
-        int_numbers: CorpNumber.where("type_n = ?", 'i')
+        int_numbers: CorpNumber.where("type_n = ?", 'i').order('number ASC')
     }
     respond_to do |format|
       format.text
@@ -13,7 +13,7 @@ class Cron::AsteriskInternalController < ApplicationController
 
   def list2
     @form_data = {
-        int_numbers: CorpNumber.where("type_n = ?", 'i')
+        int_numbers: CorpNumber.where("type_n = ?", 'i').order('number ASC')
     }
     respond_to do |format|
       format.text
@@ -22,7 +22,7 @@ class Cron::AsteriskInternalController < ApplicationController
 
   def corp1
     @form_data = {
-        int_numbers: CorpNumber.where("type_n = ?", 'c')
+        int_numbers: CorpNumber.where("type_n = ?", 'c').order('number ASC')
     }
     respond_to do |format|
       format.text
@@ -31,7 +31,7 @@ class Cron::AsteriskInternalController < ApplicationController
 
   def corp2
     @form_data = {
-        int_numbers: CorpNumber.where("type_n = ?", 'c')
+        int_numbers: CorpNumber.where("type_n = ?", 'c').order('number ASC')
     }
     respond_to do |format|
       format.text
