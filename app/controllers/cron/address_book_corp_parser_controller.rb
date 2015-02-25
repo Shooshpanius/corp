@@ -74,7 +74,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c')
           if num.length != 0
             CorpNumber.update(
-                num,
+                num[0].id,
                 number: telephonenumber,
             )
           else
@@ -95,7 +95,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'i')
           if num.length != 0
             CorpNumber.update(
-                num,
+                num[0].id,
                 number: ipphone[0..3],
             )
           else
@@ -113,7 +113,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'a')
           if num.length != 0
             CorpNumber.update(
-                num,
+                num[0].id,
                 number: ipphone[5..8],
             )
           else
@@ -140,7 +140,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'm')
           if num.length != 0
             CorpNumber.update(
-                num,
+                num[0].id,
                 number: mobile,
             )
           else
@@ -161,7 +161,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'h')
           if num.length != 0
             CorpNumber.update(
-                num,
+                num[0].id,
                 number: homephone,
             )
           else
