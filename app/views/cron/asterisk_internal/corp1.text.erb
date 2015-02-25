@@ -2,7 +2,7 @@
 <%
     int_numbers = @form_data[:int_numbers]
     int_numbers.each do |corp_num|
-      address = AddressBookCorp.find_by_id(int_numbers.address_book_corp_id)
+      address = AddressBookCorp.find_by_id(corp_num.address_book_corp_id)
 %>
 ; <%= address.fio %>
 exten => 8<%= corp_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.scripts/rec.sh ${UNIQUEID})
