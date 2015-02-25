@@ -3,7 +3,7 @@ class Cron::AsteriskParserController < ApplicationController
   def index
 
     logs = AsteriskLog.where('parsed  IS NULL')
-    # logs = AsteriskLog.all
+    #logs = AsteriskLog.all
 
     logs.each do |log_str|
 
@@ -23,7 +23,8 @@ class Cron::AsteriskParserController < ApplicationController
             uniqueid: log_str.uniqueid,
             direction: 'o',
             context: 'local',
-            descr: 'local'
+            descr: 'local',
+            calldate_end: log_str.calldate + log_str.duration
         )
 
         AsteriskLog.update(
@@ -51,7 +52,8 @@ class Cron::AsteriskParserController < ApplicationController
             uniqueid: log_str.uniqueid,
             direction: 'o',
             context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
-            descr: descr
+            descr: descr,
+            calldate_end: log_str.calldate + log_str.duration
         )
 
         AsteriskLog.update(
@@ -79,7 +81,8 @@ class Cron::AsteriskParserController < ApplicationController
             uniqueid: log_str.uniqueid,
             direction: 'o',
             context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
-            descr: descr
+            descr: descr,
+            calldate_end: log_str.calldate + log_str.duration
         )
 
         AsteriskLog.update(
@@ -107,7 +110,8 @@ class Cron::AsteriskParserController < ApplicationController
             uniqueid: log_str.uniqueid,
             direction: 'o',
             context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
-            descr: descr
+            descr: descr,
+            calldate_end: log_str.calldate + log_str.duration
         )
 
         AsteriskLog.update(

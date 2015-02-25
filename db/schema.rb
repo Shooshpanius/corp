@@ -52,17 +52,18 @@ ActiveRecord::Schema.define(version: 20150213145010) do
 
   create_table "calls", force: :cascade do |t|
     t.datetime "calldate"
-    t.string   "src",         limit: 80
-    t.string   "dst",         limit: 80
-    t.integer  "duration",    limit: 4
-    t.integer  "billsec",     limit: 4
-    t.string   "disposition", limit: 45
-    t.string   "uniqueid",    limit: 32
-    t.string   "direction",   limit: 1
-    t.string   "context",     limit: 32
-    t.string   "descr",       limit: 32
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "src",          limit: 80
+    t.string   "dst",          limit: 80
+    t.integer  "duration",     limit: 4
+    t.integer  "billsec",      limit: 4
+    t.string   "disposition",  limit: 45
+    t.string   "uniqueid",     limit: 32
+    t.string   "direction",    limit: 1
+    t.string   "context",      limit: 32
+    t.string   "descr",        limit: 32
+    t.datetime "calldate_end"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "corp_numbers", force: :cascade do |t|

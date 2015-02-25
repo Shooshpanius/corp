@@ -32,11 +32,11 @@
     <table class="table table-bordered table-condensed tablesorter" id="tbl_callstat" name="tbl_callstat">
       <thead>
           <tr>
-            <th data-placeholder="" class="filter-match col-md-2">Дата/время</th>
+            <th data-placeholder="" class="filter-match col-md-2">Дата/время н</th>
+            <th data-placeholder="" class="filter-match col-md-2">Дата/время к</th>
             <th data-placeholder="" class="filter-match col-md-1">От</th>
             <th data-placeholder="" class="filter-match col-md-1">К</th>
-            <th data-placeholder="" class="filter-match col-md-1">T общ.</th>
-            <th data-placeholder="" class="filter-match col-md-1">T разг.</th>
+            <th data-placeholder="" class="filter-match col-md-1">T общ./T разг.</th>
             <th data-placeholder="" class="filter-match col-md-1">Результат</th>
             <th data-placeholder="" class="filter-match col-md-1">ID</th>
             <th data-placeholder="" class="filter-match col-md-2">Audio</th>
@@ -47,10 +47,10 @@
           <% @form_data[:calls].each do |call| %>
               <tr>
                 <td><%= call.calldate %></td>
+                <td><%= call.calldate_end %></td>
                 <td><%= call.src %></td>
                 <td><%= call.dst %></td>
-                <td><%= call.duration %></td>
-                <td><%= call.billsec %></td>
+                <td><%= call.duration %> / <%= call.billsec %></td>
                 <td><%= call.disposition %></td>
                 <td><%= call.uniqueid %></td>
                 <td></td>
