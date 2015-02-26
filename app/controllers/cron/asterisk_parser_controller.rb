@@ -2,8 +2,8 @@ class Cron::AsteriskParserController < ApplicationController
 
   def index
 
-    #logs = AsteriskLog.where('parsed  IS NULL')
-    logs = AsteriskLog.all
+    logs = AsteriskLog.where('parsed  IS NULL')
+    #logs = AsteriskLog.all
 
     logs.each do |log_str|
 
