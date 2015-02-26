@@ -24,5 +24,6 @@
 //= require jquery-tablesorter/extras/jquery.quicksearch
 //= require AdminLTE/bootstrap
 //= require AdminLTE/app
+//= require Chart
 //= require_self
 

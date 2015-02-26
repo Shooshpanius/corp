@@ -71,6 +71,8 @@ gem 'responders'
 
 gem 'adminlte'
 gem 'font-awesome-sass', '~> 4.3.0'
+gem 'chart-js-rails'
 
+#gem 'chartjs-ror'
 #gem 'ruby-net-ldap'
 
