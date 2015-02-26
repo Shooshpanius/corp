@@ -5,18 +5,16 @@
 $(document).ready ($) ->
 
   $.ajax
-    url: '/stat/call_direction/srv_get_cell_test.json'
+    url: '/stat/call_direction/srv_get_cell_k.json'
     type: 'POST'
     async: false
     success: (msg) ->
       data = msg
-      myNewChart = new Chart($("#canvas").get(0).getContext("2d")).Bar(data,{
+      cell_k = new Chart($("#cell_k").get(0).getContext("2d")).Bar(data,{
         multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
       })
 
-      myNewChart1 = new Chart($("#canvas1").get(0).getContext("2d")).Bar(data,{
-        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
-      })
+
 
   false
 
