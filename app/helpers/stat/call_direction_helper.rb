@@ -1,0 +1,2 @@
+module Stat::CallDirectionHelper
+end

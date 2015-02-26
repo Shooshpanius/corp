@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+
+
+
   namespace :cron do
   get 'asterisk_alias/aliases'
   end
@@ -9,7 +12,6 @@ Rails.application.routes.draw do
   get 'asterisk_user/index'
   end
 
-  get 'address_book/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :login, :path => 'login/(:action)(.:format)'
   resources :address_book, :path => 'address_book/(:action)(.:format)'
+  resources :contragent_book, :path => 'contragent_book/(:action)(.:format)'
 
 
   namespace :cron do
@@ -41,6 +44,7 @@ Rails.application.routes.draw do
 
   namespace :stat do
     resources :number, path: 'number/(:action)(:id)(.:format)'
+    resources :call_direction, path: 'call_direction/(:action)(:id)(.:format)'
   end
 
   # Example of regular route:

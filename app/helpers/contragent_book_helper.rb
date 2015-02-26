@@ -1,0 +1,2 @@
+module ContragentBookHelper
+end
