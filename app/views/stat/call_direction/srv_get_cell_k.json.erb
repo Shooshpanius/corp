@@ -24,13 +24,16 @@ end %>
       date_check = Date.today.prev_day(7)
       until date_check == Date.today.next_day(1) do
 
-        calls = Call.select('DATE(calldate) as calldate, descr, context, sum(duration) as total_duration, sum(billsec) as total_billsec').where('descr = ? and DATE(calldate) >= ? and DATE(calldate) <= ? and context = ?', 'cell', date_check, date_check, cont.context).group('calldate').first
+        calls = Call.select('DATE(calldate) as calldate, descr, context, sum(duration) as total_duration, sum(billsec) as total_billsec').where('descr = ? and DATE(calldate) >= ? and DATE(calldate) <= ? and context = ?', 'cell', date_check, date_check, cont.context).group('DATE(calldate)')[0]
+        calls1 = Call.select('DATE(calldate) as calldate, descr, context, sum(duration) as total_duration, sum(billsec) as total_billsec').where('descr = ? and DATE(calldate) >= ? and DATE(calldate) <= ? and context = ?', 'cell', date_check, date_check, cont.context).group('DATE(calldate)')
 
         if calls != nil
           data_s = data_s + calls.total_duration.to_s + ','
         else
           data_s = data_s + '0,'
         end
+
+
 
         date_check = date_check.next_day(1)
      end
