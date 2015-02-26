@@ -2,8 +2,8 @@ class Cron::AsteriskParserController < ApplicationController
 
   def index
 
-    logs = AsteriskLog.where('parsed  IS NULL')
-    #logs = AsteriskLog.all
+    #logs = AsteriskLog.where('parsed  IS NULL')
+    logs = AsteriskLog.all
 
     logs.each do |log_str|
 
@@ -134,7 +134,7 @@ class Cron::AsteriskParserController < ApplicationController
 
     if dst[0] == '8'
       if dst[1] == '9'
-        if CorpNumber.where('number = ? and type_n = ?', dst[1..-1], 'c').size == 1
+        if CorpNumber.where('number = ? and type_n = ?', dst[1..-1], 'c').size > 0
           descr = 'corp'
         else
           descr = 'cell'
