@@ -14,6 +14,9 @@ $(document).ready ($) ->
         multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
       })
 
+      myNewChart1 = new Chart($("#canvas1").get(0).getContext("2d")).Bar(data,{
+        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
+      })
 
   false
 
