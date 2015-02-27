@@ -8,6 +8,8 @@ $(document).ready ->
     headers:
       0:
         filter: false
+      7:
+        sorter: false
     widthFixed : true
     widgets: [
       "zebra"

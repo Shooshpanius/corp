@@ -1,4 +1,4 @@
-class Admin::CallStatController < ApplicationController
+class Stat::CallStatController < ApplicationController
   def index
 
     @form_data = {
