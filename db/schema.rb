@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226134240) do
+ActiveRecord::Schema.define(version: 20150227131253) do
 
   create_table "address_book_corps", force: :cascade do |t|
     t.string   "login",        limit: 255
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20150226134240) do
     t.boolean  "parsed",      limit: 1
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "asterisk_time_logs", force: :cascade do |t|
+    t.integer  "callid",         limit: 4
+    t.string   "uniqueid",       limit: 32
+    t.datetime "calltime_point"
+    t.string   "context",        limit: 32
+    t.string   "descr",          limit: 32
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "calls", force: :cascade do |t|
