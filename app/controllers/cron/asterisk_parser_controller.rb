@@ -165,8 +165,19 @@ class Cron::AsteriskParserController < ApplicationController
   private
   def call_to_adv_log(call)
 
+    # time_start = call.calldate.round
+    # time_end = call.calldate + 10
 
 
+    # DateTime.strptime(Time.now.to_s, '%Y-%m-%d %H:%M')
+
+
+    # until time_start <= time_end
+    #
+    #
+    #
+    #
+    # end
 
 
 
