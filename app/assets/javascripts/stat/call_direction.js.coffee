@@ -68,5 +68,49 @@ $(document).ready ($) ->
         multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
       })
 
+
+
+  $.ajax
+    url: '/stat/call_direction/srv_get_city_time.json'
+    type: 'POST'
+    async: false
+    success: (msg) ->
+      data = msg
+      corp_time = new Chart($("#city_time").get(0).getContext("2d")).Bar(data,{
+        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
+      })
+
+  $.ajax
+    url: '/stat/call_direction/srv_get_city_count.json'
+    type: 'POST'
+    async: false
+    success: (msg) ->
+      data = msg
+      corp_time = new Chart($("#city_count").get(0).getContext("2d")).Bar(data,{
+        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
+      })
+
+
+
+  $.ajax
+    url: '/stat/call_direction/srv_get_local_time.json'
+    type: 'POST'
+    async: false
+    success: (msg) ->
+      data = msg
+      corp_time = new Chart($("#local_time").get(0).getContext("2d")).Bar(data,{
+        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
+      })
+
+  $.ajax
+    url: '/stat/call_direction/srv_get_local_count.json'
+    type: 'POST'
+    async: false
+    success: (msg) ->
+      data = msg
+      corp_time = new Chart($("#local_count").get(0).getContext("2d")).Bar(data,{
+        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
+      })
+
   false
 

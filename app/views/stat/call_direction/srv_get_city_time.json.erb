@@ -1,0 +1,59 @@
+<%
+
+
+
+%>
+
+
+{
+    "labels": [
+<%
+labels = ''
+date_check = Date.today.prev_day(7)
+until date_check == Date.today.next_day(1) do
+    labels = labels +'"'+date_check.to_s+'",'
+    date_check = date_check.next_day(1)
+end %>
+<%== labels[0..-2] %>],
+    "datasets": [
+
+<%
+    data_all = ''
+    @cont.each do |cont|
+    data_s = ''
+      date_check = Date.today.prev_day(7)
+      until date_check == Date.today.next_day(1) do
+
+        calls = Call.select('DATE(calldate) as calldate, descr, context, sum(duration) as total_duration, sum(billsec) as total_billsec').where('descr = ? and DATE(calldate) >= ? and DATE(calldate) <= ? and context = ?', 'city', date_check, date_check, cont.context).group('DATE(calldate)')[0]
+
+        if calls != nil
+          data_s = data_s + calls.total_duration.to_s + ','
+        else
+          data_s = data_s + '0,'
+        end
+
+
+
+        date_check = date_check.next_day(1)
+     end
+
+     # color1 = Context.first.color.to_s
+     color = SipContext.where('name = ?', cont.context).first.color
+
+     data_all = data_all+'{
+            "label": "'+cont.context.to_s+'",
+            "fillColor": "rgba('+color.to_s+',0.5)",
+            "strokeColor": "rgba('+color.to_s+',0.8)",
+            "highlightFill": "rgba('+color.to_s+',0.75)",
+            "highlightStroke": "rgba('+color.to_s+',1)",
+            "data":['+  data_s[0..-2] + ']},'
+     %>
+
+
+<% end %>
+
+        <%== data_all[0..-2] %>
+    ]
+}
+
+
