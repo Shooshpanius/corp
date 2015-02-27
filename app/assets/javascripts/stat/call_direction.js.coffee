@@ -14,6 +14,15 @@ $(document).ready ($) ->
         multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
       })
 
+  $.ajax
+    url: '/stat/call_direction/srv_get_corp_time.json'
+    type: 'POST'
+    async: false
+    success: (msg) ->
+      data = msg
+      corp_time = new Chart($("#corp_time").get(0).getContext("2d")).Bar(data,{
+        multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
+      })
 
 
   false
