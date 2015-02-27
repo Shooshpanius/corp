@@ -53,7 +53,7 @@
                 <td><%= call.duration %> / <%= call.billsec %></td>
                 <td><%= call.disposition %></td>
                 <td><%= call.uniqueid %></td>
-                <td><button><i class="fa fa-play-circle-o"></i></button></td>
+                <td><button id="<%= call.uniqueid %>" onclick="audioModal_show('<%= call.uniqueid %>')"><i class="fa fa-play-circle-o"></i></button></td>
               </tr>
           <% end %>
       </tbody>
@@ -63,3 +63,8 @@
   </div>
 
 </div>
+
+
+<div class="modal fade" id="audioModal">
+
+</div><!-- /.modal -->
