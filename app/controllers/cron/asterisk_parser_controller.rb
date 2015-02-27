@@ -22,7 +22,7 @@ class Cron::AsteriskParserController < ApplicationController
             disposition: log_str.disposition,
             uniqueid: log_str.uniqueid,
             direction: 'o',
-            context: 'local',
+            context: 'local-'+log_str.src[0],
             descr: 'local',
             calldate_end: log_str.calldate + log_str.duration
         )
