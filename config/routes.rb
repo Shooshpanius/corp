@@ -39,12 +39,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :call_stat, path: 'call_stat/(:action)(:id)(.:format)'
   end
 
   namespace :stat do
     resources :number, path: 'number/(:action)(:id)(.:format)'
     resources :call_direction, path: 'call_direction/(:action)(:id)(.:format)'
+    resources :call_stat, path: 'call_stat/(:action)(:id)(.:format)'
   end
 
   # Example of regular route:
