@@ -39,7 +39,7 @@
             <th data-placeholder="" class="filter-match col-md-1">T общ./T разг.</th>
             <th data-placeholder="" class="filter-match col-md-1">Результат</th>
             <th data-placeholder="" class="filter-match col-md-1">ID</th>
-            <th data-placeholder="" class="filter-match col-md-2">Audio</th>
+            <th data-placeholder="" class="filter-match col-md-1"></th>
           </tr>
       </thead>
 
@@ -53,7 +53,7 @@
                 <td><%= call.duration %> / <%= call.billsec %></td>
                 <td><%= call.disposition %></td>
                 <td><%= call.uniqueid %></td>
-                <td><audio controls></audio></td>
+                <td><button><i class="fa fa-play-circle-o"></i></button></td>
               </tr>
           <% end %>
       </tbody>
