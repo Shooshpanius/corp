@@ -2,7 +2,7 @@ class Stat::CallDirectionController < ApplicationController
   def index
   end
 
-  def srv_get_cell_k
+  def srv_get_cell_time
 
     date_from = Date.today.prev_day(7)
     date_to = Date.today.next_day(1)

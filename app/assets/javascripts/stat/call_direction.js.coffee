@@ -5,12 +5,12 @@
 $(document).ready ($) ->
 
   $.ajax
-    url: '/stat/call_direction/srv_get_cell_k.json'
+    url: '/stat/call_direction/srv_get_cell_time.json'
     type: 'POST'
     async: false
     success: (msg) ->
       data = msg
-      cell_k = new Chart($("#cell_k").get(0).getContext("2d")).Bar(data,{
+      cell_time = new Chart($("#cell_time").get(0).getContext("2d")).Bar(data,{
         multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>"
       })
 
