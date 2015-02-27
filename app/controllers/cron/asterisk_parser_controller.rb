@@ -13,7 +13,7 @@ class Cron::AsteriskParserController < ApplicationController
           log_str.dst.to_s.length ==4 &&
           log_str.lastdata.to_s.scan(/SIP\/\d{4}/)[0].to_s.length == 8
 
-        Call.create(
+        new_call = Call.create(
             calldate: log_str.calldate,
             src: log_str.src,
             dst: log_str.dst,
@@ -31,6 +31,9 @@ class Cron::AsteriskParserController < ApplicationController
             log_str.id,
             parsed: true,
         )
+
+        call_to_adv_log(new_call)
+
       end
 
       # XXXX на XXXX c назначением XXXXXXXXXXX (локальный, ушедший на внешний)
@@ -42,7 +45,7 @@ class Cron::AsteriskParserController < ApplicationController
         dst = log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s
         descr = call_descr(dst)
 
-        Call.create(
+        new_call = Call.create(
             calldate: log_str.calldate,
             src: log_str.src,
             dst: dst,
@@ -60,6 +63,9 @@ class Cron::AsteriskParserController < ApplicationController
             log_str.id,
             parsed: true,
         )
+
+        call_to_adv_log(new_call)
+
       end
 
       # XXXX на XXXXXXXXXXX (на внешний)
@@ -71,7 +77,7 @@ class Cron::AsteriskParserController < ApplicationController
         dst = log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s
         descr = call_descr(dst)
 
-        Call.create(
+        new_call = Call.create(
             calldate: log_str.calldate,
             src: log_str.src,
             dst: dst,
@@ -89,6 +95,9 @@ class Cron::AsteriskParserController < ApplicationController
             log_str.id,
             parsed: true,
         )
+
+        call_to_adv_log(new_call)
+
       end
 
       # XXXX на XXXXX (на город, через SIP)
@@ -100,7 +109,7 @@ class Cron::AsteriskParserController < ApplicationController
         dst = log_str.lastdata.to_s.scan(/\d{11}/)[0].to_s
         descr = 'city'
 
-        Call.create(
+        new_call = Call.create(
             calldate: log_str.calldate,
             src: log_str.src,
             dst: dst,
@@ -118,6 +127,9 @@ class Cron::AsteriskParserController < ApplicationController
             log_str.id,
             parsed: true,
         )
+
+        call_to_adv_log(new_call)
+
       end
 
 
@@ -149,5 +161,16 @@ class Cron::AsteriskParserController < ApplicationController
     return descr
   end
 
+
+  private
+  def call_to_adv_log(call)
+
+
+
+
+
+
+    return 'descr'
+  end
 
 end
