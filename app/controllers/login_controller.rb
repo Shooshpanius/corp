@@ -46,38 +46,51 @@ class LoginController < ApplicationController
                          }
 
 
-    if ldap.bind
+    if  User.where('login = ? and password = ? and use_password = ?', params[:login], Digest::MD5.hexdigest(params[:password]), 1).size == 1
 
-      filter = Net::LDAP::Filter.eq('samaccountname', params[:login])
-      ldap.search(:base => 'OU=WUsers,DC=wood,DC=local', :filter => filter, :return_result => true) do |entry|
+      user = User.where('login = ? and password = ? and use_password = ?', params[:login], Digest::MD5.hexdigest(params[:password]), 1).first
 
-        user = User.find_by_login(params[:login])
-        if user
+      session[:is_login] = true
+      session[:user_id] = user.id
+      session[:user_login] = params[:login]
+      session[:is_admin] = true if user.site_admin
 
-        else
-          user = User.new(
-              login: params[:login]
-          )
-          user.save
 
-        end
 
-        session[:is_login] = true
-        session[:user_id] = user.id
-        session[:user_login] = params[:login]
-        session[:is_admin] = true if user.site_admin
-
-        hash = Digest::MD5.hexdigest(Time.now.to_s)
-        cookies[:hash] = { value: hash, expires: 100000.hour.from_now }
-
-        user.auth_hash = hash
-        user.save
-
-      end
 
     else
+        if ldap.bind
 
+          filter = Net::LDAP::Filter.eq('samaccountname', params[:login])
+          ldap.search(:base => 'OU=WUsers,DC=wood,DC=local', :filter => filter, :return_result => true) do |entry|
+
+            user = User.find_by_login(params[:login])
+            if user
+
+            else
+              user = User.new(
+                  login: params[:login]
+              )
+              user.save
+
+            end
+
+            session[:is_login] = true
+            session[:user_id] = user.id
+            session[:user_login] = params[:login]
+            session[:is_admin] = true if user.site_admin
+
+            hash = Digest::MD5.hexdigest(Time.now.to_s)
+            cookies[:hash] = { value: hash, expires: 100000.hour.from_now }
+
+            user.auth_hash = hash
+            user.save
+
+          end
+        end
     end
+
+
 
   end
 
