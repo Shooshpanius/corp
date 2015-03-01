@@ -1,5 +1,7 @@
 class Stat::CallDirectionController < ApplicationController
 
+  before_filter :is_admin
+
   def index
   end
 
@@ -104,6 +106,16 @@ class Stat::CallDirectionController < ApplicationController
 
     respond_to do |format|
       format.json
+    end
+  end
+
+
+
+
+  private
+  def is_admin
+    if !session[:is_admin]
+      redirect_to "/"
     end
   end
 

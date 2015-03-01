@@ -1,5 +1,7 @@
 class Stat::CallStatController < ApplicationController
 
+  before_filter :is_admin
+
   def index
     @form_data = {
         calls: Call.all
@@ -17,6 +19,12 @@ class Stat::CallStatController < ApplicationController
     render layout: false
   end
 
+  private
+  def is_admin
+    if !session[:is_admin]
+      redirect_to "/"
+    end
+  end
 
 
 
