@@ -1,2 +1,41 @@
-<h1>Stat::DirectionLoad#index</h1>
-<p>Find me in app/views/stat/direction_load/index.html.erb</p>
+<%= javascript_include_tag "main" %>
+<%= javascript_include_tag "stat/direction_load" %>
+
+<div id="conts"></div>
+
+<% @conts.each do |cont| %>
+
+
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title"><%= cont.name %> (сутки)</h3>
+        </div>
+        <div class="box-body chart-responsive">
+          <div class="canvas-holder">
+            <canvas id="<%= cont.name %>_day" width="600" height="200" style="width: 600px; height: 200px;"></canvas>
+          </div>
+        </div><!-- /.box-body -->
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-header">
+          <h3 class="box-title"><%= cont.name %> (год по неделям)</h3>
+        </div>
+        <div class="box-body chart-responsive">
+          <div class="canvas-holder">
+            <canvas id="<%= cont.name %>_year" width="600" height="200" style="width: 600px; height: 200px;"></canvas>
+          </div>
+        </div><!-- /.box-body -->
+      </div>
+    </div>
+
+
+
+
+
+
+
+<% end %>
