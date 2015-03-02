@@ -165,20 +165,29 @@ class Cron::AsteriskParserController < ApplicationController
   private
   def call_to_adv_log(call)
 
-    # time_start = call.calldate.round
-    # time_end = call.calldate + 10
+    call = call
+
+    call_start = call.calldate - 10
+    call_end = call.calldate_end + 10
+
+    call_start_a = call_start.to_a
+    call_start_a[0] = (call_start.to_a[0] / 10).to_i*10
+    call_start = Time.utc *call_start_a
+
+    while call_start <= call_end do
 
 
-    # DateTime.strptime(Time.now.to_s, '%Y-%m-%d %H:%M')
+      AsteriskTimeLog.create(
+          callid: call.id,
+          uniqueid: call.uniqueid,
+          calltime_point: call_start,
+          context: call.context,
+          descr: call.descr
+      )
 
 
-    # until time_start <= time_end
-    #
-    #
-    #
-    #
-    # end
-
+      call_start = call_start + 10
+    end
 
 
     return 'descr'

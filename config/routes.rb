@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
 
 
+  namespace :stat do
+  get 'direction_load/index'
+  end
 
+  get 'direction_load/index'
 
   namespace :cron do
   get 'asterisk_alias/aliases'
@@ -44,6 +48,7 @@ Rails.application.routes.draw do
   namespace :stat do
     resources :number, path: 'number/(:action)(:id)(.:format)'
     resources :call_direction, path: 'call_direction/(:action)(:id)(.:format)'
+    resources :direction_load, path: 'direction_load/(:action)(:id)(.:format)'
     resources :call_stat, path: 'call_stat/(:action)(:id)(.:format)'
     resources :test, path: 'test/(:action)(:id)(.:format)'
   end
