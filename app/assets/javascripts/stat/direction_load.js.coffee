@@ -33,21 +33,7 @@ $(document).ready ->
               animation: false
             })
 
-        $.ajax
-          url: '/stat/direction_load/srv_get_cont.json'
-          type: 'POST'
-          data: {
-            type_of: 'year',
-            cont: result[n].name
-          }
-          async: false
-          success: (msg) ->
-            data = msg
-            corp_time = new Chart($("#"+result[n].name+"_year").get(0).getContext("2d")).Bar(data,{
-              multiTooltipTemplate: "<%= value %>: <%= datasetLabel %>",
-              tooltipTemplate: "<%= value %>: <%= datasetLabel %>",
-              animation: false
-            })
+
 
 
     false
