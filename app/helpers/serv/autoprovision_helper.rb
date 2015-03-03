@@ -1,0 +1,2 @@
+module Serv::AutoprovisionHelper
+end

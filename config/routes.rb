@@ -53,6 +53,10 @@ Rails.application.routes.draw do
     resources :test, path: 'test/(:action)(:id)(.:format)'
   end
 
+  namespace :serv do
+    resources :autoprovision, path: 'autoprovision/(:action)(:id)(.cfg)'
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
