@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-
-  namespace :stat do
-  get 'direction_load/index'
-  end
-
   get 'direction_load/index'
 
   namespace :cron do
