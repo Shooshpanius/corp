@@ -1,0 +1,19 @@
+
+{
+    "labels": ["0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"],
+    "datasets": [
+        <%
+             data_all = '{
+                    "label": "'+@form_data[:cont].to_s+'",
+                    "fillColor": "rgba('+@form_data[:color].to_s+',0.5)",
+                    "strokeColor": "rgba('+@form_data[:color].to_s+',0.8)",
+                    "highlightFill": "rgba('+@form_data[:color].to_s+',0.75)",
+                    "highlightStroke": "rgba('+@form_data[:color].to_s+',1)",
+                    "data":['+  @form_data[:count_str][0..-2] + ']},'
+             %>
+        <%== data_all[0..-2] %>
+    ]
+}
+
+
+

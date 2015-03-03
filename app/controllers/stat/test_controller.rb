@@ -2,32 +2,37 @@ class Stat::TestController < ApplicationController
 
   def index
 
-    @call = Call.all[5]
+    year_start = Date.today.beginning_of_year + 0.seconds
+    year_end = Date.today.end_of_year + 86399.seconds
 
-    @test = ' '
-
-    call_start = @call.calldate - 10
-    call_end = @call.calldate_end + 10
-
-    call_start_a = call_start.to_a
-    call_start_a[0] = (call_start.to_a[0] / 10).to_i*10
-    call_start = Time.utc *call_start_a
+    @count_str = ''
 
 
+    while year_start <= year_end
 
-    @call1 = call_start
-    @call2 = call_end
-
-
-    while call_start <= call_end do
-
-      sec = call_start.to_a[0].to_s
+      month_start = year_start.beginning_of_month
+      month_end = year_start.end_of_month
 
 
-      @test  = @test + ' ' + sec + ' ' + call_start.to_s
+      begin
+        calls = AsteriskTimeLog.where('context = ? and calltime_point	>= ? and calltime_point <= ?', cont, month_start, month_end).group('calltime_point').size.max_by{|i| i[1].to_i}[1]
+      rescue
+        calls = 0
+      end
 
-      call_start = call_start + 10
+      @count_str += calls.to_s + ','
+
+      year_start += 1.month
     end
+
+    # @form_data = {
+    #     cont: cont,
+    #     color: color,
+    #     count_str: count_str
+    # }
+    #
+    # render :day, layout: false
+
 
   end
 
