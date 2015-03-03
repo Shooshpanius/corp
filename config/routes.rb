@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+
   namespace :stat do
   get 'direction_load/index'
   end
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :autoprovision, path: 'autoprovision/(:action)(:id)(.:format)'
   end
 
   namespace :stat do

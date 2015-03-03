@@ -1,0 +1,2 @@
+module Admin::AutoprovisionHelper
+end

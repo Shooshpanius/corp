@@ -105,19 +105,33 @@
 
         <% if session[:is_admin] %>
 
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-wrench"></i>
-            <span>Сервис</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="/cron/address_book_corp_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер адресной книги (сотрудники)</a></li>
-            <li><a href="/cron/asterisk_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер лога астериск</a></li>
-            <li><a href="/cron/asterisk_user/users.text" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Конфиг users.cfg</a></li>
-            <li><a href="/stat/test/" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Test</a></li>
-          </ul>
-        </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-cogs"></i>
+                <span>Admin</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/admin/autoprovision" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Autoprovision</a></li>
+              </ul>
+            </li>
+
+
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-wrench"></i>
+                <span>Сервис</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="/cron/address_book_corp_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер адресной книги (сотрудники)</a></li>
+                <li><a href="/cron/asterisk_parser" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Парсер лога астериск</a></li>
+                <li><a href="/cron/asterisk_user/users.text" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Конфиг users.cfg</a></li>
+                <li><a href="/stat/test/" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Test</a></li>
+              </ul>
+            </li>
 
         <% end %>
 

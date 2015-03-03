@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227131253) do
+ActiveRecord::Schema.define(version: 20150303152050) do
 
   create_table "address_book_corps", force: :cascade do |t|
     t.string   "login",        limit: 255
@@ -92,6 +92,23 @@ ActiveRecord::Schema.define(version: 20150227131253) do
     t.string   "parser_password", limit: 255
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "ip_phone_types", force: :cascade do |t|
+    t.string   "model",        limit: 32
+    t.integer  "num_account",  limit: 4
+    t.string   "manufacturer", limit: 32
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "ip_phones", force: :cascade do |t|
+    t.string   "mac",              limit: 8
+    t.integer  "ip_phone_type_id", limit: 4
+    t.integer  "account_number",   limit: 4
+    t.integer  "corp_number_id",   limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|
