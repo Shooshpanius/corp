@@ -2,9 +2,14 @@ class Serv::AutoprovisionController < ApplicationController
 
   def get_cfg
     if params[:id] == 'y000000000025'
-      render 'get_cfg'
+      render 'get_main_yealink_cfg'
     else
-      render nothing: true
+      mac = IpPhone.find_by_mac(params[:id])
+      if mac != nil
+        render 'get_mac_yealink_cfg'
+      else
+        render text: 'Not found'
+      end
     end
   end
 
