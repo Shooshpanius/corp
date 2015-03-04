@@ -49,7 +49,9 @@
     <li <%= params[:id]=='Э' ? 'class=active' :'' %> ><a href='/address_book/list/Э'>Э</a></li>
     <li <%= params[:id]=='Ю' ? 'class=active' :'' %> ><a href='/address_book/list/Ю'>Ю</a></li>
     <li <%= params[:id]=='Я' ? 'class=active' :'' %> ><a href='/address_book/list/Я'>Я</a></li>
-    <li <%= params[:id]=='fav' ? 'class=active' :'' %> ><a href='/address_book/list/fav'><i class="fa fa-lg fa-star" style="color: #FF9900"></i></a></li>
+    <%if session[:user_id] != nil%>
+        <li <%= params[:id]=='fav' ? 'class=active' :'' %> ><a href='/address_book/list/fav'><i class="fa fa-lg fa-star" style="color: #FF9900"></i></a></li>
+    <% end %>
   </ul>
 
 
@@ -166,10 +168,12 @@
 
                   </div>
 
-                  <% if Favorite.where('user_id = ? and address_book_corp_id = ?', session[:user_id], address.id).size == 0 %>
-                      <button type="button" class="btn btn-link btn-sm" onclick="favorite(<%= address.id %>)"><i id="fav_<%= address.id %>" class="fa fa-lg fa-star-o"></i></button>
-                  <% else %>
-                      <button type="button" class="btn btn-link btn-sm" onclick="favorite(<%= address.id %>)"><i id="fav_<%= address.id %>" class="fa fa-lg fa-star" style="color: #F34D59"></i></button>
+                  <%if session[:user_id] != nil%>
+                      <% if Favorite.where('user_id = ? and address_book_corp_id = ?', session[:user_id], address.id).size == 0 %>
+                          <button type="button" class="btn btn-link btn-sm" onclick="favorite(<%= address.id %>)"><i id="fav_<%= address.id %>" class="fa fa-lg fa-star-o"></i></button>
+                      <% else %>
+                          <button type="button" class="btn btn-link btn-sm" onclick="favorite(<%= address.id %>)"><i id="fav_<%= address.id %>" class="fa fa-lg fa-star" style="color: #F34D59"></i></button>
+                      <% end %>
                   <% end %>
                 </td>
 

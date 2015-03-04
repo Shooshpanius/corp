@@ -125,19 +125,21 @@ class AddressBookController < ApplicationController
 
   def srv_favorite
 
-    favorite = Favorite.where('user_id = ? and address_book_corp_id = ?', session[:user_id], params[:address_id])
+    if session[:user_id] != nil
 
-    if favorite.size == 0
-      Favorite.create(
-          user_id: session[:user_id],
-          address_book_corp_id: params[:address_id]
-      )
-      render text: 'cr'
-    else
-      Favorite.destroy(favorite[0].id)
-      render text: 'r'
-    end
+      favorite = Favorite.where('user_id = ? and address_book_corp_id = ?', session[:user_id], params[:address_id])
 
+      if favorite.size == 0
+        Favorite.create(
+            user_id: session[:user_id],
+            address_book_corp_id: params[:address_id]
+        )
+        render text: 'cr'
+      else
+        Favorite.destroy(favorite[0].id)
+        render text: 'r'
+      end
+     end
     # render layout: false
 
   end
