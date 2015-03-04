@@ -17,7 +17,7 @@
          fio_arr = AddressBookCorp.find(CorpNumber.find_by_number(@form_data[:device].corp_number).address_book_corp_id).fio.split(' ')
 
             @fio_init = fio_arr[0] + " " + fio_arr[1][0] + "." + fio_arr[2][0] + "."
-            @login = AddressBookCorp.find(CorpNumber.find_by_number(@form_data[:device].corp_number).address_book_corp_id).login
+            @login = @form_data[:device].corp_number
             @password = '1000'
             @sip_server_host='192.168.2.40'
             @sip_server_port='5060'
