@@ -1,4 +1,7 @@
 
+<%= javascript_include_tag "main" %>
+<%= javascript_include_tag "jquery.mask.min" %>
+<%= javascript_include_tag "admin/autoprovision" %>
 
 <div class="box">
 
@@ -19,11 +22,31 @@
         <th data-placeholder="" class="filter-match col-md-1">Аккаунт №</th>
         <th data-placeholder="" class="filter-match col-md-1">Номер внутренний</th>
         <th data-placeholder="" class="filter-match col-md-5">ФИО</th>
+        <th data-placeholder="" class="filter-match col-md-1"></th>
 
       </tr>
 
       </thead>
       <tbody>
+        <% @form_data[:devices].each do |device| %>
+
+          <tr>
+            <td><%= device.mac %></td>
+            <td><%= device.ip_phone_type.model %></td>
+            <td><%= device.account_number%></td>
+            <td><%= device.corp_number %></td>
+            <td>
+              <% if device.corp_number != nil %>
+                <%= AddressBookCorp.find(CorpNumber.find_by_number(device.corp_number).address_book_corp_id).fio %> (<%= device.building %>, <%= device.room %>)
+              <% end %>
+            </td>
+            <td>
+              <button type="button"  class="btn btn-info btn-xs" onclick="device_edit_show(<%= device.id %>)"><i class="fa fa-edit"></i></button>
+            </td>
+          </tr>
+
+
+        <% end %>
 
       </tbody>
     </table>
@@ -31,6 +54,18 @@
   </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <div class="modal fade" id="addDeviceModal">
@@ -42,12 +77,12 @@
       </div>
       <div class="modal-body">
 
-        <form class="form-horizontal" role="form" id="provision_new" name="provision_new">
+        <form class="form-horizontal" role="form" id="device_new" name="device_new">
           <fieldset>
 
             <div class="form-group">
               <label for="MAC" class="col-sm-2 control-label">MAC</label>
-              <div class="col-sm-3">
+              <div class="col-sm-4">
                 <input type="text" class="form-control" id="MAC" name="MAC" placeholder="MAC">
               </div>
             </div>
@@ -61,21 +96,21 @@
 
             <div class="form-group">
               <label for="building" class="col-sm-2 control-label">Здание</label>
-              <div class="col-sm-3">
+              <div class="col-sm-6">
                 <input type="text" class="form-control" id="building" name="building" placeholder="Здание">
               </div>
             </div>
 
             <div class="form-group">
               <label for="room" class="col-sm-2 control-label">Кабинет</label>
-              <div class="col-sm-3">
-                <input type="text" class="form-control" id="room" name="room" placeholder="room">
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="room" name="room" placeholder="Кабинет">
               </div>
             </div>
 
           </fieldset>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" onclick="provision_new_save()">Сохранить</button>
+            <button type="submit" class="btn btn-success" onclick="device_new_save()">Сохранить</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
           </div>
         </form>
@@ -85,4 +120,8 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="editDeviceModal">
 </div><!-- /.modal -->

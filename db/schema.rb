@@ -103,12 +103,14 @@ ActiveRecord::Schema.define(version: 20150303152050) do
   end
 
   create_table "ip_phones", force: :cascade do |t|
-    t.string   "mac",              limit: 8
+    t.string   "mac",              limit: 12
     t.integer  "ip_phone_type_id", limit: 4
     t.integer  "account_number",   limit: 4
-    t.integer  "corp_number_id",   limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "corp_number",      limit: 4
+    t.string   "building",         limit: 255
+    t.string   "room",             limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|
