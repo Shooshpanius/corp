@@ -16,8 +16,6 @@ class AddressBookController < ApplicationController
       }
     end
 
-
-
   end
 
 
@@ -103,6 +101,17 @@ class AddressBookController < ApplicationController
   end
 
 
+  def srv_info_show
+
+    address_info =  AddressBookCorp.find(params[:address_id])
+
+    @form_data = {
+        address_info: address_info
+    }
+
+    render layout: false
+
+  end
 
 
   private

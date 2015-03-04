@@ -1,0 +1,98 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">Информация об абоненте</h4>
+    </div>
+    <div class="modal-body">
+
+
+
+      <form class="form-horizontal" role="form" id="device_edit" name="device_edit">
+        <fieldset>
+
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">ФИО</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <%= @form_data[:address_info].fio %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Должность</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <%= @form_data[:address_info].position %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Отдел</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <%= @form_data[:address_info].department %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Организация</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <%= @form_data[:address_info].organisation %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Адрес</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <%= @form_data[:address_info].address %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">E-mail</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <%= @form_data[:address_info].email %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Телефон внутр.</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <% if CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'i').size != 0 %>
+              <%= CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'i').first.number %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Телефон корп.</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <% if CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'c').size != 0 %>
+                  8<%= CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'c').first.number %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Телефон моб.</label>
+            <div class="col-sm-8" style="padding-top: 6px">
+              <% if CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'm').size != 0 %>
+                  8<%= CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'm').first.number %>
+              <% end %>
+            </div>
+          </div>
+
+
+
+
+
+
+        </fieldset>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

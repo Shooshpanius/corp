@@ -13,6 +13,23 @@
 
   false
 
+
+@info_show = (address_id) ->
+  $.ajax
+    url: '/address_book/srv_info_show'
+    type: 'POST'
+    async: false
+    data: {address_id:address_id}
+    success: (msg) ->
+      $("#infoShowModal").html msg
+    false
+  $('#infoShowModal').modal()
+
+
+
+  false
+
+
 $(document).ready ->
 
   $("#tbl_adresses").tablesorter(
