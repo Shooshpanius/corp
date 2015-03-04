@@ -2,6 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+@device_delete = (mac) ->
+  if confirm('Удалить все записи с данным MAC-адресом?')
+    $.ajax
+      url: '/admin/autoprovision/srv_device_delete'
+      type: 'POST'
+      data: {mac: mac}
+      async: false
+      success: (msg) ->
+        location.reload()
+
 
 @device_edit_show = (device_id) ->
   $.ajax
@@ -59,7 +69,9 @@
   $("#device_new").validate
     rules:
       MAC:
-        required: true
+        required: true,
+        rangelength: [17, 17],
+        remote : "/admin/autoprovision/srv_check_mac"
       phone_model:
         required: true
       building:
@@ -84,6 +96,9 @@
           $("#device_new").modal 'hide'
           location.reload()
       false
+
+
+
 
 $(document).ready ($) ->
 

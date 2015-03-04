@@ -29,26 +29,37 @@ class Admin::AutoprovisionController < ApplicationController
 
 
   def srv_device_edit_save
-
-      IpPhone.update(
-          params[:id_edit],
-          corp_number: params[:corp_number_edit],
-          building: params[:building_edit],
-          room: params[:room_edit],
-      )
-
+    IpPhone.update(
+        params[:id_edit],
+        corp_number: params[:corp_number_edit],
+        building: params[:building_edit],
+        room: params[:room_edit],
+    )
 
     render nothing: true
   end
 
-  def srv_device_edit_show
 
+  def srv_device_edit_show
     @form_data = {
         device: IpPhone.find(params[:device_id])
     }
-
     render layout: false
+  end
 
+
+  def srv_check_mac
+    if IpPhone.find_by_mac(params[:MAC].gsub(':', ''))
+      render text: 'false'
+    else
+      render text: 'true'
+    end
+  end
+
+
+  def srv_device_delete
+    IpPhone.where('mac = ?', params[:mac].gsub(':', '')).delete_all
+    render nothing: true
   end
 
 end
