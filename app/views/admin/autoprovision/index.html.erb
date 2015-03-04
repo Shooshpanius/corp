@@ -3,7 +3,8 @@
 <div class="box">
 
   <div class="box-header">
-    <h3 class="box-title">Autoprovision</h3><button type="button"  class="btn btn-success pull-right "><i class="fa fa-plus"></i></button>
+    <h3 class="box-title">Autoprovision</h3>
+    <button type="button"  class="btn btn-success pull-right" data-toggle="modal" data-target="#addDeviceModal"><i class="fa fa-plus"></i></button>
   </div>
 
 
@@ -30,3 +31,58 @@
   </div>
 
 </div>
+
+
+<div class="modal fade" id="addDeviceModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Новое устройство</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-horizontal" role="form" id="provision_new" name="provision_new">
+          <fieldset>
+
+            <div class="form-group">
+              <label for="MAC" class="col-sm-2 control-label">MAC</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="MAC" name="MAC" placeholder="MAC">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone_model" class="col-sm-2 control-label">Модель</label>
+              <div class="col-sm-10">
+                <%= select_tag(:phone_model, options_for_select(@form_data[:phone_types])) %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="building" class="col-sm-2 control-label">Здание</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="building" name="building" placeholder="Здание">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="room" class="col-sm-2 control-label">Кабинет</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control" id="room" name="room" placeholder="room">
+              </div>
+            </div>
+
+          </fieldset>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" onclick="provision_new_save()">Сохранить</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
