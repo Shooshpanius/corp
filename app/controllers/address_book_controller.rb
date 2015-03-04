@@ -10,9 +10,19 @@ class AddressBookController < ApplicationController
       @form_data = {
           address_book: AddressBookCorp.where('fio like ? and (have_phones = ? or have_email = ?)', params[:id].to_s+'%', 1, 1).order('fio ASC'),
       }
-    else
+    elsif params[:id].to_s == 'all'
       @form_data = {
           address_book: AddressBookCorp.where('have_phones = ? or have_email = ?', 1, 1).order('fio ASC'),
+      }
+    elsif params[:id].to_s == 'fav'
+      favorite = Favorite.where('user_id = ?', session[:user_id])
+      ids = Array.new
+      favorite.each do |fav|
+        ids.push(fav.address_book_corp_id)
+      end
+      @form_data = {
+          address_book: AddressBookCorp.where('(have_phones = ? or have_email = ?) and id IN (?)', 1, 1, ids).order('fio ASC'),
+          favorite: favorite
       }
     end
 
@@ -113,6 +123,24 @@ class AddressBookController < ApplicationController
 
   end
 
+  def srv_favorite
+
+    favorite = Favorite.where('user_id = ? and address_book_corp_id = ?', session[:user_id], params[:address_id])
+
+    if favorite.size == 0
+      Favorite.create(
+          user_id: session[:user_id],
+          address_book_corp_id: params[:address_id]
+      )
+      render text: 'cr'
+    else
+      Favorite.destroy(favorite[0].id)
+      render text: 'r'
+    end
+
+    # render layout: false
+
+  end
 
   private
   def is_login
