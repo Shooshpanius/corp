@@ -59,6 +59,8 @@
             <div class="col-sm-8" style="padding-top: 6px">
               <% if CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'i').size != 0 %>
               <%= CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'i').first.number %>
+              <% else %>
+              -
               <% end %>
             </div>
           </div>
@@ -68,6 +70,8 @@
             <div class="col-sm-8" style="padding-top: 6px">
               <% if CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'c').size != 0 %>
                   8<%= CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'c').first.number %>
+              <% else %>
+                  -
               <% end %>
             </div>
           </div>
@@ -77,6 +81,8 @@
             <div class="col-sm-8" style="padding-top: 6px">
               <% if CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'm').size != 0 %>
                   8<%= CorpNumber.where('address_book_corp_id = ? and type_n = ?', @form_data[:address_info].id, 'm').first.number %>
+              <% else %>
+                  -
               <% end %>
             </div>
           </div>
