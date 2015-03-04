@@ -6,6 +6,9 @@ class Serv::AutoprovisionController < ApplicationController
     else
       mac = IpPhone.find_by_mac(params[:id])
       if mac != nil
+        @form_data = {
+            device: mac
+        }
         render 'get_mac_yealink_cfg'
       else
         render text: 'Not found'
