@@ -32,7 +32,16 @@ class AddressBookController < ApplicationController
   def srv_call
 
     address_book_corp_id = AddressBookCorp.where('login = ?', session[:user_login])[0]
-    num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
+
+    num_a = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'a')
+
+    if num_a.size != 0
+      num = num_a[0].number
+    else
+      num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
+    end
+
+    # num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', address_book_corp_id.id, 'i')[0].number
 
     if num[0] == '1'
       cont = 'internal-vlk'
