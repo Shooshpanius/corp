@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+
+
   get 'direction_load/index'
 
   namespace :cron do
@@ -40,6 +42,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :autoprovision, path: 'autoprovision/(:action)(:id)(.:format)'
   end
+
+  namespace :mailadmin do
+    resources :aliases, path: 'aliases/(:action)(:id)(.:format)'
+    resources :mailboxes, path: 'mailboxes/(:action)(:id)(.:format)'
+  end
+
 
   namespace :stat do
     resources :number, path: 'number/(:action)(:id)(.:format)'
