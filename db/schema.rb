@@ -135,8 +135,13 @@ ActiveRecord::Schema.define(version: 20150512133711) do
   end
 
   create_table "mail_users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",      limit: 255,                null: false
+    t.string   "password",   limit: 255,                null: false
+    t.boolean  "ext",        limit: 1
+    t.boolean  "active",     limit: 1,   default: true
+    t.string   "name",       limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|
