@@ -1,0 +1,2 @@
+module Mailadmin::MailboxesHelper
+end

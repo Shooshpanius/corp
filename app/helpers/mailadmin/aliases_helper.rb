@@ -1,0 +1,2 @@
+module Mailadmin::AliasesHelper
+end
