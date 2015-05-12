@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304204055) do
+ActiveRecord::Schema.define(version: 20150512133711) do
 
   create_table "address_book_corps", force: :cascade do |t|
     t.string   "login",        limit: 255
@@ -118,6 +118,25 @@ ActiveRecord::Schema.define(version: 20150304204055) do
     t.string   "room",             limit: 255
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "mail_domains", force: :cascade do |t|
+    t.string   "domain",     limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "mail_forwardings", force: :cascade do |t|
+    t.integer  "address_book_corp_id", limit: 4
+    t.string   "source",               limit: 255,   null: false
+    t.text     "destination",          limit: 65535, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "mail_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|
