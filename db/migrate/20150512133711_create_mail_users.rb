@@ -10,6 +10,7 @@ class CreateMailUsers < ActiveRecord::Migration
       t.string :relay_front, null: false
       t.string :name
 
+
       t.timestamps null: false
     end
   end
