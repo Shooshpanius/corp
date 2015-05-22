@@ -6,7 +6,8 @@ class CreateMailUsers < ActiveRecord::Migration
       t.string :password, null: false
       t.boolean :ext, default: nil
       t.boolean :active, default: true
-      t.string :relay, null: false
+      t.string :relay_back, null: false
+      t.string :relay_front, null: false
       t.string :name
 
       t.timestamps null: false
