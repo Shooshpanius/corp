@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150512133711) do
     t.string   "password",   limit: 255,                null: false
     t.boolean  "ext",        limit: 1
     t.boolean  "active",     limit: 1,   default: true
+    t.string   "relay",      limit: 255,                null: false
     t.string   "name",       limit: 255
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
