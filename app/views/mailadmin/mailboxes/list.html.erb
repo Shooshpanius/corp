@@ -1,2 +1,84 @@
-<h1>Mailadmin::Mailboxes#list</h1>
-<p>Find me in app/views/mailadmin/mailboxes/list.html.erb</p>
+
+<%= javascript_include_tag "main" %>
+<%= javascript_include_tag "mailadmin/mailboxes" %>
+
+
+<div class="box">
+
+  <div class="box-header">
+    <h3 class="box-title">Почтовые ящики (мэйлбоксы)</h3>
+  </div>
+
+  <ul class="pagination pagination-my">
+    <li <%= params[:id]=='all' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/all'>&nbsp;&nbsp;&nbsp;Все&nbsp;&nbsp;&nbsp;</a></li>
+    <li <%= params[:id]=='А' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/a'>a</a></li>
+    <li <%= params[:id]=='Б' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/b'>b</a></li>
+    <li <%= params[:id]=='В' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/c'>c</a></li>
+    <li <%= params[:id]=='Г' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/d'>d</a></li>
+    <li <%= params[:id]=='Д' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/e'>e</a></li>
+    <li <%= params[:id]=='Е' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/f'>f</a></li>
+    <li <%= params[:id]=='Ё' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/g'>g</a></li>
+    <li <%= params[:id]=='Ж' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/h'>h</a></li>
+    <li <%= params[:id]=='З' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/i'>i</a></li>
+    <li <%= params[:id]=='И' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/j'>j</a></li>
+    <li <%= params[:id]=='Й' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/k'>k</a></li>
+    <li <%= params[:id]=='К' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/l'>l</a></li>
+    <li <%= params[:id]=='Л' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/m'>m</a></li>
+    <li <%= params[:id]=='М' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/n'>n</a></li>
+    <li <%= params[:id]=='Н' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/o'>o</a></li>
+    <li <%= params[:id]=='О' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/p'>p</a></li>
+    <li <%= params[:id]=='П' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/q'>q</a></li>
+    <li <%= params[:id]=='Р' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/r'>r</a></li>
+    <li <%= params[:id]=='С' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/s'>s</a></li>
+    <li <%= params[:id]=='Т' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/t'>t</a></li>
+    <li <%= params[:id]=='У' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/u'>u</a></li>
+    <li <%= params[:id]=='Ф' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/v'>v</a></li>
+    <li <%= params[:id]=='Х' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/w'>w</a></li>
+    <li <%= params[:id]=='Ц' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/x'>x</a></li>
+    <li <%= params[:id]=='Ч' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/y'>y</a></li>
+    <li <%= params[:id]=='Ш' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/z'>z</a></li>
+
+  </ul>
+
+
+
+  <div class="box-body">
+
+    <table class="table table-bordered table-condensed tablesorter" id="tbl_adresses">
+      <thead>
+
+      <tr>
+        <th data-placeholder="" class="filter-match col-md-2">E-mail</th>
+        <th data-placeholder="" class="filter-match col-md-1">Тип</th>
+        <th data-placeholder="" class="filter-match col-md-1">Пароль</th>
+        <th data-placeholder="" class="filter-match col-md-2">Сотрудник</th>
+        <th data-placeholder="" class="filter-match col-md-1">Организация</th>
+        <th data-placeholder="" class="filter-match col-md-1"></th>
+
+      </tr>
+
+      </thead>
+
+      <tbody>
+        <% @form_data[:mailboxes].each.with_index do |mailbox, index| %>
+          <tr id="r_<%= mailbox.id %>">
+            <td><%= mailbox.email%></td>
+            <td>
+              <% if mailbox.ext == true %>
+                Внешний
+              <% else %>
+                Внутренний
+              <% end %>
+            </td>
+            <td>---</td>
+            <td><%= mailbox.name[0] %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
