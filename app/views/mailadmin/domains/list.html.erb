@@ -1,2 +1,52 @@
-<h1>Mailadmin::Domains#index</h1>
-<p>Find me in app/views/mailadmin/domains/index.html.erb</p>
+
+<%= javascript_include_tag "main" %>
+<%= javascript_include_tag "mailadmin/domains" %>
+
+
+
+
+
+<div class="box">
+
+  <div class="box-header">
+    <h3 class="box-title">Почтовые домены</h3>
+    <button type="button"  class="btn btn-success pull-right" data-toggle="modal" data-target="#addDomainModal"><i class="fa fa-plus"></i></button>
+  </div>
+
+
+
+
+  <div class="box-body">
+
+    <table class="table table-bordered table-condensed tablesorter" id="tbl_adresses">
+      <thead>
+
+      <tr>
+        <th data-placeholder="" class="filter-match col-md-1">id</th>
+        <th data-placeholder="" class="filter-match col-md-9">Домен</th>
+        <th data-placeholder="" class="filter-match col-md-1"></th>
+
+      </tr>
+
+      </thead>
+      <tbody>
+      <% @form_data[:domains].each do |domain| %>
+
+          <tr>
+            <td><%= domain.id %></td>
+            <td><%= domain.domain %></td>
+            <td>
+              <button type="button"  class="btn btn-info btn-xs" onclick="domain_edit_show(<%= domain.id %>)"><i class="fa fa-edit"></i></button>
+              <button type="button"  class="btn btn-danger btn-xs" onclick="domain_delete('<%= domain.domain %>')">Удалить домен</button>
+            </td>
+          </tr>
+
+
+      <% end %>
+
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
