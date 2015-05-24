@@ -1,0 +1,2 @@
+module Mailadmin::DomainsHelper
+end
