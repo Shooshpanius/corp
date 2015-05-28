@@ -8,9 +8,24 @@ class Mailadmin::AliasesController < ApplicationController
     @form_data = {
         aliases: aliases
     }
-
   end
 
+
+
+  def srv_check_alias
+    if MailAlias.find_by_alias(params[:Alias])
+      render text: 'false'
+    else
+      render text: 'true'
+    end
+  end
+
+  def srv_alias_new_save
+    MailAlias.create(
+        alias: params[:Alias]
+    )
+    render nothing: true
+  end
 
   private
   def is_login
