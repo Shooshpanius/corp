@@ -21,7 +21,7 @@
       <tr>
         <th data-placeholder="" class="filter-match col-md-1">id</th>
         <th data-placeholder="" class="filter-match col-md-9">Алиас</th>
-        <th data-placeholder="" class="filter-match col-md-2"></th>
+        <th data-placeholder="" class="filter-match col-md-1"></th>
 
       </tr>
 
@@ -33,7 +33,10 @@
 
             <td><%= al.id %></td>
             <td><%= al.alias %></td>
-            <td></td>
+            <td>
+              <button type="button"  class="btn btn-info btn-xs" onclick="alias_edit_show(<%= al.id %>)"><i class="fa fa-edit"></i></button>
+
+            </td>
           </tr>
       <% end %>
       </tbody>
