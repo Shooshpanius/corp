@@ -10,7 +10,9 @@ class MailAliasByUser < ActiveRecord::Base
     if is_check == 'true'
       MailAliasByUser.create(
           mail_alias_id: alias_id,
-          mail_user_id: user_id
+          mail_user_id: user_id,
+          mail_alias_str: MailAlias.find(alias_id).alias,
+          mail_user_str: MailUser.find(user_id).email
       )
     end
 

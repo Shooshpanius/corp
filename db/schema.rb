@@ -121,10 +121,12 @@ ActiveRecord::Schema.define(version: 20150528070937) do
   end
 
   create_table "mail_alias_by_users", force: :cascade do |t|
-    t.integer  "mail_user_id",  limit: 4
-    t.integer  "mail_alias_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "mail_user_id",   limit: 4
+    t.integer  "mail_alias_id",  limit: 4
+    t.string   "mail_user_str",  limit: 255, null: false
+    t.string   "mail_alias_str", limit: 255, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "mail_aliases", force: :cascade do |t|
