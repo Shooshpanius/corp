@@ -34,8 +34,14 @@
     data: {
       alias_id: alias_id,
       user_id: user_id,
-      is_check: $("#c_"+user_id).checked
+      is_check: $("#c_"+user_id).is(':checked')
     }
     success: (msg) ->
+      if msg == '1'
+        $("#r_"+user_id).addClass('success')
+      else
+        $("#r_"+user_id).removeClass('success')
+
+
   false
 

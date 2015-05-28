@@ -29,12 +29,20 @@
 
       <tbody>
       <% @form_data[:mail_users].each.with_index do |mail_user, index| %>
-          <tr id="r_<%= mail_user.id %>">
+          <tr id="r_<%= mail_user.id %>"
+              <% if @form_data[:in_alias].where('mail_user_id = ?', mail_user.id).count == 1 %>
+                class="success"
+              <% end %>
+          >
 
             <td><%= mail_user.id %></td>
             <td><%= mail_user.email %></td>
             <td>
-              <input type="checkbox" id="c_<%= mail_user.id %>" onclick="user_to_alias(<%= @form_data[:al].id %>, <%= mail_user.id %>)">
+              <input type="checkbox" id="c_<%= mail_user.id %>" name="c_<%= mail_user.id %>" onclick="user_to_alias(<%= @form_data[:al].id %>, <%= mail_user.id %>)"
+                     <% if @form_data[:in_alias].where('mail_user_id = ?', mail_user.id).count == 1 %>
+                     checked="checked"
+                     <% end %>
+              >
             </td>
           </tr>
       <% end %>

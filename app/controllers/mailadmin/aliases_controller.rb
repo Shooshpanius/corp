@@ -14,9 +14,12 @@ class Mailadmin::AliasesController < ApplicationController
   def edit
     al = MailAlias.find(params[:id])
     mail_users = MailUser.where('mail_domain_id = ?', params[:id]).order('email asc')
+    in_alias = MailAliasByUser.where('mail_alias_id = ?', params[:id])
+
     @form_data = {
         al: al,
-        mail_users: mail_users
+        mail_users: mail_users,
+        in_alias: in_alias
     }
   end
 
@@ -39,10 +42,8 @@ class Mailadmin::AliasesController < ApplicationController
 
 
   def srv_user_to_alias
-    # MailAlias.create(
-    #     alias: params[:Alias]
-    # )
-    render nothing: true
+    is_checked = MailAliasByUser.set(params[:alias_id], params[:user_id], params[:is_check])
+    render text: is_checked
   end
 
 
