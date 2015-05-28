@@ -23,3 +23,19 @@
           $("#alias_new").modal 'hide'
           location.reload()
       false
+
+
+
+@user_to_alias = (alias_id, user_id) ->
+  $.ajax
+    url: "/mailadmin/aliases/srv_user_to_alias"
+    type: "POST"
+    async: false
+    data: {
+      alias_id: alias_id,
+      user_id: user_id,
+      is_check: $("#c_"+user_id).checked
+    }
+    success: (msg) ->
+  false
+

@@ -6,7 +6,7 @@
 <div class="box">
 
   <div class="box-header">
-    <h3 class="box-title">Почтовы алиас <a class="text-green"><%= @form_data[:al].alias %> </a></h3>
+    <h3 class="box-title">Почтовый алиас <a class="text-green"><%= @form_data[:al].alias %> </a></h3>
     <button type="button"  class="btn btn-success pull-right" data-toggle="modal" data-target="#addAliasModal"><i class="fa fa-plus"></i></button>
   </div>
 
@@ -20,7 +20,7 @@
 
       <tr>
         <th data-placeholder="" class="filter-match col-md-1">id</th>
-        <th data-placeholder="" class="filter-match col-md-9">Алиас</th>
+        <th data-placeholder="" class="filter-match col-md-9">Адрес</th>
         <th data-placeholder="" class="filter-match col-md-1"></th>
 
       </tr>
@@ -28,7 +28,16 @@
       </thead>
 
       <tbody>
+      <% @form_data[:mail_users].each.with_index do |mail_user, index| %>
+          <tr id="r_<%= mail_user.id %>">
 
+            <td><%= mail_user.id %></td>
+            <td><%= mail_user.email %></td>
+            <td>
+              <input type="checkbox" id="c_<%= mail_user.id %>" onclick="user_to_alias(<%= @form_data[:al].id %>, <%= mail_user.id %>)">
+            </td>
+          </tr>
+      <% end %>
       </tbody>
     </table>
 
