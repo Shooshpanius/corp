@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20150528070937) do
 
   create_table "mail_domains", force: :cascade do |t|
     t.string   "domain",     limit: 255, null: false
+    t.string   "color",      limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -164,6 +165,7 @@ ActiveRecord::Schema.define(version: 20150528070937) do
     t.string   "name",                 limit: 255
     t.string   "org",                  limit: 255
     t.integer  "address_book_corp_id", limit: 4
+    t.integer  "mail_domain_id",       limit: 4
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
   end

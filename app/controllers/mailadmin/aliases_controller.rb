@@ -11,6 +11,15 @@ class Mailadmin::AliasesController < ApplicationController
   end
 
 
+  def edit
+
+    al = MailAlias.find(params[:id])
+
+    @form_data = {
+        al: al
+    }
+  end
+
 
   def srv_check_alias
     if MailAlias.find_by_alias(params[:Alias])
