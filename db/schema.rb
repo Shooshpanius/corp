@@ -142,15 +142,17 @@ ActiveRecord::Schema.define(version: 20150524171628) do
   end
 
   create_table "mail_users", force: :cascade do |t|
-    t.string   "email",       limit: 255,                null: false
-    t.string   "password",    limit: 255,                null: false
-    t.boolean  "ext",         limit: 1
-    t.boolean  "active",      limit: 1,   default: true
-    t.string   "relay_back",  limit: 255,                null: false
-    t.string   "relay_front", limit: 255,                null: false
-    t.string   "name",        limit: 255
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.string   "email",                limit: 255,                null: false
+    t.string   "password",             limit: 255,                null: false
+    t.boolean  "ext",                  limit: 1
+    t.boolean  "active",               limit: 1,   default: true
+    t.string   "relay_back",           limit: 255,                null: false
+    t.string   "relay_front",          limit: 255,                null: false
+    t.string   "name",                 limit: 255
+    t.string   "org",                  limit: 255
+    t.integer  "address_book_corp_id", limit: 4
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|

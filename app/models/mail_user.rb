@@ -10,21 +10,15 @@ class MailUser < ActiveRecord::Base
 
     mailboxes.each do |mailbox|
 
-      sotr = AddressBookCorp.where('email = ?', mailbox.email)
+      sotr = AddressBookCorp.where('email = ?', mailbox.email).first
 
-      if sotr.size == 1
-        data = {
-            fio: sotr[0].fio,
-            org: sotr[0].organisation
-        }
-      else
-        data = {
-            fio: '-',
-            org: '-'
-        }
+      if sotr != nil
+        mailbox.address_book_corp_id = sotr
+        mailbox.name = sotr.fio
+        mailbox.org = sotr.organisation
       end
 
-      mailbox.name = data
+
 
 
 
