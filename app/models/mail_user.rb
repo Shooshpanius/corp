@@ -1,5 +1,9 @@
 class MailUser < ActiveRecord::Base
 
+  has_many :mail_alias_by_users
+  has_many :mail_aliases, through: :mail_alias_by_users
+
+
   def MailUser.get_list(list)
 
     if list.to_s.length == 1
