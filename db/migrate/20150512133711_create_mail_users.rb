@@ -11,6 +11,7 @@ class CreateMailUsers < ActiveRecord::Migration
       t.string :name
       t.string :org
       t.belongs_to :address_book_corp
+      t.belongs_to :mail_domain
 
 
       t.timestamps null: false

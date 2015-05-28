@@ -2,7 +2,7 @@ class MailUser < ActiveRecord::Base
 
   has_many :mail_alias_by_users
   has_many :mail_aliases, through: :mail_alias_by_users
-
+  belongs_to :mail_domain
 
   def MailUser.get_list(list)
 
