@@ -9,7 +9,8 @@ class CreateMailUsers < ActiveRecord::Migration
       t.string :relay_back, null: false
       t.string :relay_front, null: false
       t.string :name
-
+      t.string :org
+      t.belongs_to :address_book_corp
 
 
       t.timestamps null: false
