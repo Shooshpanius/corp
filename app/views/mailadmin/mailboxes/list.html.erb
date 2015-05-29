@@ -2,15 +2,15 @@
 <%= javascript_include_tag 'main' %>
 <%= javascript_include_tag 'mailadmin/mailboxes' %>
 
-<input id="first_letter" hidden="hidden">
+<label for="first_letter" hidden="hidden"></label><input id="first_letter" hidden="hidden">
 
 <div class="box">
 
   <div class="box-header">
     <h3 class="box-title">Почтовые ящики (мэйлбоксы) домена: &nbsp;&nbsp;&nbsp;
 
-      <%= select_tag "domain_changer", options_from_collection_for_select(@form_data[:domains], "id", "domain"),
-                     prompt: "Все домены"
+      <%= select_tag 'domain_changer', options_from_collection_for_select(@form_data[:domains], 'id', 'domain'),
+                     prompt: 'Все домены'
       %>
 
     </h3>
