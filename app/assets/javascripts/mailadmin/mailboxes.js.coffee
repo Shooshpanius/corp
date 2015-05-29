@@ -17,7 +17,7 @@
       first_letter: $("#first_letter").val()
     }
     success: (msg) ->
-
+      $("#tbody_users").html(msg)
 
 
   false
