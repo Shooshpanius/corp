@@ -1,4 +1,4 @@
-<% @form_data[:mailboxes].each.with_index do |mailbox, index| %>
+<% @form_data[:mailboxes].each do |mailbox| %>
     <tr id="r_<%= mailbox.id %>">
       <td><%= mailbox.email%></td>
       <td>

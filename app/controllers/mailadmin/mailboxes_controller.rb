@@ -5,7 +5,7 @@ class Mailadmin::MailboxesController < ApplicationController
 
     @form_data = {
         # mailboxes: MailUser.get_list(params[:id]),
-        domains: MailDomain.all()
+        domains: MailDomain.all
     }
 
   end
@@ -18,7 +18,7 @@ class Mailadmin::MailboxesController < ApplicationController
             params[:domain_id],
             params[:first_letter]
         ),
-        domains: MailDomain.all()
+        domains: MailDomain.all
     }
 
     render layout: false
