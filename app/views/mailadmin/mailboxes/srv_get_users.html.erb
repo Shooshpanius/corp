@@ -8,7 +8,7 @@
             Внутренний
         <% end %>
       </td>
-      <td>---</td>
+      <td id="pw_<%= mailbox.id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= mailbox.id %>)"></i></td>
       <td><%= mailbox.name %></td>
       <td><%= mailbox.org %></td>
       <td></td>

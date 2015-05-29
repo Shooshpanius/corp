@@ -53,6 +53,22 @@
 
 
 
+@info_pwd = (mailbox_id) ->
+  $.ajax
+    url: "/mailadmin/mailboxes/srv_get_pwd"
+    type: "POST"
+    async: false
+    data: {
+      mailbox_id: mailbox_id
+    }
+    success: (msg) ->
+      $("#pw_"+mailbox_id).html(msg)
+
+
+
+
+
+
 $(document).ready ($) ->
 
   get_users()

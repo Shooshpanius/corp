@@ -39,8 +39,6 @@ class Mailadmin::MailboxesController < ApplicationController
       relay_front = MailRelay.where("ext = ?", 0).first.host
       ext = 0
     end
-
-
     MailUser.create(
         email: params[:mailbox].to_s+"@"+MailDomain.find(params[:domain_user]).domain.to_s,
         active: 1,
@@ -49,11 +47,17 @@ class Mailadmin::MailboxesController < ApplicationController
         relay_front: relay_front,
         ext: ext,
         mail_domain_id: params[:domain_user]
-
     )
-
     render nothing: true
   end
+
+
+  def srv_get_pwd
+    pwd = MailUser.find(params[:mailbox_id]).password
+    render text: pwd
+  end
+
+
 
   private
   def is_login
