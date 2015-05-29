@@ -104,6 +104,6 @@ $(document).ready ($) ->
     get_users()
 
 
-#  $('#mailbox').change ->
-#    get_user_fio()
-#    get_user_org()
+  $('#mailbox').change ->
+    get_user_fio()
+    get_user_org()
