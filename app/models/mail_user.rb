@@ -31,7 +31,7 @@ class MailUser < ActiveRecord::Base
     full_name = mailbox + '@' + MailDomain.find(domain_id).domain
     mailboxes = MailUser.where('email = ?', full_name).size
 
-    if mailboxes == 1
+    if mailboxes != 0
       return 'false'
     else
       return 'true'
