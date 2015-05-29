@@ -25,7 +25,6 @@
     rules:
       mailbox:
         required: true,
-        rangelength: [17, 17],
         remote : {
           url: "/mailadmin/mailboxes/srv_mailbox_check",
           type: "post",

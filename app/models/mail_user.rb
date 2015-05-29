@@ -32,9 +32,9 @@ class MailUser < ActiveRecord::Base
     mailboxes = MailUser.where('email = ?', full_name).size
 
     if mailboxes == 1
-      render text: 'false'
+      return 'false'
     else
-      render text: 'true'
+      return 'true'
     end
 
   end
