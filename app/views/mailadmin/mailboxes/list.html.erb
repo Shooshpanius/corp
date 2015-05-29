@@ -2,41 +2,48 @@
 <%= javascript_include_tag "main" %>
 <%= javascript_include_tag "mailadmin/mailboxes" %>
 
+<input id="first_letter" hidden="hidden">
 
 <div class="box">
 
   <div class="box-header">
-    <h3 class="box-title">Почтовые ящики (мэйлбоксы)</h3>
+    <h3 class="box-title">Почтовые ящики (мэйлбоксы) домена: &nbsp;&nbsp;&nbsp;
+
+      <%= select_tag "domain_changer", options_from_collection_for_select(@form_data[:domains], "id", "domain"),
+                     prompt: "Все домены"
+      %>
+
+    </h3>
   </div>
 
   <ul class="pagination pagination-my">
-    <li <%= params[:id]=='all' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/all'>&nbsp;&nbsp;&nbsp;Все&nbsp;&nbsp;&nbsp;</a></li>
-    <li <%= params[:id]=='А' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/a'>a</a></li>
-    <li <%= params[:id]=='Б' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/b'>b</a></li>
-    <li <%= params[:id]=='В' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/c'>c</a></li>
-    <li <%= params[:id]=='Г' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/d'>d</a></li>
-    <li <%= params[:id]=='Д' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/e'>e</a></li>
-    <li <%= params[:id]=='Е' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/f'>f</a></li>
-    <li <%= params[:id]=='Ё' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/g'>g</a></li>
-    <li <%= params[:id]=='Ж' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/h'>h</a></li>
-    <li <%= params[:id]=='З' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/i'>i</a></li>
-    <li <%= params[:id]=='И' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/j'>j</a></li>
-    <li <%= params[:id]=='Й' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/k'>k</a></li>
-    <li <%= params[:id]=='К' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/l'>l</a></li>
-    <li <%= params[:id]=='Л' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/m'>m</a></li>
-    <li <%= params[:id]=='М' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/n'>n</a></li>
-    <li <%= params[:id]=='Н' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/o'>o</a></li>
-    <li <%= params[:id]=='О' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/p'>p</a></li>
-    <li <%= params[:id]=='П' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/q'>q</a></li>
-    <li <%= params[:id]=='Р' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/r'>r</a></li>
-    <li <%= params[:id]=='С' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/s'>s</a></li>
-    <li <%= params[:id]=='Т' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/t'>t</a></li>
-    <li <%= params[:id]=='У' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/u'>u</a></li>
-    <li <%= params[:id]=='Ф' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/v'>v</a></li>
-    <li <%= params[:id]=='Х' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/w'>w</a></li>
-    <li <%= params[:id]=='Ц' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/x'>x</a></li>
-    <li <%= params[:id]=='Ч' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/y'>y</a></li>
-    <li <%= params[:id]=='Ш' ? 'class=active' :'' %> ><a href='/mailadmin/mailboxes/list/z'>z</a></li>
+    <li <%= params[:id]=='all' ? 'class=active' :'' %> ><a>&nbsp;&nbsp;&nbsp;Все&nbsp;&nbsp;&nbsp;</a></li>
+    <li <%= params[:id]=='a' ? 'class=active' :'' %> ><a onclick="change_letter('a')">a</a></li>
+    <li <%= params[:id]=='b' ? 'class=active' :'' %> ><a>b</a></li>
+    <li <%= params[:id]=='c' ? 'class=active' :'' %> ><a>c</a></li>
+    <li <%= params[:id]=='d' ? 'class=active' :'' %> ><a>d</a></li>
+    <li <%= params[:id]=='e' ? 'class=active' :'' %> ><a>e</a></li>
+    <li <%= params[:id]=='f' ? 'class=active' :'' %> ><a>f</a></li>
+    <li <%= params[:id]=='g' ? 'class=active' :'' %> ><a>g</a></li>
+    <li <%= params[:id]=='h' ? 'class=active' :'' %> ><a>h</a></li>
+    <li <%= params[:id]=='i' ? 'class=active' :'' %> ><a>i</a></li>
+    <li <%= params[:id]=='j' ? 'class=active' :'' %> ><a>j</a></li>
+    <li <%= params[:id]=='k' ? 'class=active' :'' %> ><a>k</a></li>
+    <li <%= params[:id]=='l' ? 'class=active' :'' %> ><a>l</a></li>
+    <li <%= params[:id]=='m' ? 'class=active' :'' %> ><a>m</a></li>
+    <li <%= params[:id]=='n' ? 'class=active' :'' %> ><a>n</a></li>
+    <li <%= params[:id]=='o' ? 'class=active' :'' %> ><a>o</a></li>
+    <li <%= params[:id]=='p' ? 'class=active' :'' %> ><a>p</a></li>
+    <li <%= params[:id]=='q' ? 'class=active' :'' %> ><a>q</a></li>
+    <li <%= params[:id]=='r' ? 'class=active' :'' %> ><a>r</a></li>
+    <li <%= params[:id]=='s' ? 'class=active' :'' %> ><a>s</a></li>
+    <li <%= params[:id]=='t' ? 'class=active' :'' %> ><a>t</a></li>
+    <li <%= params[:id]=='u' ? 'class=active' :'' %> ><a>u</a></li>
+    <li <%= params[:id]=='v' ? 'class=active' :'' %> ><a>v</a></li>
+    <li <%= params[:id]=='w' ? 'class=active' :'' %> ><a>w</a></li>
+    <li <%= params[:id]=='x' ? 'class=active' :'' %> ><a>x</a></li>
+    <li <%= params[:id]=='y' ? 'class=active' :'' %> ><a>y</a></li>
+    <li <%= params[:id]=='z' ? 'class=active' :'' %> ><a>z</a></li>
 
   </ul>
 

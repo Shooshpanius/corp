@@ -3,18 +3,19 @@ class Mailadmin::MailboxesController < ApplicationController
 
   def list
 
-    # if params[:id].to_s.length == 1
-    #   @form_data = {
-    #       mailboxes: MailUser.where('email like ?', params[:id].to_s+'%').order('email ASC'),
-    #   }
-    # elsif params[:id].to_s == 'all'
-    #   @form_data = {
-    #       mailboxes: MailUser.all.order('email ASC'),
-    #   }
-    # end
+    @form_data = {
+        mailboxes: MailUser.get_list(params[:id]),
+        domains: MailDomain.all()
+    }
+
+  end
+
+
+  def srv_get_users
 
     @form_data = {
-        mailboxes: MailUser.get_list(params[:id])
+        mailboxes: MailUser.get_list(params[:domain]),
+        domains: MailDomain.all()
     }
 
   end
