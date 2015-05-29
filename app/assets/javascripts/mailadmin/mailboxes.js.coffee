@@ -5,7 +5,7 @@
 
 @change_letter = (letter) ->
   $("#first_letter").val(letter)
-
+  get_users()
 
 @get_users = () ->
   $.ajax
@@ -17,10 +17,7 @@
       first_letter: $("#first_letter").val()
     }
     success: (msg) ->
-      if msg == '1'
-        $("#r_"+user_id).addClass('success')
-      else
-        $("#r_"+user_id).removeClass('success')
+
 
 
   false

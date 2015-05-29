@@ -4,11 +4,11 @@ class MailUser < ActiveRecord::Base
   has_many :mail_aliases, through: :mail_alias_by_users
   belongs_to :mail_domain
 
-  def MailUser.get_list(list)
+  def MailUser.get_list(domain_id, first_letter)
 
-    if list.to_s.length == 1
-      mailboxes = MailUser.where('email like ?', list.to_s+'%').order('email ASC')
-    elsif list.to_s == 'all' or list.to_s.length == 0
+    if first_letter.to_s.length == 1
+      mailboxes = MailUser.where('email like ?', first_letter.to_s+'%').order('email ASC')
+    elsif first_letter.to_s == 'all' or first_letter.to_s.length == 0
       mailboxes = MailUser.all.order('email ASC')
     end
 

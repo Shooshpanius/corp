@@ -4,7 +4,7 @@ class Mailadmin::MailboxesController < ApplicationController
   def list
 
     @form_data = {
-        mailboxes: MailUser.get_list(params[:id]),
+        # mailboxes: MailUser.get_list(params[:id]),
         domains: MailDomain.all()
     }
 
@@ -14,9 +14,14 @@ class Mailadmin::MailboxesController < ApplicationController
   def srv_get_users
 
     @form_data = {
-        mailboxes: MailUser.get_list(params[:domain]),
+        mailboxes: MailUser.get_list(
+            params[:domain_id],
+            params[:first_letter]
+        ),
         domains: MailDomain.all()
     }
+
+    render layout: false
 
   end
 

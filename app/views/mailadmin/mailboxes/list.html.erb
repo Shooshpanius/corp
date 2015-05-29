@@ -67,22 +67,10 @@
       </thead>
 
       <tbody>
-        <% @form_data[:mailboxes].each.with_index do |mailbox, index| %>
-          <tr id="r_<%= mailbox.id %>">
-            <td><%= mailbox.email%></td>
-            <td>
-              <% if mailbox.ext == true %>
-                Внешний
-              <% else %>
-                Внутренний
-              <% end %>
-            </td>
-            <td>---</td>
-            <td><%= mailbox.name %></td>
-            <td><%= mailbox.org %></td>
-            <td></td>
-          </tr>
-        <% end %>
+
+
+
+
       </tbody>
     </table>
 
