@@ -2,17 +2,14 @@ class Mailadmin::MailboxesController < ApplicationController
   before_filter :is_login
 
   def list
-
     @form_data = {
         # mailboxes: MailUser.get_list(params[:id]),
         domains: MailDomain.all
     }
-
   end
 
 
   def srv_get_users
-
     @form_data = {
         mailboxes: MailUser.get_list(
             params[:domain_id],
@@ -20,9 +17,21 @@ class Mailadmin::MailboxesController < ApplicationController
         ),
         domains: MailDomain.all
     }
-
     render layout: false
+  end
 
+  def srv_mailbox_check
+    is_mailbox = MailUser.is_mailbox(
+                    params[:domain_id],
+                    params[:mailbox]
+                )
+    render text: is_mailbox
+  end
+
+
+  def srv_mailbox_new_save
+
+    render nothing: true
   end
 
   private
