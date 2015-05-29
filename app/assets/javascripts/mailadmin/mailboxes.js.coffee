@@ -20,17 +20,48 @@
       $("#tbody_users").html(msg)
   false
 
+@get_user_fio = () ->
+  $.ajax
+    url: "/mailadmin/mailboxes/srv_get_user_fio"
+    type: "POST"
+    async: false
+    data: {
+      email: $("#mailbox").val() + "@" + $("#domain_user option:selected").text()
+    }
+    success: (msg) ->
+      $("#fio").val(msg)
+  false
+
+@get_user_org = () ->
+  $.ajax
+    url: "/mailadmin/mailboxes/srv_get_user_org"
+    type: "POST"
+    async: false
+    data: {
+      email: $("#mailbox").val() + "@" + $("#domain_user option:selected").text()
+    }
+    success: (msg) ->
+      $("#org").val(msg)
+  false
+
+
+
 @mailbox_new_save = () ->
+
+
   $("#mailbox_new").validate
+    onkeyup: false
     rules:
       mailbox:
         required: true,
         remote : {
           url: "/mailadmin/mailboxes/srv_mailbox_check",
+          async: false,
           type: "post",
           data: {
-            domain_id: $("#domain_user option:selected").val(),
-            mailbox: $("#mailbox").val()
+            mailbox: $("#mailbox").val(),
+            domain_id: $("#domain_user option:selected").val()
+
           }
         }
 
@@ -77,3 +108,6 @@ $(document).ready ($) ->
     get_users()
 
 
+#  $('#mailbox').change ->
+#    get_user_fio()
+#    get_user_org()

@@ -58,6 +58,22 @@ class Mailadmin::MailboxesController < ApplicationController
   end
 
 
+  def srv_get_user_fio
+    get_fio = AddressBookCorp.where("email = ?", params[:email])
+    if get_fio.size != 0
+      fio = get_fio.first.fio
+    end
+    render text: fio
+  end
+
+  def srv_get_user_org
+    get_org = AddressBookCorp.where("email = ?", params[:email])
+    if get_org.size != 0
+      org = get_org.first.organisation
+    end
+    render text: org
+  end
+
 
   private
   def is_login
