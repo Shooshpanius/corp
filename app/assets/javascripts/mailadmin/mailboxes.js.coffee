@@ -47,10 +47,7 @@
 
 
 @mailbox_new_save = () ->
-
-
   $("#mailbox_new").validate
-    onkeyup: false
     rules:
       mailbox:
         required: true,
@@ -59,17 +56,16 @@
           async: false,
           type: "post",
           data: {
-            mailbox: $("#mailbox").val(),
-            domain_id: $("#domain_user option:selected").val()
-
+            mailbox: ->
+              $("#mailbox").val()
+            domain_id: ->
+              $("#domain_user option:selected").val()
           }
         }
-
     errorClass: "input_error"
     errorElement: "em"
     messages:
       mailbox: ""
-
     submitHandler: (form) ->
       queryString = $("#mailbox_new").serialize()
       $.ajax
