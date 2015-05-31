@@ -1,6 +1,6 @@
 <% @form_data[:my_book].each do |list| %>
     <tr id="r_<%= list.id %>">
-      <td><%= list.organisation%></td>
+      <td><%= list.organisation%><i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_show(<%= list.id %>)"></i></td>
       <td><%= list.department%></td>
       <td><%= list.position%></td>
       <td><%= list.fio%></td>
@@ -10,26 +10,32 @@
       <% if list.email_1 != '' %>
           <a type="button" class="btn btn-info btn-sm" href="mailto:<%=list.email_1%>"><i class="fa fa-envelope"></i></a>
       <% else %>
-          <a type="button" class="btn btn-info btn-sm disabled"><i class="fa fa-envelope"></i></a>
+
       <% end %>
 
       <% if list.email_2 != '' %>
           <a type="button" class="btn btn-info btn-sm" href="mailto:<%=list.email_2%>"><i class="fa fa-envelope"></i></a>
       <% else %>
-          <a type="button" class="btn btn-info btn-sm disabled"><i class="fa fa-envelope"></i></a>
+
       <% end %>
 
       <% if list.phone_1 != '' %>
           <a type="button" class="btn btn-success btn-sm" onclick="call(<%= list.phone_1 %>)"><i class="fa fa-phone"></i></a>
       <% else %>
-          <a type="button" class="btn btn-success btn-sm disabled"><i class="fa fa-phone"></i></a>
+
       <% end %>
 
       <% if list.phone_2 != '' %>
           <a type="button" class="btn btn-success btn-sm" onclick="call(<%= list.phone_2 %>)"><i class="fa fa-phone"></i></a>
       <% else %>
-          <a type="button" class="btn btn-success btn-sm disabled"><i class="fa fa-phone"></i></a>
+
       <% end %>
+
+
+        <% if list.User_id == session[:user_id] %>
+            <a type="button" class="btn btn-warning btn-sm" onclick="edit_book(<%= list.id %>)"><i class="fa fa-edit"></i></a>
+        <% end %>
+
 
       </td>
     </tr>

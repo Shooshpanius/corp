@@ -10,7 +10,7 @@ class MyBookController < ApplicationController
         my_book: MyBook.get_list(
             params[:first_letter],
             session[:user_id]
-        ),
+        )
     }
     render layout: false
   end
