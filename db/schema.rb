@@ -178,7 +178,7 @@ ActiveRecord::Schema.define(version: 20150531153448) do
     t.string   "position",     limit: 255
     t.string   "department",   limit: 255
     t.string   "organisation", limit: 255
-    t.string   "address",      limit: 255
+    t.text     "address",      limit: 65535
     t.string   "email_1",      limit: 255
     t.string   "email_2",      limit: 255
     t.string   "phone_1",      limit: 255
@@ -188,8 +188,9 @@ ActiveRecord::Schema.define(version: 20150531153448) do
     t.integer  "cnt_phones",   limit: 4
     t.integer  "cnt_email",    limit: 4
     t.boolean  "shared",       limit: 1
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.text     "comment",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|

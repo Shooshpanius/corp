@@ -6,7 +6,7 @@ class CreateMyBooks < ActiveRecord::Migration
       t.string   "position"
       t.string   "department"
       t.string   "organisation"
-      t.string   "address"
+      t.text   "address"
       t.string   "email_1"
       t.string   "email_2"
       t.string   "phone_1"
@@ -16,6 +16,7 @@ class CreateMyBooks < ActiveRecord::Migration
       t.integer  "cnt_phones"
       t.integer  "cnt_email"
       t.boolean  "shared"
+      t.text   "comment"
 
       t.timestamps null: false
     end
