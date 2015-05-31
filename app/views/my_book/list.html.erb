@@ -1,2 +1,87 @@
-<h1>MyBook#list</h1>
-<p>Find me in app/views/my_book/list.html.erb</p>
+
+<%= javascript_include_tag "main" %>
+<%= javascript_include_tag "my_book" %>
+
+
+
+<% if !session[:is_login] %>
+    <div class="alert alert-danger" role="alert">
+      <a href="/login" class="alert-link">Для вызова адресатов из адресной книги, введите логин и пароль</a>
+    </div>
+<%  end %>
+
+<div class="box">
+
+  <div class="box-header">
+    <h3 class="box-title">Адресная книга общая</h3>
+    <button type="button"  class="btn btn-success pull-right" data-toggle="modal" data-target="#addMyBookModal"><i class="fa fa-plus"></i></button>
+  </div>
+
+  <ul class="pagination pagination-my">
+    <li <%= params[:id]=='all' ? 'class=active' :'' %> ><a onclick="change_letter('all')" style="cursor: pointer">&nbsp;&nbsp;&nbsp;Все&nbsp;&nbsp;&nbsp;</a></li>
+    <li <%= params[:id]=='А' ? 'class=active' :'' %> ><a onclick="change_letter('А')" style="cursor: pointer">А</a></li>
+    <li <%= params[:id]=='Б' ? 'class=active' :'' %> ><a onclick="change_letter('Б')" style="cursor: pointer">Б</a></li>
+    <li <%= params[:id]=='В' ? 'class=active' :'' %> ><a onclick="change_letter('В')" style="cursor: pointer">В</a></li>
+    <li <%= params[:id]=='Г' ? 'class=active' :'' %> ><a onclick="change_letter('Г')" style="cursor: pointer">Г</a></li>
+    <li <%= params[:id]=='Д' ? 'class=active' :'' %> ><a onclick="change_letter('Д')" style="cursor: pointer">Д</a></li>
+    <li <%= params[:id]=='Е' ? 'class=active' :'' %> ><a onclick="change_letter('Е')" style="cursor: pointer">Е</a></li>
+    <li <%= params[:id]=='Ё' ? 'class=active' :'' %> ><a onclick="change_letter('Ё')" style="cursor: pointer">Ё</a></li>
+    <li <%= params[:id]=='Ж' ? 'class=active' :'' %> ><a onclick="change_letter('Ж')" style="cursor: pointer">Ж</a></li>
+    <li <%= params[:id]=='З' ? 'class=active' :'' %> ><a onclick="change_letter('З')" style="cursor: pointer">З</a></li>
+    <li <%= params[:id]=='И' ? 'class=active' :'' %> ><a onclick="change_letter('И')" style="cursor: pointer">И</a></li>
+    <li <%= params[:id]=='Й' ? 'class=active' :'' %> ><a onclick="change_letter('Й')" style="cursor: pointer">Й</a></li>
+    <li <%= params[:id]=='К' ? 'class=active' :'' %> ><a onclick="change_letter('К')" style="cursor: pointer">К</a></li>
+    <li <%= params[:id]=='Л' ? 'class=active' :'' %> ><a onclick="change_letter('Л')" style="cursor: pointer">Л</a></li>
+    <li <%= params[:id]=='М' ? 'class=active' :'' %> ><a onclick="change_letter('М')" style="cursor: pointer">М</a></li>
+    <li <%= params[:id]=='Н' ? 'class=active' :'' %> ><a onclick="change_letter('Н')" style="cursor: pointer">Н</a></li>
+    <li <%= params[:id]=='О' ? 'class=active' :'' %> ><a onclick="change_letter('О')" style="cursor: pointer">О</a></li>
+    <li <%= params[:id]=='П' ? 'class=active' :'' %> ><a onclick="change_letter('П')" style="cursor: pointer">П</a></li>
+    <li <%= params[:id]=='Р' ? 'class=active' :'' %> ><a onclick="change_letter('Р')" style="cursor: pointer">Р</a></li>
+    <li <%= params[:id]=='С' ? 'class=active' :'' %> ><a onclick="change_letter('С')" style="cursor: pointer">С</a></li>
+    <li <%= params[:id]=='Т' ? 'class=active' :'' %> ><a onclick="change_letter('Т')" style="cursor: pointer">Т</a></li>
+    <li <%= params[:id]=='У' ? 'class=active' :'' %> ><a onclick="change_letter('У')" style="cursor: pointer">У</a></li>
+    <li <%= params[:id]=='Ф' ? 'class=active' :'' %> ><a onclick="change_letter('Ф')" style="cursor: pointer">Ф</a></li>
+    <li <%= params[:id]=='Х' ? 'class=active' :'' %> ><a onclick="change_letter('Х')" style="cursor: pointer">Х</a></li>
+    <li <%= params[:id]=='Ц' ? 'class=active' :'' %> ><a onclick="change_letter('Ц')" style="cursor: pointer">Ц</a></li>
+    <li <%= params[:id]=='Ч' ? 'class=active' :'' %> ><a onclick="change_letter('Ч')" style="cursor: pointer">Ч</a></li>
+    <li <%= params[:id]=='Ш' ? 'class=active' :'' %> ><a onclick="change_letter('Ш')" style="cursor: pointer">Ш</a></li>
+    <li <%= params[:id]=='Щ' ? 'class=active' :'' %> ><a onclick="change_letter('Щ')" style="cursor: pointer">Щ</a></li>
+    <li <%= params[:id]=='Ы' ? 'class=active' :'' %> ><a onclick="change_letter('Ы')" style="cursor: pointer">Ы</a></li>
+    <li <%= params[:id]=='Э' ? 'class=active' :'' %> ><a onclick="change_letter('Э')" style="cursor: pointer">Э</a></li>
+    <li <%= params[:id]=='Ю' ? 'class=active' :'' %> ><a onclick="change_letter('Ю')" style="cursor: pointer">Ю</a></li>
+    <li <%= params[:id]=='Я' ? 'class=active' :'' %> ><a onclick="change_letter('Я')" style="cursor: pointer">Я</a></li>
+
+  </ul>
+
+
+
+  <div class="box-body">
+
+    <table class="table table-bordered table-condensed tablesorter" id="tbl_adresses">
+      <thead>
+
+      <tr>
+        <th data-placeholder="" class="filter-match col-md-2">Организация</th>
+        <th data-placeholder="" class="filter-match col-md-2">Отдел</th>
+        <th data-placeholder="" class="filter-match col-md-2">Должность</th>
+        <th data-placeholder="" class="filter-match col-md-3">ФИО</th>
+
+        <th data-placeholder="" class="filter-match col-md-1"></th>
+
+      </tr>
+
+      </thead>
+      <tbody>
+
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+
+<div class="modal fade" id="infoShowModal">
+</div><!-- /.modal -->
