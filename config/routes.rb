@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
 
 
+  get 'my_book/list'
+
   get 'direction_load/index'
 
   namespace :cron do

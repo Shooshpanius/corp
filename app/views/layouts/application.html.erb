@@ -80,7 +80,11 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/address_book/list/all" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Сотрудники</a></li>
-            <li><a href="/contragent_book/list" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Контрагенты</a></li>
+
+            <% if session[:is_login] %>
+                <li><a href="/my_book/list" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Общая</a></li>
+                <li><a href="/contragent_book/list" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Контрагенты</a></li>
+            <% end %>
           </ul>
         </li>
 
