@@ -1,6 +1,7 @@
 class CreateMyBooks < ActiveRecord::Migration
   def change
     create_table :my_books do |t|
+      t.belongs_to :User
       t.string   "fio"
       t.string   "position"
       t.string   "department"
@@ -14,7 +15,6 @@ class CreateMyBooks < ActiveRecord::Migration
       t.string   "phone_2_add"
       t.integer  "cnt_phones"
       t.integer  "cnt_email"
-      t.belongs_to :User
       t.boolean  "shared"
 
       t.timestamps null: false
