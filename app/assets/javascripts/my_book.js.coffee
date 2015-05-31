@@ -2,7 +2,26 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+@call = (phone) ->
+  alert("Вызов абонентов временно недоступен: "+phone)
 
+
+@change_letter = (letter) ->
+  $("#first_letter").val(letter)
+  get_my_book()
+
+
+@get_my_book = () ->
+  $.ajax
+    url: "/my_book/srv_get_my_book"
+    type: "POST"
+    async: false
+    data: {
+      first_letter: $("#first_letter").val()
+    }
+    success: (msg) ->
+      $("#tbody_my_book").html(msg)
+  false
 
 @my_book_new_save = () ->
   $("#my_book_new").validate
@@ -40,3 +59,10 @@
           $("#my_book_new").modal 'hide'
           location.reload()
       false
+
+
+
+$(document).ready ($) ->
+
+  get_my_book()
+

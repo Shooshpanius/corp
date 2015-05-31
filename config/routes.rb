@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
 
 
-  get 'my_book/list'
 
   get 'direction_load/index'
 
@@ -31,6 +30,7 @@ Rails.application.routes.draw do
   resources :login, :path => 'login/(:action)(.:format)'
   resources :address_book, :path => 'address_book/(:action)(.:format)'
   resources :contragent_book, :path => 'contragent_book/(:action)(.:format)'
+  resources :my_book, :path => 'my_book/(:action)(.:format)'
 
 
   namespace :cron do
