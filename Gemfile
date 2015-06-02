@@ -77,3 +77,4 @@ gem 'chart-js-rails'
 #gem 'chartjs-ror'
 #gem 'ruby-net-ldap'
 
+gem 'web-console'
