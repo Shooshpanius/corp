@@ -5,6 +5,10 @@
 
 <label for="first_letter" hidden="hidden"></label><input id="first_letter" hidden="hidden">
 
+<div class="alert alert-danger" role="alert">
+  В РАЗРАБОТКЕ! ЧАСТЬ ФУНКЦИОНАЛА МОЖЕТ НЕ РАБОТАТЬ! При обнаружении неисправности, обратитесь, пожалуйста в ИТ отдел.
+</div>
+
 <% if !session[:is_login] %>
     <div class="alert alert-danger" role="alert">
       <a href="/login" class="alert-link">Для вызова адресатов из адресной книги, введите логин и пароль</a>
