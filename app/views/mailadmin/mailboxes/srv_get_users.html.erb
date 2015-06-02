@@ -1,5 +1,5 @@
 <% @form_data[:mailboxes].each do |mailbox| %>
-    <tr id="r_<%= mailbox.id %>">
+    <tr id="r_<%= mailbox.id %>" style="background-color: <%= MailDomain.find(mailbox.mail_domain_id).color %>">
       <td><%= mailbox.email%></td>
       <td>
         <% if mailbox.ext %>

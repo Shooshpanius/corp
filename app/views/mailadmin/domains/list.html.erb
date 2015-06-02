@@ -32,7 +32,7 @@
       <tbody>
       <% @form_data[:domains].each do |domain| %>
 
-          <tr>
+          <tr style="background-color: <%= domain.color %>">
             <td><%= domain.id %></td>
             <td><%= domain.domain %></td>
             <td>
