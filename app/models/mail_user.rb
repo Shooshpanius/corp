@@ -6,11 +6,22 @@ class MailUser < ActiveRecord::Base
 
   def MailUser.get_list(domain_id, first_letter)
 
-    if first_letter.to_s.length == 1
-      mailboxes = MailUser.where('email like ?', first_letter.to_s+'%').order('email ASC')
-    elsif first_letter.to_s == 'all' or first_letter.to_s.length == 0
-      mailboxes = MailUser.all.order('email ASC')
+    if domain_id == ''
+      if first_letter.to_s.length == 1
+        mailboxes = MailUser.where('email like ?', first_letter.to_s+'%').order('email ASC')
+      elsif first_letter.to_s == 'all' or first_letter.to_s.length == 0
+        mailboxes = MailUser.all.order('email ASC')
+      end
+    else
+      if first_letter.to_s.length == 1
+        mailboxes = MailUser.where('email like ? AND mail_domain_id = ?', first_letter.to_s+'%', domain_id).order('email ASC')
+      elsif first_letter.to_s == 'all' or first_letter.to_s.length == 0
+        mailboxes = MailUser.where('mail_domain_id = ?', domain_id).order('email ASC')
+      end
+
     end
+
+
 
     mailboxes.each do |mailbox|
       sotr = AddressBookCorp.where('email = ?', mailbox.email).first

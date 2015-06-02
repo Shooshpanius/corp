@@ -61,8 +61,8 @@ gem 'sass-rails', '>= 3.2'
 
 
 gem 'net-ssh', '~>2.7.0'
-gem 'capistrano', '~> 2.15', require: false
-# gem 'rvm-capistrano'
+gem 'capistrano', '~> 2.15'
+#gem 'rvm-capistrano'
 gem 'jquery-validation-rails'
 gem 'net-ldap-1'
 gem 'jquery-ui-rails'
