@@ -9,9 +9,11 @@
         <form class="form-horizontal" role="form" id="my_book_edit" name="my_book_edit">
           <fieldset>
 
-            <input type="text" class="form-control" id="my_book_id" name="my_book_id" hidden="hidden"
-                   value="<%= @form_data[:my_book].my_book_id %>"
-            >
+            <div class="col-sm-7" hidden="hidden">
+                <input type="text" class="form-control" id="my_book_id" name="my_book_id"
+                       value="<%= @form_data[:my_book].id %>"
+                >
+            </div>
 
             <div class="form-group">
               <label for="org" class="col-sm-3 control-label">Организация</label>
