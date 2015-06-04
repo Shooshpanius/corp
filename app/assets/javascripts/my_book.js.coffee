@@ -30,10 +30,8 @@
         required: true
       phone_1:
         required: false,
-        rangelength: [10, 10]
       phone_2:
         required: false,
-        rangelength: [10, 10]
       email_1:
         required: false,
         email: true
@@ -71,10 +69,8 @@
         required: true
       phone_1:
         required: false,
-        rangelength: [10, 10]
       phone_2:
         required: false,
-        rangelength: [10, 10]
       email_1:
         required: false,
         email: true
