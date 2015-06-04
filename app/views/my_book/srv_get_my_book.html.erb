@@ -33,7 +33,7 @@
 
 
         <% if list.User_id == session[:user_id] %>
-            <a type="button" class="btn btn-warning btn-sm" onclick="edit_book(<%= list.id %>)"><i class="fa fa-edit"></i></a>
+            <a type="button" class="btn btn-warning btn-sm" onclick="my_book_edit_show(<%= list.id %>)"><i class="fa fa-edit"></i></a>
         <% end %>
 
 

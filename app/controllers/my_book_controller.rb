@@ -5,6 +5,14 @@ class MyBookController < ApplicationController
   end
 
 
+  def srv_my_book_edit_show
+    @form_data = {
+
+    }
+    render layout: false
+  end
+
+
   def srv_get_my_book
     @form_data = {
         my_book: MyBook.get_list(

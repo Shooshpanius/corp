@@ -1,0 +1,108 @@
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Редактировать контакт</h4>
+      </div>
+      <div class="modal-body">
+
+        <form class="form-horizontal" role="form" id="my_book_edit" name="my_book_edit">
+          <fieldset>
+
+            <div class="form-group">
+              <label for="org" class="col-sm-3 control-label">Организация</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="org" name="org" placeholder="Организация">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="dep" class="col-sm-3 control-label">Отдел</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="dep" name="dep" placeholder="Отдел">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pos" class="col-sm-3 control-label">Должность</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="pos" name="pos" placeholder="Должность">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fio" class="col-sm-3 control-label">ФИО</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="fio" name="fio" placeholder="ФИО">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone_1" class="col-sm-3 control-label">Телефон осн.</label>
+              <div class="col-sm-7 input-group ">
+                <span class="input-group-addon" >+7</span>
+                <input type="text" class="form-control" id="phone_1" name="phone_1" placeholder="Телефон осн.">
+                <span class="input-group-addon" >#</span>
+                <input type="text" class="form-control" id="phone_1_add" name="phone_1_add" placeholder="доб. код">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone_2" class="col-sm-3 control-label">Телефон доп.</label>
+              <div class="col-sm-7 input-group ">
+                <span class="input-group-addon" >+7</span>
+                <input type="text" class="form-control" id="phone_2" name="phone_2" placeholder="Телефон доп.">
+                <span class="input-group-addon" >#</span>
+                <input type="text" class="form-control" id="phone_2_add" name="phone_2_add" placeholder="доб. код">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email_1" class="col-sm-3 control-label">E-mail осн.</label>
+              <div class="col-sm-7 input-group ">
+                <span class="input-group-addon" >@</span>
+                <input type="text" class="form-control" id="email_1" name="email_1" placeholder="E-mail осн.">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email_2" class="col-sm-3 control-label">Телефон доп.</label>
+              <div class="col-sm-7 input-group ">
+                <span class="input-group-addon" >@</span>
+                <input type="text" class="form-control" id="email_2" name="email_2" placeholder="Телефон доп.">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address" class="col-sm-3 control-label">Адрес</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Адрес">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="comment" class="col-sm-3 control-label">Комментарий</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="comment" name="comment" placeholder="Комментарий">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="shared" class="col-sm-3 control-label">Виден всем</label>
+              <div class="col-sm-1">
+                <input type="checkbox" class="form-control" id="shared" name="shared">
+              </div>
+            </div>
+
+          </fieldset>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" onclick="my_book_new_save()">Сохранить</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+

@@ -62,6 +62,19 @@
 
 
 
+@my_book_edit_show = (my_book_id) ->
+  $.ajax
+    url: '/my_book/srv_my_book_edit_show'
+    type: 'POST'
+    data: {my_book_id: my_book_id}
+    async: false
+    success: (msg) ->
+      $("#editMyBookModal").html msg
+    false
+  $('#editMyBookModal').modal()
+
+
+
 $(document).ready ($) ->
 
   get_my_book()
