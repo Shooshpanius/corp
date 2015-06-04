@@ -7,7 +7,7 @@ class MyBookController < ApplicationController
 
   def srv_my_book_edit_show
     @form_data = {
-        my_book: MyBook.where('id = ? AND User_id = ?', params[:my_book_id], session[:user_id])
+        my_book: MyBook.where('id = ? AND User_id = ?', params[:my_book_id], session[:user_id]).first
     }
     render layout: false
   end
