@@ -110,7 +110,10 @@
     async: false
     success: (msg) ->
       $("#editMyBookModal").html msg
+      $('#e_phone_1').mask '(999) 999-99-99'
+      $('#e_phone_2').mask '(999) 999-99-99'
     false
+
   $('#editMyBookModal').modal()
 
 
@@ -118,4 +121,5 @@
 $(document).ready ($) ->
 
   get_my_book()
-
+  $('#phone_1').mask '(999) 999-99-99'
+  $('#phone_2').mask '(999) 999-99-99'

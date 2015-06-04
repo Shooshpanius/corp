@@ -74,6 +74,10 @@ gem 'adminlte'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'chart-js-rails'
 
+
+gem 'maskedinput-rails'
+
+
 #gem 'chartjs-ror'
 #gem 'ruby-net-ldap'
 
