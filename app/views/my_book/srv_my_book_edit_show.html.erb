@@ -9,6 +9,10 @@
         <form class="form-horizontal" role="form" id="my_book_edit" name="my_book_edit">
           <fieldset>
 
+            <input type="text" class="form-control" id="my_book_id" name="my_book_id" hidden="hidden"
+                   value="<%= @form_data[:my_book].my_book_id %>"
+            >
+
             <div class="form-group">
               <label for="org" class="col-sm-3 control-label">Организация</label>
               <div class="col-sm-7">
@@ -122,7 +126,7 @@
 
           </fieldset>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" onclick="my_book_new_save()">Сохранить</button>
+            <button type="submit" class="btn btn-success" onclick="my_book_edit_save()">Сохранить</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
           </div>
         </form>

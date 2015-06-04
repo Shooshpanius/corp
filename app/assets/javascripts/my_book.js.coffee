@@ -51,7 +51,7 @@
     submitHandler: (form) ->
       queryString = $("#my_book_new").serialize()
       $.ajax
-        url: "/my_book/srv_my_book_new_new_save"
+        url: "/my_book/srv_my_book_new_save"
         type: "POST"
         async: false
         data: queryString
@@ -60,6 +60,46 @@
           location.reload()
       false
 
+
+
+@my_book_edit_save = () ->
+  $("#my_book_edit").validate
+    rules:
+      my_book_id:
+        required: true
+      org:
+        required: true
+      phone_1:
+        required: false,
+        rangelength: [10, 10]
+      phone_2:
+        required: false,
+        rangelength: [10, 10]
+      email_1:
+        required: false,
+        email: true
+      email_2:
+        required: false,
+        email: true
+    errorClass: "input_error"
+    errorElement: "em"
+    messages:
+      org: ""
+      phone_1: ""
+      phone_2: ""
+      email_1: ""
+      email_2: ""
+    submitHandler: (form) ->
+      queryString = $("#my_book_edit").serialize()
+      $.ajax
+        url: "/my_book/srv_my_book_edit_save"
+        type: "POST"
+        async: false
+        data: queryString
+        success: (msg) ->
+          $("#my_book_edit").modal 'hide'
+          location.reload()
+      false
 
 
 @my_book_edit_show = (my_book_id) ->

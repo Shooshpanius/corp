@@ -23,14 +23,13 @@ class MyBookController < ApplicationController
     render layout: false
   end
 
-  def srv_my_book_new_new_save
 
+  def srv_my_book_new_save
     if params[:shared].present?
       shared = 1
     else
       shared = 0
     end
-
     MyBook.create(
         User_id: session[:user_id],
         fio: params[:fio],
@@ -49,9 +48,44 @@ class MyBookController < ApplicationController
         shared: shared,
         comment: params[:comment]
     )
+    render nothing: true
+  end
+
+
+  def srv_my_book_edit_save
+    if params[:shared].present?
+      shared = 1
+    else
+      shared = 0
+    end
+
+    if MyBook.find(params[:my_book_id]).User_id == session[:user_id]
+
+      MyBook.update(
+          params[:my_book_id],
+          User_id: session[:user_id],
+          fio: params[:fio],
+          position: params[:pos],
+          department: params[:dep],
+          organisation: params[:org],
+          address: params[:address],
+          email_1: params[:email_1],
+          email_2: params[:email_2],
+          phone_1: params[:phone_1],
+          phone_2: params[:phone_2],
+          phone_1_add: params[:phone_1_add],
+          phone_2_add: params[:phone_2_add],
+          cnt_phones: 0,
+          cnt_email: 0,
+          shared: shared,
+          comment: params[:comment]
+      )
+
+    end
 
     render nothing: true
-
   end
+
+
 
 end
