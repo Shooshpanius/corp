@@ -13,7 +13,8 @@ class Mailadmin::AliasesController < ApplicationController
 
   def edit
     al = MailAlias.find(params[:id])
-    mail_users = MailUser.where('mail_domain_id = ?', params[:id]).order('email asc')
+    domain = MailDomain.where('domain = ?', al.alias.split("@").last).first
+    mail_users = MailUser.where('mail_domain_id = ?', domain.id).order('email asc')
     in_alias = MailAliasByUser.where('mail_alias_id = ?', params[:id])
 
     @form_data = {
