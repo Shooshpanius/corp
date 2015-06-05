@@ -2,8 +2,21 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-@call = (phone) ->
-  alert("Вызов абонентов временно недоступен: "+phone)
+#@call = (phone) ->
+#  alert("Вызов абонентов временно недоступен: "+phone)
+
+
+@call = (number) ->
+  $.ajax
+    url: '/address_book/srv_call'
+    type: 'POST'
+    async: false
+    data: {number:number}
+  #    success: () ->
+  #      location.replace '/distribution_file'
+
+  false
+
 
 
 @change_letter = (letter) ->
