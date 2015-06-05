@@ -11,7 +11,7 @@
     url: '/address_book/srv_call'
     type: 'POST'
     async: false
-    data: {number:number}
+    data: {number: '8'+number.to_s}
   #    success: () ->
   #      location.replace '/distribution_file'
 
