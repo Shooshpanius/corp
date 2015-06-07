@@ -109,7 +109,7 @@
             <div class="form-group">
               <label for="relay" class="col-sm-3 control-label">Релей</label>
               <div class="col-sm-6">
-                <%= select_tag 'relay', options_from_collection_for_select(@form_data[:relays], 'id', 'host'),
+                <%= select_tag 'relay', options_from_collection_for_select(@form_data[:relays], 'id', 'comment'),
                                prompt: '----'%>
               </div>
             </div>
