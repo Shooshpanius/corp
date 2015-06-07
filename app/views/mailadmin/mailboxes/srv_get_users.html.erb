@@ -2,11 +2,7 @@
     <tr id="r_<%= mailbox.id %>" style="background-color: <%= MailDomain.find(mailbox.mail_domain_id).color %>">
       <td><%= mailbox.email%></td>
       <td>
-        <% if mailbox.ext %>
-            Внешний
-        <% else %>
-            Внутренний
-        <% end %>
+        <%= mailbox.relay_front %>
       </td>
       <td id="pw_<%= mailbox.id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= mailbox.id %>)"></i></td>
       <td><%= mailbox.name %></td>

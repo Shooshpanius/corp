@@ -105,12 +105,15 @@
               </div>
             </div>
 
+
             <div class="form-group">
-              <label for="external" class="col-sm-3 control-label">Тип (внешний)</label>
-              <div class="col-sm-1">
-                <input type="checkbox" class="form-control" id="external" name="external">
+              <label for="relay" class="col-sm-3 control-label">Релей</label>
+              <div class="col-sm-6">
+                <%= select_tag 'relay', options_from_collection_for_select(@form_data[:relays], 'id', 'host'),
+                               prompt: '----'%>
               </div>
             </div>
+
 
             <div class="form-group">
               <label for="fio" class="col-sm-3 control-label">ФИО</label>
