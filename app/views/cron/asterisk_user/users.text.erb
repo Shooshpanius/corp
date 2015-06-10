@@ -9,7 +9,9 @@
 %>
 [<%= number.number %>]  ;<%= destination.fio %>
 type=friend
-<% if number.number[0] == '1'%>
+<% if number.number == '1002'%>
+context=internal-vlk-unlimited
+<% elsif number.number[0] == '1'%>
 context=internal-vlk
 <% elsif number.number[0] == '3'%>
 context=internal-vlk
