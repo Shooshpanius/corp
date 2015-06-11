@@ -77,6 +77,8 @@ class Mailadmin::MailboxesController < ApplicationController
         session[:user_id] = user[0].id
         session[:user_login] = user[0].login
         session[:is_admin] = true if user[0].site_admin
+      else
+        redirect_to '/'
       end
     end
   end
