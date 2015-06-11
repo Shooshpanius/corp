@@ -31,13 +31,9 @@
       <tbody>
       <% @form_data[:ia].each.with_index do |ia, index| %>
           <tr id="r_<%= ia.id %>">
-
             <td><%= ia.id %></td>
             <td><%= ia.number %></td>
-            <td>
-
-
-            </td>
+            <td><%= CorpNumber.find_by_number(ia.number).address_book_corp.fio %></td>
           </tr>
       <% end %>
       </tbody>
