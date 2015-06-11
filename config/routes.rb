@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-
-
   get 'direction_load/index'
 
   namespace :cron do
@@ -25,7 +23,9 @@ Rails.application.routes.draw do
   get 'main/index'
   root 'main#index'
 
-
+  namespace :pbxadmin do
+    resources :international_access, path: 'international_access/(:action)(:id)(.:format)'
+  end
 
   resources :login, :path => 'login/(:action)(.:format)'
   resources :address_book, :path => 'address_book/(:action)(.:format)'

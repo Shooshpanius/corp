@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607175936) do
+ActiveRecord::Schema.define(version: 20150611072221) do
 
   create_table "address_book_corps", force: :cascade do |t|
     t.string   "login",        limit: 255
@@ -192,6 +192,12 @@ ActiveRecord::Schema.define(version: 20150607175936) do
     t.text     "comment",      limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "pbx_international_accesses", force: :cascade do |t|
+    t.integer  "number",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "sip_contexts", force: :cascade do |t|
