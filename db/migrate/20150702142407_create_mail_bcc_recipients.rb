@@ -4,6 +4,7 @@ class CreateMailBccRecipients < ActiveRecord::Migration
       t.belongs_to :mail_user
       t.string :recipient, null: false
       t.string :copy, null: false
+      t.string :srv, null: false
       t.string :comment, null: false
       t.timestamps null: false
     end
