@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704045014) do
+ActiveRecord::Schema.define(version: 20150702142407) do
 
   create_table "address_book_corps", force: :cascade do |t|
     t.string   "login",        limit: 255
@@ -152,26 +152,12 @@ ActiveRecord::Schema.define(version: 20150704045014) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "mail_forward_by_users", force: :cascade do |t|
-    t.integer  "mail_forwards_id", limit: 4
-    t.string   "mail_user_str",    limit: 255, null: false
-    t.string   "mail_alias_str",   limit: 255, null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
   create_table "mail_forwardings", force: :cascade do |t|
     t.integer  "address_book_corp_id", limit: 4
     t.string   "source",               limit: 255,   null: false
     t.text     "destination",          limit: 65535, null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-  end
-
-  create_table "mail_forwards", force: :cascade do |t|
-    t.string   "email_to",   limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
   end
 
   create_table "mail_relays", force: :cascade do |t|
