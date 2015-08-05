@@ -126,6 +126,18 @@
   $('#editMyBookModal').modal()
 
 
+@info_show = (my_book_id) ->
+  $.ajax
+    url: '/my_book/srv_info_show'
+    type: 'POST'
+    async: false
+    data: {my_book_id:my_book_id}
+    success: (msg) ->
+      $("#infoShowModal").html msg
+    false
+  $('#infoShowModal').modal()
+
+
 
 $(document).ready ($) ->
 

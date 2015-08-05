@@ -88,6 +88,20 @@ class MyBookController < ApplicationController
 
 
 
+  def srv_info_show
+
+    my_book =  MyBook.find(params[:my_book_id])
+
+    @form_data = {
+        my_book: my_book
+    }
+
+    render layout: false
+
+  end
+
+
+
   def srv_call
 
     address_book_corp_id = AddressBookCorp.where('login = ?', session[:user_login])[0]
