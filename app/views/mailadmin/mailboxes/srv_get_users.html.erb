@@ -10,17 +10,18 @@
       <td>
 
 
-        <button type="button" class="btn btn-success btn-sm disabled" ><i class="fa fa-battery-2"></i></button>
-
-
-        <%
-
-           if mailbox.active == true
-            end
 
 
 
-        %>
+        <% if mailbox.active == true %>
+            <button type="button" class="btn btn-success btn-xs" style="width: 30px" >ON</button>
+        <% else %>
+            <button type="button" class="btn btn-danger btn-xs" style="width: 30px" >OFF</button>
+        <% end %>
+
+
+
+
 
 
       </td>
