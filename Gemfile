@@ -53,12 +53,14 @@ group :development, :test do
 end
 
 gem 'unicorn_service'
-# gem 'sprockets'
-# gem 'bootstrap-sass'
+
+
 #gem 'bootstrap-sass', '~> 3.3.1'
+
+#gem 'sprockets'
+#gem 'bootstrap-sass'
 gem 'sass-rails', '>= 3.2'
 # gem 'autoprefixer-rails' '~> 4.0'
-
 
 gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15',require:  false
@@ -70,7 +72,7 @@ gem 'jquery-tablesorter'
 gem 'responders'
 #gem "mediaelement_rails"
 
-gem 'adminlte'
+gem 'adminlte', '~> 1.3.0.1'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'chart-js-rails'
 

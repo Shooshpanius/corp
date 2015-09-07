@@ -21,7 +21,6 @@
 //= require jquery-tablesorter/addons/pager/jquery.tablesorter.pager
 //= require jquery-tablesorter/widgets/widget-repeatheaders
 //= require jquery-tablesorter/parsers/parser-metric
-//= require jquery-tablesorter/extras/jquery.quicksearch
 //= require AdminLTE/bootstrap
 //= require AdminLTE/app
 //= require maskedinput
