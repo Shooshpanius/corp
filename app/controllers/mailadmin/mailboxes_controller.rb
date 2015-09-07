@@ -68,6 +68,20 @@ class Mailadmin::MailboxesController < ApplicationController
   end
 
 
+  def srv_rev_act
+
+    @form_data = {
+        mailbox: MailUser.rev_act(
+            params[:mailbox_id]
+        )
+    }
+    render layout: false
+
+  end
+
+
+
+
   private
   def is_login
     if !session[:is_login]

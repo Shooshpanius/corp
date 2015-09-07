@@ -7,16 +7,16 @@
       <td id="pw_<%= mailbox.id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= mailbox.id %>)"></i></td>
       <td><%= mailbox.name %></td>
       <td><%= mailbox.org %></td>
-      <td>
+      <td id="t_<%= mailbox.id %>">
 
 
 
 
 
         <% if mailbox.active == true %>
-            <button type="button" class="btn btn-success btn-xs" style="width: 30px" >ON</button>
+            <button type="button" class="btn btn-success btn-xs" style="width: 30px" onclick="rev_act(<%= mailbox.id %>)">ON</button>
         <% else %>
-            <button type="button" class="btn btn-danger btn-xs" style="width: 30px" >OFF</button>
+            <button type="button" class="btn btn-danger btn-xs" style="width: 30px" onclick="rev_act(<%= mailbox.id %>)">OFF</button>
         <% end %>
 
 

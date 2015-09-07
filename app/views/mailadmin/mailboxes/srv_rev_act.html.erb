@@ -1,0 +1,7 @@
+
+
+        <% if @form_data[:mailbox].active == true %>
+            <button type="button" class="btn btn-success btn-xs" style="width: 30px" onclick="rev_act(<%= @form_data[:mailbox].id %>)">ON</button>
+        <% else %>
+            <button type="button" class="btn btn-danger btn-xs" style="width: 30px" onclick="rev_act(<%= @form_data[:mailbox].id %>)">OFF</button>
+        <% end %>

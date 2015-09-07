@@ -18,10 +18,7 @@ class MailUser < ActiveRecord::Base
       elsif first_letter.to_s == 'all' or first_letter.to_s.length == 0
         mailboxes = MailUser.where('mail_domain_id = ?', domain_id).order('email ASC')
       end
-
     end
-
-
 
     mailboxes.each do |mailbox|
       sotr = AddressBookCorp.where('email = ?', mailbox.email).first
@@ -33,21 +30,30 @@ class MailUser < ActiveRecord::Base
     end
 
     return mailboxes
+  end
+
+  def MailUser.rev_act(mailbox_id)
+    mail_user = MailUser.find(mailbox_id)
+
+    mail_user.update(
+      active: !mail_user.active
+    )
+
+    return mail_user
 
   end
 
 
-  def MailUser.is_mailbox(domain_id, mailbox)
 
+
+  def MailUser.is_mailbox(domain_id, mailbox)
     full_name = mailbox + '@' + MailDomain.find(domain_id).domain
     mailboxes = MailUser.where('email = ?', full_name).size
-
     if mailboxes != 0
       return 'false'
     else
       return 'true'
     end
-
   end
 
 

@@ -93,6 +93,18 @@
 
 
 
+@rev_act = (mailbox_id) ->
+  $.ajax
+    url: "/mailadmin/mailboxes/srv_rev_act"
+    type: "POST"
+    async: false
+    data: {
+      mailbox_id: mailbox_id
+    }
+    success: (msg) ->
+      $("#t_"+mailbox_id).html(msg)
+
+
 
 
 
