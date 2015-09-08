@@ -1,29 +1,37 @@
 <% @form_data[:mailboxes].each do |mailbox| %>
     <tr id="r_<%= mailbox.id %>" style="background-color: <%= MailDomain.find(mailbox.mail_domain_id).color %>">
-      <td><%= mailbox.email%></td>
-      <td>
-        <%= MailRelay.where('host = ?', mailbox.relay_front).first.comment %>
-      </td>
-      <td id="pw_<%= mailbox.id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= mailbox.id %>)"></i></td>
-      <td><%= mailbox.name %></td>
-      <td><%= mailbox.org %></td>
-      <td id="t_<%= mailbox.id %>">
 
 
+      <% if mailbox.active == true %>
 
-
-
-        <% if mailbox.active == true %>
+          <td><%= mailbox.email%></td>
+          <td>
+            <%= MailRelay.where('host = ?', mailbox.relay_front).first.comment %>
+          </td>
+          <td id="pw_<%= mailbox.id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= mailbox.id %>)"></i></td>
+          <td><%= mailbox.name %></td>
+          <td><%= mailbox.org %></td>
+          <td id="t_<%= mailbox.id %>">
             <button type="button" class="btn btn-success btn-xs" style="width: 30px" onclick="rev_act(<%= mailbox.id %>)">ON</button>
-        <% else %>
+          </td>
+
+      <% else %>
+
+          <td><strike><%= mailbox.email%></strike></td>
+          <td>
+            <strike>
+              <%= MailRelay.where('host = ?', mailbox.relay_front).first.comment %>
+            </strike>
+          </td>
+          <td id="pw_<%= mailbox.id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= mailbox.id %>)"></i></td>
+          <td><strike><%= mailbox.name %></strike></td>
+          <td><strike><%= mailbox.org %></strike></td>
+          <td id="t_<%= mailbox.id %>">
             <button type="button" class="btn btn-danger btn-xs" style="width: 30px" onclick="rev_act(<%= mailbox.id %>)">OFF</button>
-        <% end %>
+          </td>
+
+      <% end %>
 
 
-
-
-
-
-      </td>
     </tr>
 <% end %>

@@ -1,7 +1,29 @@
+<% if @form_data[:mailbox].active == true %>
 
+    <td><%= @form_data[:mailbox].email%></td>
+    <td>
+      <%= MailRelay.where('host = ?', @form_data[:mailbox].relay_front).first.comment %>
+    </td>
+    <td id="pw_<%= @form_data[:mailbox].id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= @form_data[:mailbox].id %>)"></i></td>
+    <td><%= @form_data[:mailbox].name %></td>
+    <td><%= @form_data[:mailbox].org %></td>
+    <td id="t_<%= @form_data[:mailbox].id %>">
+        <button type="button" class="btn btn-success btn-xs" style="width: 30px" onclick="rev_act(<%= @form_data[:mailbox].id %>)">ON</button>
+    </td>
 
-        <% if @form_data[:mailbox].active == true %>
-            <button type="button" class="btn btn-success btn-xs" style="width: 30px" onclick="rev_act(<%= @form_data[:mailbox].id %>)">ON</button>
-        <% else %>
-            <button type="button" class="btn btn-danger btn-xs" style="width: 30px" onclick="rev_act(<%= @form_data[:mailbox].id %>)">OFF</button>
-        <% end %>
+<% else %>
+
+    <td><strike><%= @form_data[:mailbox].email%></strike></td>
+    <td>
+      <strike>
+      <%= MailRelay.where('host = ?', @form_data[:mailbox].relay_front).first.comment %>
+      </strike>
+    </td>
+    <td id="pw_<%= @form_data[:mailbox].id %>">---<i class="fa fa-info-circle pull-right" style="cursor: pointer;" onclick="info_pwd(<%= @form_data[:mailbox].id %>)"></i></td>
+    <td><strike><%= @form_data[:mailbox].name %></strike></td>
+    <td><strike><%= @form_data[:mailbox].org %></strike></td>
+    <td id="t_<%= @form_data[:mailbox].id %>">
+      <button type="button" class="btn btn-danger btn-xs" style="width: 30px" onclick="rev_act(<%= @form_data[:mailbox].id %>)">OFF</button>
+    </td>
+
+<% end %>

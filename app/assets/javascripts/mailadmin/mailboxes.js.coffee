@@ -102,7 +102,7 @@
       mailbox_id: mailbox_id
     }
     success: (msg) ->
-      $("#t_"+mailbox_id).html(msg)
+      $("#r_"+mailbox_id).html(msg)
 
 
 
