@@ -71,11 +71,13 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
         # Корпоративный мобильный
 
-        if postalCode_str.to_str != ''
-          m_code = postalCode_str.to_str
-        else
-          m_code = 'c'
-        end
+        # if postalCode_str.to_str != ''
+        #   m_code = postalCode_str.to_str
+        # else
+        #   m_code = 'c'
+        # end
+
+        m_code = 'c'
 
         telephonenumber = telephonenumber_str.gsub(/[^0-9]/, '').to_s
         telephonenumber = telephonenumber[1..telephonenumber_str.length].to_s
