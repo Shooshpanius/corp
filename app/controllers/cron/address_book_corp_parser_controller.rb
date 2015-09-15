@@ -72,7 +72,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
         # Корпоративный мобильный
 
         if postalCode_str.nil? == false
-          m_code = postalCode_str
+          m_code = postalCode_str.to_str
         else
           m_code = 'c'
         end
@@ -80,7 +80,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
         telephonenumber = telephonenumber_str.gsub(/[^0-9]/, '').to_s
         telephonenumber = telephonenumber[1..telephonenumber_str.length].to_s
         if telephonenumber.length == 10
-          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, postalCode_str)
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, m_code)
           if num.length != 0
             CorpNumber.update(
                 num[0].id,
@@ -90,11 +90,11 @@ class Cron::AddressBookCorpParserController < ApplicationController
             CorpNumber.create(
                 address_book_corp_id: new_user.id,
                 number: telephonenumber,
-                type_n: postalCode_str
+                type_n: m_code
             )
           end
         else
-          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, postalCode_str).destroy_all
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, m_code).destroy_all
         end
 
 
