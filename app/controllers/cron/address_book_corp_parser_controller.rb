@@ -71,7 +71,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
         # Корпоративный мобильный
 
-        if postalCode_str.to_str == ''
+        if postalCode_str.to_str != ''
           m_code = postalCode_str.to_str
         else
           m_code = 'c'
