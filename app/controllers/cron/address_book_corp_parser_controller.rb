@@ -39,6 +39,8 @@ class Cron::AddressBookCorpParserController < ApplicationController
       ipphone_str = entry.try(:ipphone).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       mobile_str = entry.try(:mobile).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
       homephone_str = entry.try(:homephone).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+      postalCode_str = entry.try(:postalCode).to_s.strip.sub(/(\[\")/,'').sub(/(\"\])/,'')
+
 
       if sam_account_name != ""
         new_user = AddressBookCorp.find_or_initialize_by(login: sam_account_name)
@@ -68,10 +70,17 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
 
         # Корпоративный мобильный
+
+        if postalCode_str.nil? == false
+          m_code = postalCode_str
+        else
+          m_code = 'c'
+        end
+
         telephonenumber = telephonenumber_str.gsub(/[^0-9]/, '').to_s
         telephonenumber = telephonenumber[1..telephonenumber_str.length].to_s
         if telephonenumber.length == 10
-          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c')
+          num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, postalCode_str)
           if num.length != 0
             CorpNumber.update(
                 num[0].id,
@@ -81,11 +90,11 @@ class Cron::AddressBookCorpParserController < ApplicationController
             CorpNumber.create(
                 address_book_corp_id: new_user.id,
                 number: telephonenumber,
-                type_n: "c"
+                type_n: postalCode_str
             )
           end
         else
-          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'c').destroy_all
+          CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, postalCode_str).destroy_all
         end
 
 
@@ -154,7 +163,12 @@ class Cron::AddressBookCorpParserController < ApplicationController
           CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'm').destroy_all
         end
 
-        # Личный мобильный
+
+
+
+
+
+        # Личный мобильный/домашний
         homephone = homephone_str.gsub(/[^0-9]/, '').to_s
         homephone = homephone[1..homephone.length].to_s
         if homephone.length == 10
