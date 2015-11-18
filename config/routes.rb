@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
 
-  namespace :inventory do
-  get 'workstation/index'
-  end
-
   get 'direction_load/index'
 
   namespace :cron do
@@ -29,6 +25,10 @@ Rails.application.routes.draw do
 
   namespace :pbxadmin do
     resources :international_access, path: 'international_access/(:action)(:id)(.:format)'
+  end
+
+  namespace :inventory do
+    resources :workstation, path: 'international_access/(:action)(:id)(.:format)'
   end
 
   resources :login, :path => 'login/(:action)(.:format)'
