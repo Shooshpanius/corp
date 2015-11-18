@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :inventory do
-    resources :workstation, path: 'international_access/(:action)(:id)(.:format)'
+    resources :workstation, path: 'workstation/(:action)(:id)(.:format)'
   end
 
   resources :login, :path => 'login/(:action)(.:format)'
