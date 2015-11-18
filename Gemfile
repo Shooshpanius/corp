@@ -83,4 +83,3 @@ gem 'maskedinput-rails'
 #gem 'chartjs-ror'
 #gem 'ruby-net-ldap'
 
-
