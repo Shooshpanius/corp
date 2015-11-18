@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :inventory do
+  get 'workstation/index'
+  end
+
   get 'direction_load/index'
 
   namespace :cron do
