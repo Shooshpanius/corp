@@ -1,4 +1,12 @@
 <h1>Inventory::Workstation#index</h1>
 <p>Find me in app/views/inventory/workstation/index.html.erb</p>
 
-<%== debug(@form_data[:params]) %>
+<%
+   headers = @form_data[:results].fields
+   @form_data[:results].each(:as => :array) do |row|
+%>
+<br>
+    <%=    row %>
+
+
+<% end  %>
