@@ -102,7 +102,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
 
         # Внутренний
         ipphone = ipphone_str.gsub(/[^0-9A-Z]/, '').to_s
-        if ipphone.length == 4 or ipphone.length == 9
+        if ipphone.length == 4 or ipphone.length == 9 or ipphone.length == 3
           num = CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'i')
           if num.length != 0
             CorpNumber.update(
