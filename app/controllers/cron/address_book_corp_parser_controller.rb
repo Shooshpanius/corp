@@ -191,7 +191,7 @@ class Cron::AddressBookCorpParserController < ApplicationController
           CorpNumber.where('address_book_corp_id = ? and type_n = ?', new_user.id, 'h').destroy_all
         end
 
-        if mobile.length == 10 || telephonenumber.length == 10 || homephone.length == 10 || ipphone.length == 4 || ipphone.length == 9
+        if mobile.length == 10 || telephonenumber.length == 10 || homephone.length == 10 || ipphone.length == 4 || ipphone.length == 9 || ipphone.length == 3
           new_user.have_phones = true
           new_user.save
         else
