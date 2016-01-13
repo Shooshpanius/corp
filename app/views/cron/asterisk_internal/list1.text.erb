@@ -16,7 +16,11 @@ exten => <%= int_num.number %>,2,Dial(SIP/<%= n_alias[0].number %>,20)
 <%
     else
 %>
+<% if int_num.number.size == 4 %>
 exten => <%= int_num.number %>,2,Dial(SIP/<%= int_num.number %>,20)
+<% elsif int_num.number.size == 3 %>
+exten => <%= int_num.number %>,2,Dial(IAX2_TD/<%= int_num.number %>,20)
+<% end %>
 <% end %>
 <% if n_corp.size == 1     %>
 exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
