@@ -123,7 +123,7 @@ class AddressBookController < ApplicationController
       s.puts ("Callerid: #{num}\r\n")
       s.puts ("Timeout: 10000\r\n")
       s.puts ("WaitTime: 50\r\n")
-      s.puts ("Context: #{cont}\r\n")
+      s.puts ("Context: internal-td\r\n")
       s.puts ("Exten: #{params[:number]}\r\n")
       s.puts ("Priority: 1\r\n\r\n")
       s.puts ("Action: Logoff\r\n\r\n")
