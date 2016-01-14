@@ -20,6 +20,15 @@ class Cron::AsteriskInternalController < ApplicationController
     end
   end
 
+  def list3
+    @form_data = {
+        int_numbers: CorpNumber.where("type_n = ?", 'i').order('number ASC')
+    }
+    respond_to do |format|
+      format.text
+    end
+  end
+
   def corp1
     @form_data = {
         int_numbers: CorpNumber.where("type_n = ?", 'c').order('number ASC')

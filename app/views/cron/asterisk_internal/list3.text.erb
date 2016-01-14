@@ -1,0 +1,39 @@
+
+<%
+    int_numbers = @form_data[:int_numbers]
+    int_numbers.each do |int_num|
+
+    n_alias = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'a')
+    n_corp = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'c')
+    n_mobile = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'm')
+    n_home = CorpNumber.where('address_book_corp_id	= ? and type_n = ?', int_num.address_book_corp_id, 'h')
+%>
+exten => <%= int_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.scripts/rec.sh ${UNIQUEID})
+<%
+    if n_alias.size == 1
+%>
+exten => <%= int_num.number %>,2,Dial(SIP/<%= n_alias[0].number %>,20)
+<%
+    else
+%>
+<% if int_num.number.size == 4 %>
+exten => <%= int_num.number %>,2,Dial(SIP/<%= int_num.number %>,20)
+<% elsif int_num.number.size == 3 %>
+exten => <%= int_num.number %>,2,Dial(${IAX_TD}/<%= int_num.number %>,20)
+<% end %>
+<% end %>
+<% if n_corp.size == 1     %>
+exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
+exten => <%= int_num.number %>,n,Dial(${IAX_TD}/8<%= n_corp[0].number %>,20,L(1800000))
+<% end %>
+<% if n_mobile.size == 1 %>
+exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
+exten => <%= int_num.number %>,n,Dial(${IAX_TD}/8<%= n_mobile[0].number %>,20,L(1800000))
+<% end %>
+<% if n_home.size == 1     %>
+exten => <%= int_num.number %>,n,Playback(/etc/asterisk/vlk.sounds/dialtonext)
+exten => <%= int_num.number %>,n,Dial(${IAX_TD}/8<%= n_home[0].number %>,20,L(1800000))
+<% end %>
+exten => <%= int_num.number %>,n,Hangup()
+
+<% end %>
