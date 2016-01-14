@@ -13,7 +13,7 @@ class Cron::AsteriskAliasController < ApplicationController
 
   end
 
-  def aliases_4td
+  def aliases4td
     @form_data = {
         aliases: AddressBookCorp.joins(:corp_numbers).where("type_n = ?", 'a')
     }
