@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get 'direction_load/index'
 
-  namespace :cron do
-  get 'asterisk_alias/aliases'
-  end
+  # namespace :cron do
+  # get 'asterisk_alias/aliases'
+  # end
 
   namespace :cron do
   get 'asterisk_user/index'
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :asterisk_user, :path => 'asterisk_user/(:action)(.:format)'
     resources :asterisk_parser, :path => 'asterisk_parser/(:action)(.:format)'
     resources :asterisk_internal, :path => 'asterisk_internal/(:action)(.:format)'
+    resources :asterisk_alias, :path => 'asterisk_alias/(:action)(.:format)'
   end
 
   namespace :admin do
