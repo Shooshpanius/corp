@@ -32,7 +32,7 @@ class Cron::AsteriskParserController < ApplicationController
             parsed: true,
         )
 
-        call_to_adv_log(new_call)
+        # call_to_adv_log(new_call)
 
       end
 
@@ -64,7 +64,7 @@ class Cron::AsteriskParserController < ApplicationController
             parsed: true,
         )
 
-        call_to_adv_log(new_call)
+        # call_to_adv_log(new_call)
 
       end
 
@@ -96,7 +96,7 @@ class Cron::AsteriskParserController < ApplicationController
             parsed: true,
         )
 
-        call_to_adv_log(new_call)
+        # call_to_adv_log(new_call)
 
       end
 
@@ -128,7 +128,7 @@ class Cron::AsteriskParserController < ApplicationController
             parsed: true,
         )
 
-        call_to_adv_log(new_call)
+        # call_to_adv_log(new_call)
 
       end
 
