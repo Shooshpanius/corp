@@ -109,6 +109,30 @@ class AddressBookController < ApplicationController
 
       render text: ' - ' + a.to_s
 
+
+    elsif num.length == 3
+      hostname = '10.17.2.102'
+      port = 5038
+      s = TCPSocket.open(hostname, port)
+      s.puts ("Action: login\r\n")
+      s.puts ("Username: webr\r\n")
+      s.puts ("Secret:123qwe\r\n")
+      s.puts ("Events: on\r\n\r\n")
+      s.puts ("Action: Originate\r\n")
+      s.puts ("Channel: SIP/#{num}\r\n")
+      s.puts ("Callerid: #{num}\r\n")
+      s.puts ("Timeout: 10000\r\n")
+      s.puts ("WaitTime: 50\r\n")
+      s.puts ("Context: #{cont}\r\n")
+      s.puts ("Exten: #{params[:number]}\r\n")
+      s.puts ("Priority: 1\r\n\r\n")
+      s.puts ("Action: Logoff\r\n\r\n")
+
+      while line = s.gets   # Read lines from the socket
+        a = a.to_s + line.chop.to_s      # And print with platform line terminator
+      end
+      s.close               # Close the socket when done
+      render text: ' - ' + a.to_s
     else
       render nothing: true
 
