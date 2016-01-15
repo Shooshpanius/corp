@@ -4,7 +4,7 @@ class Stat::CallStatController < ApplicationController
 
   def index
     @form_data = {
-        calls: Call.find_each
+        calls: Call.limit(500)
     }
   end
 
