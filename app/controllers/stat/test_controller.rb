@@ -1,37 +1,10 @@
 class Stat::TestController < ApplicationController
 
   def index
-
-    year_start = Date.today.beginning_of_year + 0.seconds
-    year_end = Date.today.end_of_year + 86399.seconds
-
-    @count_str = ''
-
-
-    while year_start <= year_end
-
-      month_start = year_start.beginning_of_month
-      month_end = year_start.end_of_month
-
-
-      begin
-        calls = AsteriskTimeLog.where('context = ? and calltime_point	>= ? and calltime_point <= ?', cont, month_start, month_end).group('calltime_point').size.max_by{|i| i[1].to_i}[1]
-      rescue
-        calls = 0
-      end
-
-      @count_str += calls.to_s + ','
-
-      year_start += 1.month
-    end
-
-    # @form_data = {
-    #     cont: cont,
-    #     color: color,
-    #     count_str: count_str
-    # }
-    #
-    # render :day, layout: false
+    log_str = 'SIP/zebra/01#810375175052946,180,L(1800000)rTt'
+    dst_n = log_str.to_s.gsub("+", "810");
+    dst_n_l = dst_n.length
+    dst = log_str.lastdata.to_s.scan(/\d{#{dst_n_l}/)[0].to_s.gsub("810", "+")
 
 
   end
