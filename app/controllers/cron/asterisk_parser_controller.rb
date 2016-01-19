@@ -415,7 +415,7 @@ class Cron::AsteriskParserController < ApplicationController
 
         dst_n = log_str.dst.to_s.gsub("+", "810");
         dst_n_l = dst_n.length
-        dst = log_str.lastdata.to_s.scan(/\d{$dst_n_l}/)[0].to_s
+        dst = log_str.lastdata.to_s.scan(/\d{$dst_n_l}/)[0].to_s.gsub("810", "+")
         descr = 'international'
 
         new_call = Call.create(
