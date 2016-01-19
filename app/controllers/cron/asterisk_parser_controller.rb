@@ -65,6 +65,35 @@ class Cron::AsteriskParserController < ApplicationController
 
       end
 
+      # XXX-TD на XXXX (локальный)
+      #
+      if log_str.src.to_s.length == 3 &&
+          log_str.dst.to_s.length ==4 &&
+          log_str.lastdata.to_s.scan(/IAX2\/td/)[0].to_s.length == 7
+
+        new_call = Call.create(
+            calldate: log_str.calldate,
+            src: log_str.src,
+            dst: log_str.dst,
+            duration: log_str.duration,
+            billsec: log_str.billsec,
+            disposition: log_str.disposition,
+            uniqueid: log_str.uniqueid,
+            direction: 'o',
+            context: 'local-td_l',
+            descr: 'local',
+            calldate_end: log_str.calldate + log_str.duration
+        )
+
+        AsteriskLog.update(
+            log_str.id,
+            parsed: true,
+        )
+
+        # call_to_adv_log(new_call)
+
+      end
+
       # XXXX на XXX-TD (локальный)
       #
       if log_str.src.to_s.length == 4&&
