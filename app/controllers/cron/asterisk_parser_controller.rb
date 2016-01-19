@@ -403,6 +403,54 @@ class Cron::AsteriskParserController < ApplicationController
       end
 
 
+
+
+
+
+
+      # XXXX на XXXXXXXXXXX (Международный)
+      #
+      if log_str.src.to_s.length == 4 &&
+          log_str.dst.to_s.length > 11
+
+        dst_n = log_str.dst.to_s.gsub("+", "810");
+        dst_n_l = dst_n.length
+        dst = log_str.lastdata.to_s.scan(/\d{$dst_n_l}/)[0].to_s
+        descr = 'international'
+
+        new_call = Call.create(
+            calldate: log_str.calldate,
+            src: log_str.src,
+            dst: dst,
+            duration: log_str.duration,
+            billsec: log_str.billsec,
+            disposition: log_str.disposition,
+            uniqueid: log_str.uniqueid,
+            direction: 'o',
+            context: log_str.lastdata.to_s.scan(/SIP\/[A-Za-z_-]+\//)[0].to_s[4..-2],
+            descr: descr,
+            calldate_end: log_str.calldate + log_str.duration
+        )
+
+        AsteriskLog.update(
+            log_str.id,
+            parsed: true,
+        )
+
+        # call_to_adv_log(new_call)
+
+      end
+
+
+
+
+
+
+
+
+
+
+
     end
 
   end
