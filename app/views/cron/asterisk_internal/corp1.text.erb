@@ -6,7 +6,7 @@
 %>
 ; <%= address.fio %>
 exten => 8<%= corp_num.number %>,1,MixMonitor(${UNIQUEID}.wav,,/etc/asterisk/vlk.scripts/rec.sh ${UNIQUEID})
-exten => 8<%= corp_num.number %>,n,Dial(SIP/gsm-vlk-corp/8<%= corp_num.number %>,20,L(1800000))
+exten => 8<%= corp_num.number %>,n,Dial(SIP/gsm-vlk-corp/8<%= corp_num.number %>,30,L(1800000))
 exten => 8<%= corp_num.number %>,n,Hangup()
 
 <% end %>
