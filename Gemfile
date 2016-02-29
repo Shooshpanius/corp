@@ -57,7 +57,7 @@ gem 'unicorn_service'
 
 #gem 'bootstrap-sass', '~> 3.3.1'
 
-#gem 'sprockets'
+gem 'sprockets'
 #gem 'bootstrap-sass'
 gem 'sass-rails', '>= 3.2'
 # gem 'autoprefixer-rails' '~> 4.0'
