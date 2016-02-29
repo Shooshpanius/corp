@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
-gem 'mysql2'
-#gem 'mysql2', '~> 0.3.18'
+#gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 5.0.0.beta1'
 # Use Uglifier as compressor for JavaScript assets
@@ -64,7 +64,7 @@ gem 'sass-rails', '>= 3.2'
 
 gem 'net-ssh', '~>2.7.0'
 gem 'capistrano', '~> 2.15',require:  false
-#gem 'rvm-capistrano'
+gem 'rvm-capistrano'
 gem 'jquery-validation-rails'
 gem 'net-ldap-1'
 gem 'jquery-ui-rails'
