@@ -75,21 +75,24 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.assets.precompile << Proc.new do |path|
-    if path =~ /\.(css|js)\z/
-#      full_path = Rails.application.assets.resolve(path).to_path
-      full_path = Rails.application.assets_manifest.assets.resolve(path).to_s
-      app_assets_path = Rails.root.join('app', 'assets').to_s
-      if full_path.starts_with? app_assets_path
-        puts "including asset: " + full_path
-        true
-      else
-        puts "excluding asset: " + full_path
-        false
-      end
-    else
-      false
-    end
-  end
+#   config.assets.precompile << Proc.new do |path|
+#     if path =~ /\.(css|js)\z/
+# #      full_path = Rails.application.assets.resolve(path).to_path
+#       full_path = Rails.application.assets.resolve(path).to_s
+#       app_assets_path = Rails.root.join('app', 'assets').to_s
+#       if full_path.starts_with? app_assets_path
+#         puts "including asset: " + full_path
+#         true
+#       else
+#         puts "excluding asset: " + full_path
+#         false
+#       end
+#     else
+#       false
+#     end
+#
+#
+#
+#   end
 
 end
