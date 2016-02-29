@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails'
+#, '4.2.0'
 # Use mysql as the database for Active Record
 #gem 'mysql2'
 gem 'mysql2', '~> 0.3.18'
@@ -57,7 +58,7 @@ gem 'unicorn_service'
 
 #gem 'bootstrap-sass', '~> 3.3.1'
 
-gem 'sprockets'
+#gem 'sprockets'
 #gem 'bootstrap-sass'
 gem 'sass-rails', '>= 3.2'
 # gem 'autoprefixer-rails' '~> 4.0'
