@@ -24,14 +24,39 @@
       <% @form_data[:corp_numbers].each do |corp_number| %>
           <% address = AddressBookCorp.find_by_id(corp_number.address_book_corp_id) %>
 
-          <tr>
-            <td><%= corp_number.number%></td>
-            <td><%= address.fio %></td>
-            <td><%= address.position%></td>
-            <td><%= address.department%></td>
-            <td><%= address.organisation%> (<%= address.address%>)</td>
 
-          </tr>
+
+          <% if address.fio.nil? %>
+              <tr>
+                <td><%= corp_number.id%> - <%= corp_number.number%></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+              </tr>
+
+
+
+          <% else %>
+
+              <tr>
+                <td><%= corp_number.number%></td>
+                <td><%= address.fio %></td>
+                <td><%= address.position%></td>
+                <td><%= address.department%></td>
+                <td><%= address.organisation%> (<%= address.address%>)</td>
+
+              </tr>
+
+          <% end %>
+
+
+
+
+
+
+
 
       <% end %>
 
